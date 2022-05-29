@@ -12,7 +12,13 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_b = {
+      {
+        'branch',
+        color = { fg = '#dce7ff' },
+      },
+      'diff',
+    },
     lualine_c = {
       {
         'filename',
@@ -20,22 +26,29 @@ require('lualine').setup {
           modified = '[+]',
           readonly = '[-]',
           unnamed = '[No Name]',
-        }
+        },
+        color = { fg = '#1b2733', bg = 'White' },
       },
     },
     lualine_x = {
-      'encoding',
+      { 'encoding', color = { fg = '#dce7ff' }},
       {
         'fileformat',
         symbols = {
           unix = 'unix',
           dos = 'win',
           mac = 'mac'
-        }
+        },
+        color = { fg = '#dce7ff' },
       },
-      'filetype',
+      {
+        'filetype',
+        color = { fg = '#0a192f', bg = '#dce7ff' },
+      },
     },
-    lualine_y = { 'progress' },
+    lualine_y = {
+      { 'progress', color = { fg = '#dce7ff' }},
+    },
     lualine_z = {
       'location',
       {

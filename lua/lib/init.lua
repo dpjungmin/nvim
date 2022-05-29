@@ -47,7 +47,7 @@ function M:make_config(cfg)
     display_vim_tips_at_startup = false,
     leader = '\\',
     shell = 'bash',
-    theme = 'onedark',
+    theme = 'dark',
   }
 
   config = vim.tbl_extend('force', config, cfg)
