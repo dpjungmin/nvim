@@ -67,6 +67,11 @@ function M:load(cfg, mods)
   -- Enable embedded script highlighting (see `:h g:vimsyn_embed`)
   vim.g.vimsyn_embed = 'lP'
 
+  -- Add custom snippets
+  vim.g.UltiSnipsSnippetDirectories = { 'UltiSnips', 'snips' }
+  vim.g.UltiSnipsJumpForwardTrigger = '<c-j>'
+  vim.g.UltiSnipsJumpBackwardTrigger = '<c-k>'
+
   -- Load auto-commands
   require('lib.autocmds').load()
 

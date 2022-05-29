@@ -1,0 +1,38 @@
+snippet ps "PS template" b
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cassert>
+#include <cstring>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+#include <stack>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+
+using namespace std;
+
+int main(void) {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    cin.exceptions(ios::badbit | ios::failbit);
+
+    ${1:Add solution here}
+
+    return 0;
+}
+endsnippet
+
+snippet for "for loop" w
+for ($1; $2; $3) {
+    $4
+}
+endsnippet
+
+snippet ld "lambda expression" b
+function<$1($2)> ${3:name} = [&]($4) {
+    $5
+};
+endsnippet
