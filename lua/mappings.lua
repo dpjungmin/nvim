@@ -13,6 +13,7 @@ map('n', '<leader>sv', "<cmd>silent update $MYVIMRC \z
 
 map('n', 'q;', 'q:', { desc = 'Open the command-line window' })
 map('n', 'J', 'mzJ`z', { desc = 'Do not move the cursor when joining lines' })
+map('n', '<c-a>', 'gg<s-v>G', { desc = 'Select all text' })
 
 map('n', '<m-h>', '^', { desc = 'Go to the start of the line' })
 map('n', '<m-l>', 'g_', { desc = 'Go to the end of the line' })
