@@ -45,6 +45,12 @@ function M:make_config(cfg)
     autosave = false,
     buffer_groups = {},
     display_vim_tips_at_startup = false,
+    formatter = {
+      c = {},
+      cpp = {},
+      rust = {},
+      python = {},
+    },
     leader = '\\',
     shell = 'bash',
     theme = 'dark',

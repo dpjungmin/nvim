@@ -43,7 +43,7 @@ require('lualine').setup {
       },
       {
         'filetype',
-        color = { fg = '#0a192f', bg = '#dce7ff' },
+        color = { fg = '#fff1f3', bg = '#72696a' },
       },
     },
     lualine_y = {

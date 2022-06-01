@@ -20,18 +20,14 @@ require('lib'):init {
         return buf.name:match('%.md') or buf.name:match('%.txt')
       end,
     },
-    {
-      name = 'RUST',
-      keymapping = {
-        toggle = '<space>tgrs',
-        close = '<space>cgrs',
-      },
-      matcher = function(buf)
-        return buf.name:match('%.rs')
-      end,
-    }
   },
   display_vim_tips_at_startup = true,
+  formatter = {
+    c = {},
+    cpp = {},
+    rust = { 'rustfmt' },
+    python = { 'black' },
+  },
   leader = '\\',
   shell = 'fish',
   theme = 'dark', -- 'dark' | 'light'
