@@ -30,7 +30,12 @@ M.make_custom_highlights = function()
 
     " For floating windows highlight
     highlight NormalFloat guifg=None guibg=None
-    highlight FloatBorder guifg=LightGreen guibg=NONE
+    highlight FloatBorder guifg=LightGreen guibg=None
+    highlight ErrorFloat guibg=None
+    highlight WarningFloat guibg=None
+    highlight InfoFloat guibg=None
+    highlight HintFloat guibg=None
+
 
     " Highlight for matching parentheses
     highlight MatchParen cterm=bold,underline gui=bold,underline
