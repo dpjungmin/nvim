@@ -19,6 +19,11 @@ local t = {
       '#d65d0e',
     ]]
 
+      -- background = "#282828",
+      -- dark = "#161616",
+      -- background = "#202020",
+      -- background_dark = "#161616",
+
     vim.g.gruvbox_baby_background_color = 'dark'
     vim.g.gruvbox_baby_transparent_mode = 0
     vim.g.gruvbox_baby_comment_style = 'NONE'
@@ -37,7 +42,11 @@ local t = {
       StorageClass = { fg = '#fabd2f', bg = 'NONE', style = 'NONE' },
       String = { fg = '#b8bb26', bg = 'NONE', style = 'NONE' },
 
+      ColorColumn = { bg = '#3c3836' },
+      SignColumn = { bg = '#282828' },
+
       -- Treesitter
+      TSCharacter = { fg = '#b8bb26', bg = 'NONE', style = 'bold' },
       TSComment = { fg = '#fe8019', bg = 'NONE', style = 'NONE' },
       TSFuncMacro = { fg = '#fb4934', bg = 'NONE', style = 'italic' },
       TSString = { fg = '#b8bb26', bg = 'NONE', style = 'NONE' },
