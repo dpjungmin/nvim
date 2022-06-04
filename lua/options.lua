@@ -93,3 +93,5 @@ set.colorcolumn = '80'
 set.textwidth = 80
 set.shiftround = true
 set.hidden = true
+set.timeoutlen = 1000
+set.ttimeoutlen = 50

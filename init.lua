@@ -30,5 +30,5 @@ require('lib'):init {
   },
   leader = '\\',
   shell = 'fish',
-  theme = 'dark', -- 'dark' | 'light'
+  theme = 'dark', -- 'dark'
 }

@@ -54,6 +54,7 @@ map('n', '<s-right>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease window w
 -- Continuous visual shifting
 map({ 'v', 'x' }, '<', '<gv', { desc = 'Shift right' })
 map({ 'v', 'x' }, '>', '>gv', { desc = 'Shift left' })
+map('v', 'p', '"_dP') -- hold on to the value that is being pasted
 
 -- Move text up/down
 map('x', '<c-j>', ":move '>+1<cr>gv-gv", { desc = 'Move text down' })

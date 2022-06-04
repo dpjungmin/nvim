@@ -17,12 +17,122 @@ end
 
 vim.tbl_extend('force', groups, require('bufferline.groups').builtin.ungrouped)
 
-require('bufferline').setup {
-  highlights = {
-    buffer_selected = {
-      gui = 'bold',
-    },
+local highlights = {
+  background = {
+    guifg = '#664c54',
+    guibg = 'NONE',
   },
+  buffer_selected = {
+    gui = 'bold',
+  },
+  hint = {
+    guifg = 'LightGrey',
+    guibg = 'NONE',
+  },
+  hint_visible = {
+    guifg = 'LightGrey',
+    guibg = 'NONE',
+  },
+  hint_selected = {
+    guifg = 'LightGrey',
+    guibg = 'NONE',
+    gui = 'bold',
+  },
+  hint_diagnostic = {
+    guifg = 'LightGrey',
+    guibg = 'NONE',
+  },
+  hint_diagnostic_visible = {
+    guifg = 'LightGrey',
+    guibg = 'NONE',
+  },
+  hint_diagnostic_selected = {
+    guifg = 'LightGrey',
+    guibg = 'NONE',
+    gui = 'bold',
+  },
+  info = {
+    guifg = 'LightBlue',
+    guibg = 'NONE',
+  },
+  info_visible = {
+    guifg = 'LightBlue',
+    guibg = 'NONE',
+  },
+  info_selected = {
+    guifg = 'LightBlue',
+    guibg = 'NONE',
+    gui = 'bold',
+  },
+  info_diagnostic = {
+    guifg = 'LightBlue',
+    guibg = 'NONE',
+  },
+  info_diagnostic_visible = {
+    guifg = 'LightBlue',
+    guibg = 'NONE',
+  },
+  info_diagnostic_selected = {
+    guifg = 'LightBlue',
+    guibg = 'NONE',
+    gui = 'bold',
+  },
+  warning = {
+    guifg = '#fabd2f',
+    guibg = 'NONE',
+  },
+  warning_visible = {
+    guifg = '#fabd2f',
+    guibg = 'NONE',
+  },
+  warning_selected = {
+    guifg = '#fabd2f',
+    guibg = 'NONE',
+    gui = 'bold',
+  },
+  warning_diagnostic = {
+    guifg = '#fabd2f',
+    guibg = 'NONE',
+  },
+  warning_diagnostic_visible = {
+    guifg = '#fabd2f',
+    guibg = 'NONE',
+  },
+  warning_diagnostic_selected = {
+    guifg = '#fabd2f',
+    guibg = 'NONE',
+    gui = 'bold',
+  },
+  error = {
+    guifg = '#fb4934',
+    guibg = 'NONE',
+  },
+  error_visible = {
+    guifg = '#fb4934',
+    guibg = 'NONE',
+  },
+  error_selected = {
+    guifg = '#fb4934',
+    guibg = 'NONE',
+    gui = 'bold',
+  },
+  error_diagnostic = {
+    guifg = '#fb4934',
+    guibg = 'NONE',
+  },
+  error_diagnostic_visible = {
+    guifg = '#fb4934',
+    guibg = 'NONE',
+  },
+  error_diagnostic_selected = {
+    guifg = '#fb4934',
+    guibg = 'NONE',
+    gui = 'bold',
+  },
+};
+
+require('bufferline').setup {
+  highlights = highlights,
   options = {
     indicator_icon = '▎',
     buffer_close_icon = '',

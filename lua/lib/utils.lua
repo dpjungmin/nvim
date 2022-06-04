@@ -18,9 +18,6 @@ end
 
 M.make_custom_highlights = function()
   vim.cmd [[
-    " Only highlight the line number
-    highlight clear Cursorline
-
     " For yank highlight
     highlight YankColor ctermfg=59 ctermbg=41 guifg=#34495E guibg=#2ECC71
 

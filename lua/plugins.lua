@@ -8,6 +8,7 @@ require('packer').startup {
     --[[ Themes ]]
     use {
       'sainnhe/gruvbox-material',
+      'luisiacc/gruvbox-baby',
     }
 
     --[[ Use default configuration ]]
@@ -30,6 +31,12 @@ require('packer').startup {
       { 'andymass/vim-matchup', config = "require('config.vim-matchup')" },
       { 'simnalamburt/vim-mundo', config = "require('config.vim-mundo')" },
       { 'sbdchd/neoformat', config = "require('config.neoformat')" },
+      { 'jdhao/better-escape.vim', config = function()
+        -- https://github.com/jdhao/better-escape.vim
+        vim.g.better_escape_shortcut = 'jj'
+        vim.g.better_escape_interval = 200
+      end,
+      },
       {
         'folke/which-key.nvim',
         event = 'VimEnter',

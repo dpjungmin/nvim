@@ -2,8 +2,8 @@
 
 require('lualine').setup {
   options = {
-    icons_enabled = true,
-    theme = 'auto',
+    icons_enabled = false,
+    theme = 'gruvbox_dark',
     section_separators = { left = '', right = '' },
     component_separators = { left = '', right ='' },
     disabled_filetypes = {},
@@ -15,7 +15,7 @@ require('lualine').setup {
     lualine_b = {
       {
         'branch',
-        color = { fg = '#dce7ff' },
+        color = { fg = 'LightBlue' }
       },
       'diff',
     },
@@ -27,27 +27,21 @@ require('lualine').setup {
           readonly = '[-]',
           unnamed = '[No Name]',
         },
-        color = { fg = '#1b2733', bg = 'White' },
+        color = { fg = 'LightGrey' },
       },
     },
     lualine_x = {
-      { 'encoding', color = { fg = '#dce7ff' }},
       {
-        'fileformat',
-        symbols = {
-          unix = 'unix',
-          dos = 'win',
-          mac = 'mac'
-        },
-        color = { fg = '#dce7ff' },
+        'encoding',
+        color = { fg = 'LightGrey' },
       },
       {
         'filetype',
-        color = { fg = '#fff1f3', bg = '#72696a' },
+        color = { fg = 'LightGrey' },
       },
     },
     lualine_y = {
-      { 'progress', color = { fg = '#dce7ff' }},
+      { 'progress', color = { fg = 'LightGrey' }},
     },
     lualine_z = {
       'location',
