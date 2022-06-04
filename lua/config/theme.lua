@@ -34,6 +34,8 @@ local t = {
       Macro = { fg = '#fb4934', bg = 'NONE', style = 'italic' },
       StorageClass = { fg = '#fabd2f', bg = 'NONE', style = 'NONE' },
       String = { fg = '#b8bb26', bg = 'NONE', style = 'NONE' },
+      Special = { fg = '#bdae93', bg = 'NONE', style = 'NONE' },
+      CursorLineNr = { fg = '#bdae93', bg = 'NONE', style = 'bold' },
     }
 
     vim.cmd [[
@@ -41,7 +43,6 @@ local t = {
 
       set cursorline
       highlight clear Cursorline
-      highlight CursorLineNr guifg=#bdae93
     ]]
   end,
 }
