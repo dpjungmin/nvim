@@ -5,6 +5,10 @@ This is my personal Neovim configuration.
 Author: David Jungmin Park
 Email: dpjungmin@gmail.com
 
+TODO:
+  - Neoformat for Rust (rustfmt) is not working
+  - Modify vim-sandwich highlight to #f4468f
+
 ]]
 
 require('lib'):init {
@@ -25,7 +29,6 @@ require('lib'):init {
   formatter = {
     c = {},
     cpp = {},
-    rust = { 'rustfmt' },
     python = { 'black' },
   },
   leader = '\\',

@@ -48,7 +48,6 @@ function M:make_config(cfg)
     formatter = {
       c = {},
       cpp = {},
-      rust = {},
       python = {},
     },
     leader = '\\',

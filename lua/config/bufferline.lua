@@ -18,12 +18,24 @@ end
 vim.tbl_extend('force', groups, require('bufferline.groups').builtin.ungrouped)
 
 local highlights = {
+  fill = {
+    guifg = 'NONE',
+    guibg = 'NONE',
+  },
   background = {
-    guifg = '#664c54',
+    guifg = '#665c54',
     guibg = 'NONE',
   },
   buffer_selected = {
     gui = 'bold',
+  },
+  tab = {
+    guifg = '#665c54',
+    guibg = 'NONE',
+  },
+  tab_selected = {
+    guifg = '#d5c4a1',
+    guibg = 'NONE',
   },
   hint = {
     guifg = 'LightGrey',
@@ -128,6 +140,26 @@ local highlights = {
     guifg = '#fb4934',
     guibg = 'NONE',
     gui = 'bold',
+  },
+  duplicate_selected = {
+    guifg = 'NONE',
+    guibg = 'NONE',
+  },
+  duplicate_visible = {
+    guifg = 'NONE',
+    guibg = 'NONE',
+  },
+  duplicate = {
+    guifg = 'NONE',
+    guibg = 'NONE',
+  },
+  separator = {
+    guifg = '#282828',
+    guibg = '#282828',
+  },
+  indicator_selected = {
+    guifg = '#fb4934',
+    guibg = 'NONE',
   },
 };
 
