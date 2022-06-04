@@ -96,8 +96,10 @@ require('packer').startup {
         config = "require('config.indent-blankline')",
       },
       {
-        'nvim-treesitter/nvim-treesitter',
+        'nvim-treesitter/playground',
+        requires = { 'nvim-treesitter/nvim-treesitter' },
         event = 'BufEnter',
+        after = 'nvim-treesitter',
         run = ':TSUpdate',
         config = "require('config.nvim-treesitter')",
       },

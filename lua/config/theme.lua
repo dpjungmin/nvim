@@ -29,13 +29,18 @@ local t = {
     -- See `h: attr-list` and `:h highlight-guifg`
     -- https://github.com/luisiacc/gruvbox-baby/blob/main/lua/gruvbox-baby/theme.lua
     vim.g.gruvbox_baby_highlights = {
-      Normal = { fg = '#d5c4a1', bg = '#282828', style = 'NONE' },
       Comment = { fg = '#fe8019', bg = 'NONE', style = 'NONE' },
+      CursorLineNr = { fg = '#bdae93', bg = 'NONE', style = 'bold' },
       Macro = { fg = '#fb4934', bg = 'NONE', style = 'italic' },
+      Normal = { fg = '#d5c4a1', bg = '#282828', style = 'NONE' },
+      Special = { fg = '#bdae93', bg = 'NONE', style = 'NONE' },
       StorageClass = { fg = '#fabd2f', bg = 'NONE', style = 'NONE' },
       String = { fg = '#b8bb26', bg = 'NONE', style = 'NONE' },
-      Special = { fg = '#bdae93', bg = 'NONE', style = 'NONE' },
-      CursorLineNr = { fg = '#bdae93', bg = 'NONE', style = 'bold' },
+
+      -- Treesitter
+      TSComment = { fg = '#fe8019', bg = 'NONE', style = 'NONE' },
+      TSFuncMacro = { fg = '#fb4934', bg = 'NONE', style = 'italic' },
+      TSString = { fg = '#b8bb26', bg = 'NONE', style = 'NONE' },
     }
 
     vim.cmd [[
