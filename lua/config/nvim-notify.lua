@@ -48,5 +48,3 @@ vim.cmd([[
 vim.notify = function(msg, level, opts)
   nvim_notify(' ' .. msg .. ' ', level, opts)
 end
-
-vim.g.vim_tips_display_at_startup = _G.tovim.display_vim_tips_at_startup

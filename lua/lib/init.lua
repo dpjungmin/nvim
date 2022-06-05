@@ -44,11 +44,11 @@ function M:make_config(cfg)
   local config = {
     autosave = false,
     buffer_groups = {},
-    display_vim_tips_at_startup = false,
-    formatter = {
-      c = {},
-      cpp = {},
-      python = {},
+    format_on_save = {
+      c = false,
+      cpp = false,
+      python = false,
+      rust = false,
     },
     leader = '\\',
     shell = 'bash',

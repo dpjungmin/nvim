@@ -25,11 +25,11 @@ require('lib'):init {
       end,
     },
   },
-  display_vim_tips_at_startup = true,
-  formatter = {
-    c = {},
-    cpp = {},
-    python = { 'black' },
+  format_on_save = {
+    c = false,
+    cpp = false,
+    python = true,
+    rust = true,
   },
   leader = '\\',
   shell = 'fish',

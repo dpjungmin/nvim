@@ -134,7 +134,6 @@ require('packer').startup {
       },
       {
         'rcarriga/nvim-notify',
-        requires = { 'michaelb/vim-tips' },
         event = 'BufEnter',
         config = function()
           vim.defer_fn(function() require('config.nvim-notify') end, 2000)

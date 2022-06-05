@@ -1,9 +1,22 @@
 --[[ https://github.com/sbdchd/neoformat ]]
 
-vim.g.neoformat_enabled_c = _G.tovim.formatter.c
-vim.g.neoformat_enabled_cpp = _G.tovim.formatter.cpp
-vim.g.neoformat_enabled_python = _G.tovim.formatter.python
-vim.g.neoformat_enabled_rust = { 'rustfmt' }
+local fos = _G.tovim.format_on_save
+
+if fos.c then
+  vim.g.neoformat_enabled_c = { 'clangformat' }
+end
+
+if fos.cpp then
+  vim.g.neoformat_enabled_cpp = { 'clangformat' }
+end
+
+if fos.python then
+  vim.g.neoformat_enabled_python = { 'black' }
+end
+
+if fos.rust then
+  vim.g.neoformat_enabled_rust = { 'rustfmt' }
+end
 
 vim.g.neoformat_c_clangformat = {
   exe = 'clang-format',
