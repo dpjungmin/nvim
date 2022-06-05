@@ -25,8 +25,9 @@ require('lib'):init {
       end,
     },
   },
+  enable_notify = false,
   format_on_save = {
-    c = false,
+    c = true,
     cpp = false,
     python = true,
     rust = true,

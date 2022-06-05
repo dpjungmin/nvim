@@ -1,5 +1,9 @@
 --[[ https://github.com/rcarriga/nvim-notify ]]
 
+if not _G.tovim.enable_notify then
+  return
+end
+
 -- See `:h vim.log.levels`
 local nvim_notify = require('notify')
 

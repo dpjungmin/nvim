@@ -17,16 +17,7 @@ require('rust-tools').setup {
       highlight = 'Comment',
     },
     hover_actions = {
-      border = {
-        { '╭', 'FloatBorder' },
-        { '─', 'FloatBorder' },
-        { '╮', 'FloatBorder' },
-        { '│', 'FloatBorder' },
-        { '╯', 'FloatBorder' },
-        { '─', 'FloatBorder' },
-        { '╰', 'FloatBorder' },
-        { '│', 'FloatBorder' },
-      },
+      border = 'single',
       auto_focus = false,
     },
     crate_graph = {

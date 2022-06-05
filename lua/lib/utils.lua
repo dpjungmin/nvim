@@ -26,13 +26,12 @@ M.make_custom_highlights = function()
     highlight Cursor2 guifg=red guibg=red
 
     " For floating windows highlight
-    highlight NormalFloat guifg=None guibg=None
+    highlight NormalFloat guifg=#d5c4a1 guibg=#3c3836
     highlight FloatBorder guifg=LightGreen guibg=None
     highlight ErrorFloat guibg=None
     highlight WarningFloat guibg=None
     highlight InfoFloat guibg=None
     highlight HintFloat guibg=None
-
 
     " Highlight for matching parentheses
     highlight MatchParen cterm=bold,underline gui=bold,underline

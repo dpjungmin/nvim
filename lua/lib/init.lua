@@ -44,6 +44,7 @@ function M:make_config(cfg)
   local config = {
     autosave = false,
     buffer_groups = {},
+    enable_notify = false,
     format_on_save = {
       c = false,
       cpp = false,
