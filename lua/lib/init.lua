@@ -8,7 +8,13 @@ function M:main()
     vim.cmd 'finish'
   end
 
-  local cfg = M:make_config(require 'tovim-config')
+  local ok, cfg = pcall(require, 'tovim-config')
+
+  if not ok then
+    cfg = {}
+  end
+
+  cfg = M:make_config(cfg)
   local mods = { 'options', 'mappings', 'plugins' }
 
   if not M:load(cfg, mods) then
