@@ -1,6 +1,6 @@
 local M = {}
 
-function M:init(cfg)
+function M:main()
   local features = { 'nvim-0.7.0', 'python3' }
   local executables = { 'git', 'rg', 'fd', 'lazygit' }
 
@@ -8,7 +8,7 @@ function M:init(cfg)
     vim.cmd 'finish'
   end
 
-  cfg = M:make_config(cfg)
+  local cfg = M:make_config(require 'tovim-config')
   local mods = { 'options', 'mappings', 'plugins' }
 
   if not M:load(cfg, mods) then

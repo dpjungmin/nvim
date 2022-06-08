@@ -2,6 +2,11 @@
 
 local fos = _G.tovim.format_on_save
 
+vim.g.neoformat_enabled_c = {}
+vim.g.neoformat_enabled_cpp = {}
+vim.g.neoformat_enabled_python = {}
+vim.g.neoformat_enabled_rust = {}
+
 if fos.c then
   vim.g.neoformat_enabled_c = { 'clangformat' }
 end
