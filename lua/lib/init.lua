@@ -1,32 +1,12 @@
-local M = {}
-
-function M:main()
-  local features = { 'nvim-0.7.0', 'python3' }
-  local executables = { 'git', 'rg', 'fd', 'lazygit' }
-
-  if not M:ready(features, executables) then
-    vim.cmd 'finish'
-  end
-
-  local ok, cfg = pcall(require, 'tovim-config')
-
-  if not ok then
-    cfg = {}
-  end
-
-  cfg = M:make_config(cfg)
-  local mods = { 'options', 'mappings', 'plugins' }
-
-  if not M:load(cfg, mods) then
-    vim.cmd 'finish'
-  end
-end
-
--- Returns `true` if we have all dependencies ready
-function M:ready(features, executables)
+---Returns `true` if we have all dependencies ready.
+---
+---@param features table required features
+---@param executables table required executables
+---@return boolean ok
+local function ready(features, executables)
   local ok = true
 
-  -- Check if we have all required features
+  -- Are all features supported?
   for _, feature in ipairs(features) do
     if vim.fn.has(feature) ~= 1 then
       vim.notify('Feature ' .. feature .. ' is required, but is missing!', vim.log.levels.ERROR)
@@ -34,7 +14,7 @@ function M:ready(features, executables)
     end
   end
 
-  -- Check if we have all required executables
+  -- Does all the executables exist?
   for _, expr in ipairs(executables) do
     if vim.fn.executable(expr) ~= 1 then
       vim.notify('Executable ' .. expr .. ' is required, but is missing!', vim.log.levels.ERROR)
@@ -45,30 +25,14 @@ function M:ready(features, executables)
   return ok
 end
 
--- Creates our vim configurations
-function M:make_config(cfg)
-  local config = {
-    autosave = false,
-    buffer_groups = {},
-    enable_notify = false,
-    format_on_save = {
-      c = false,
-      cpp = false,
-      python = false,
-      rust = false,
-    },
-    leader = '\\',
-    shell = 'bash',
-    theme = 'dark',
-  }
+---Check dependencies and initialize global settings.
+---
+---@param cfg table tovim configuration
+local function init(cfg)
+  if not ready(cfg.dependencies.features, cfg.dependencies.executables) then
+    vim.cmd 'finish'
+  end
 
-  config = vim.tbl_extend('force', config, cfg)
-
-  return config
-end
-
--- Returns `true` if we successfully load all configurations
-function M:load(cfg, mods)
   -- Set global variables
   _G.tovim = vim.tbl_extend('force', {
     is_mac = vim.fn.has('macunix') == 1,
@@ -83,11 +47,17 @@ function M:load(cfg, mods)
   vim.g.UltiSnipsSnippetDirectories = { 'UltiSnips', 'snips' }
   vim.g.UltiSnipsJumpForwardTrigger = '<c-j>'
   vim.g.UltiSnipsJumpBackwardTrigger = '<c-k>'
+end
 
-  -- Load auto-commands
+---Returns `true` if we successfully load auto-commands, packer, and modules.
+---
+---@param mods table required modules
+---@return boolean ok
+local function load(mods)
+  -- Load `auto-commands`
   require('lib.autocmds').load()
 
-  -- Check if we have packer installed
+  -- Install `packer`, if we don't have it
   local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
   if vim.fn.empty(vim.fn.glob(packer_path)) == 1 then
@@ -107,6 +77,16 @@ function M:load(cfg, mods)
   end
 
   return true
+end
+
+local M = {}
+
+function M.run(cfg)
+  init(cfg)
+
+  if not load({ 'options', 'mappings', 'plugins' }) then
+    vim.cmd 'finish'
+  end
 end
 
 return M

@@ -36,6 +36,6 @@ map('n', '<space>G', '<cmd>Leaderf rg --popup<cr>', { desc = 'Show a popup to ru
 
 -- Customize highlights (https://github.com/Yggdroot/LeaderF/blob/master/autoload/leaderf/colorscheme/popup/default.vim)
 vim.cmd [[
-  highlight Lf_hl_cursorline guifg=Yellow guibg=NONE gui=NONE ctermfg=226 ctermbg=NONE cterm=NONE
+  highlight Lf_hl_cursorline guifg=#00c918 guibg=NONE gui=NONE ctermfg=226 ctermbg=NONE cterm=bold
   highlight Lf_hl_match  guifg=#f4468f guibg=NONE gui=bold ctermfg=85 ctermbg=NONE cterm=bold
 ]]
