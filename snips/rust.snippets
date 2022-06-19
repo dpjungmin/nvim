@@ -1,0 +1,59 @@
+snippet ps "PS template" b
+#![allow(unused)]
+
+mod sc {
+    pub struct USC<R> {
+        reader: R,
+        tokens: std::str::SplitAsciiWhitespace<'static>,
+        buf: Vec<u8>,
+    }
+
+    impl<R: std::io::BufRead> USC<R> {
+        pub fn new(reader: R) -> Self {
+            Self {
+                reader,
+                tokens: "".split_ascii_whitespace(),
+                buf: Vec::new(),
+            }
+        }
+
+        pub fn read<T>(&mut self) -> T
+        where
+            T: std::str::FromStr,
+            <T as std::str::FromStr>::Err: std::fmt::Debug,
+        {
+            loop {
+                if let Some(token) = self.tokens.next() {
+                    return token.parse().unwrap();
+                }
+                let line = self.read_line();
+                self.tokens = unsafe { std::mem::transmute(line.split_ascii_whitespace()) }
+            }
+        }
+
+        pub fn read_line(&mut self) -> &str {
+            self.buf.clear();
+            self.reader.read_until(b'\n', &mut self.buf).unwrap();
+            unsafe { std::str::from_utf8_unchecked(&self.buf) }
+        }
+    }
+}
+
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+use std::{
+    cmp::{Ordering, Reverse},
+    collections::*,
+    io::{self, BufWriter, Write},
+};
+
+fn main() -> Result<()> {
+    let (stdin, stdout) = (io::stdin(), io::stdout());
+    let mut is = sc::USC::new(stdin.lock());
+    let mut os = BufWriter::new(stdout.lock());
+
+    ${1:// Add solution here}
+
+    Ok(())
+}
+endsnippet

@@ -20,16 +20,17 @@ local cfg = {
     c = false,
     cpp = false,
     python = false,
-    rust = false,
+    rust = true,
   },
   leader = '\\',
   shell = 'bash',
+  theme = 'melange' -- gruvbox | melange
 }
 
 local ok, custom_cfg = pcall(require, 'tovim-config')
 
 if ok then
-  cfg = vim.tbl_extend('force', cfg, custom_cfg)
+  cfg = vim.tbl_deep_extend('force', cfg, custom_cfg)
 end
 
 require('lib').run(cfg)

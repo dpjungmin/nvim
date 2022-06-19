@@ -9,6 +9,7 @@ require('packer').startup {
     use {
       'sainnhe/gruvbox-material',
       'luisiacc/gruvbox-baby',
+      'savq/melange',
     }
 
     --[[ Use default configuration ]]
