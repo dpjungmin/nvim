@@ -14,7 +14,18 @@ local cfg = {
   },
   -- Customizable settings
   autosave = false,
-  buffer_groups = {},
+  buffer_groups = {
+    {
+      name = 'DOCS',
+      keymapping = {
+        toggle = '<space>tgdocs',
+        close = '<space>cgdocs',
+      },
+      matcher = function(buf)
+        return buf.name:match('%.md') or buf.name:match('%.txt')
+      end,
+    },
+  },
   enable_notify = false,
   format_on_save = {
     c = false,
