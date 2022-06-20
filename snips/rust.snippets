@@ -39,13 +39,13 @@ mod sc {
     }
 }
 
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
-
 use std::{
     cmp::{Ordering, Reverse},
     collections::*,
     io::{self, BufWriter, Write},
 };
+
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn main() -> Result<()> {
     let (stdin, stdout) = (io::stdin(), io::stdout());
