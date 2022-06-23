@@ -2,14 +2,14 @@
 
 require('gitsigns').setup {
   signs = {
-    add          = { hl = 'GitSignsAdd'   , text = '│', numhl = 'GitSignsAddNr'   , linehl = 'GitSignsAddLn' },
-    change       = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+    add          = { hl = 'GitSignsAdd'   , text = '+', numhl = 'GitSignsAddNr'   , linehl = 'GitSignsAddLn' },
+    change       = { hl = 'GitSignsChange', text = '+', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
     delete       = { hl = 'GitSignsDelete', text = '_', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
     topdelete    = { hl = 'GitSignsDelete', text = '‾', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
     changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
   },
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  numhl      = true,  -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
@@ -68,7 +68,7 @@ require('gitsigns').setup {
     map('n', '<leader>gS', gs.stage_buffer, { desc = 'Stage all hunks in current buffer' })
     map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'Undo the last stage_hunk()' })
     map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset the lines of all hunks in the buffer' })
-    map('n', '<leader>gp', gs.preview_hunk, { desc = 'Preview the hunk at the cursor position' })
+    map('n', '<space>p', gs.preview_hunk, { desc = 'Preview the hunk at the cursor position' })
     map('n', '<leader>gb', function() gs.blame_line { full = true } end, { desc = 'Run git blame on the current line' })
     map('n', '<leader>gd', gs.diffthis, { desc = 'Perform a vimdiff on the given file' })
 

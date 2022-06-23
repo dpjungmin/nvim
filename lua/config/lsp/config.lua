@@ -23,7 +23,7 @@ vim.diagnostic.config {
     spacing = 0,
     prefix = '',
   },
-  signs = false,
+  signs = true,
   float = {
     wrap = true,
     pad_top = 0,

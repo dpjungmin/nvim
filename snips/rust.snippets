@@ -41,7 +41,7 @@ mod sc {
 
 use std::{
     cmp::{Ordering, Reverse},
-    collections::*,
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, LinkedList, VecDeque},
     io::{self, BufWriter, Write},
 };
 
@@ -55,5 +55,20 @@ fn main() -> Result<()> {
     ${1:// Add solution here}
 
     Ok(())
+}
+endsnippet
+
+snippet yewfc "yew functional component" b
+#[derive(Properties, PartialEq, Clone)]
+pub struct ${1:name}Props {
+}
+
+#[function_component($1)]
+pub fn ${2:fn_name}(props: &$1Props) -> Html {
+
+
+    html! {
+        <${3:tag}>${4}</$3>
+    }
 }
 endsnippet

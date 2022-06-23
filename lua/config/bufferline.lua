@@ -154,8 +154,8 @@ local highlights = {
     guibg = 'NONE',
   },
   separator = {
-    guifg = '#282828',
-    guibg = '#282828',
+    guifg = '#1d2021',
+    guibg = '#1d2021',
   },
   indicator_selected = {
     guifg = '#fb4934',

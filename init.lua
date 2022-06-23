@@ -35,7 +35,7 @@ local cfg = {
   },
   leader = '\\',
   shell = 'bash',
-  theme = 'melange' -- gruvbox | melange
+  theme = 'tovim' -- tovim | gruvbox | melange
 }
 
 local ok, custom_cfg = pcall(require, 'tovim-config')
