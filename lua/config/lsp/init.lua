@@ -13,6 +13,7 @@ require('nvim-lsp-installer').setup {
     'sumneko_lua',
     'pylsp',
     'clangd',
+    'cmake',
     'rust_analyzer',
   },
   automatic_installation = true,

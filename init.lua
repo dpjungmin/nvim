@@ -35,13 +35,13 @@ local cfg = {
   },
   leader = '\\',
   shell = 'bash',
-  theme = 'tovim' -- tovim | gruvbox | melange
+  theme = 'tovim' -- tovim | melange
 }
 
-local ok, custom_cfg = pcall(require, 'tovim-config')
+local ok, tovim = pcall(require, 'tovim')
 
 if ok then
-  cfg = vim.tbl_deep_extend('force', cfg, custom_cfg)
+  cfg = vim.tbl_deep_extend('force', cfg, tovim)
 end
 
 require('lib').run(cfg)

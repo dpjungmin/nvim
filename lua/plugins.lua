@@ -8,8 +8,6 @@ require('packer').startup {
     --[[ Themes ]]
     use {
       'chriskempson/base16-vim',
-      'sainnhe/gruvbox-material',
-      'luisiacc/gruvbox-baby',
       'savq/melange',
     }
 

@@ -41,6 +41,7 @@ local servers = {
       debounce_text_changes = 200,
     },
   },
+  cmake = {},
 }
 
 return servers
