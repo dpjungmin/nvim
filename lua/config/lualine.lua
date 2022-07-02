@@ -3,7 +3,7 @@
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'gruvbox_dark',
+    theme = 'auto',
     section_separators = { left = '', right = '' },
     component_separators = { left = '', right ='' },
     disabled_filetypes = {},
@@ -22,6 +22,7 @@ require('lualine').setup {
     lualine_c = {
       {
         'filename',
+        path = 1, -- Relative path
         symbols = {
           modified = '[+]',
           readonly = '[-]',
@@ -31,10 +32,6 @@ require('lualine').setup {
       },
     },
     lualine_x = {
-      {
-        'encoding',
-        color = { fg = 'LightGrey' },
-      },
       {
         'filetype',
         color = { fg = 'LightGrey' },
