@@ -162,33 +162,18 @@ require('packer').startup {
 
     -- Language support
     use {
-      -- LSP
-      {
-        'neovim/nvim-lspconfig',
-        requires = {
-          'williamboman/nvim-lsp-installer',
-          'hrsh7th/cmp-nvim-lsp',
-          'simrat39/rust-tools.nvim',
-          'p00f/clangd_extensions.nvim',
-          'nvim-lua/plenary.nvim',
-          'mfussenegger/nvim-dap',
-        },
-        after = 'cmp-nvim-lsp',
-        config = "require('config.lsp')",
-      },
-      { 'jose-elias-alvarez/null-ls.nvim', config = "require('config.null-ls')" },
       -- Auto-completion
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-omni' },
       {
         'hrsh7th/nvim-cmp',
         requires = { 'onsails/lspkind-nvim' },
         after = 'lspkind-nvim',
         config = "require('config.nvim-cmp')",
       },
-      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-omni', after = 'nvim-cmp' },
       -- Snippets
       { 'SirVer/ultisnips' },
       { 'honza/vim-snippets', after = 'ultisnips' },
@@ -203,6 +188,20 @@ require('packer').startup {
       { 'preservim/vim-markdown', ft = { 'markdown' }, config = "require('config.vim-markdown')" },
       { 'cespare/vim-toml', ft = { 'toml' }},
       { 'stephpy/vim-yaml', ft = { 'yaml' }},
+      -- LSP
+      {
+        'neovim/nvim-lspconfig',
+        requires = {
+          'williamboman/nvim-lsp-installer',
+          'hrsh7th/cmp-nvim-lsp',
+          'simrat39/rust-tools.nvim',
+          'p00f/clangd_extensions.nvim',
+          'nvim-lua/plenary.nvim',
+          'mfussenegger/nvim-dap',
+        },
+        after = 'nvim-cmp',
+        config = "require('config.lsp')",
+      },
     }
   end,
   config = {

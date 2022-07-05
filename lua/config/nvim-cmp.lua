@@ -106,7 +106,6 @@ cmp.setup {
     { name = 'path' },
     { name = 'buffer', keyword_length = 4 },
     { name = 'omni' },
-  }, {
     -- https://github.com/Saecki/crates.nvim#nvim-cmp-source
     { name = 'crates' }
   }),
