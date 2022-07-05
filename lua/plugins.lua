@@ -43,11 +43,8 @@ require('packer').startup {
         config = "require('config.which-key')",
       },
       {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        event = 'VimEnter',
-        setup = "require('config.theme')", -- Theme must be set before loading this plugin
-        config = "require('config.lualine')",
+        'itchyny/lightline.vim',
+        config = "require('config.lightline')",
       },
       {
         'iamcco/markdown-preview.nvim',

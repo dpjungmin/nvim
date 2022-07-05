@@ -84,7 +84,7 @@ local M = {}
 function M.run(cfg)
   init(cfg)
 
-  if not load({ 'options', 'mappings', 'plugins' }) then
+  if not load({ 'options', 'mappings', 'plugins', 'theme' }) then
     vim.cmd 'finish'
   end
 end
