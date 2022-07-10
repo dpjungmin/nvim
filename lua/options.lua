@@ -65,8 +65,8 @@ set.matchpairs:append { '<:>', '「:」', '『:』', '【:】', '“:”', '‘:
 set.list = true
 set.listchars = { nbsp = '¬', extends = '»', precedes = '«', trail = '•' }
 set.scrolloff = 5
-set.number = true
-set.relativenumber = true
+set.number = _G.tovim.line_number
+set.relativenumber = _G.tovim.line_number
 set.swapfile = false
 set.autowrite = true
 set.virtualedit = 'block'
@@ -85,7 +85,7 @@ set.showmatch = true
 set.wrap = false
 set.autoindent = true
 set.smartindent = true
-set.foldmethod = 'indent'
+set.foldmethod = 'manual'
 set.foldlevel = 0
 set.conceallevel = 1
 set.foldenable = true

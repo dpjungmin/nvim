@@ -8,7 +8,6 @@ require('packer').startup {
     --[[ Themes ]]
     use {
       'chriskempson/base16-vim',
-      'savq/melange',
     }
 
     --[[ Use default configuration ]]

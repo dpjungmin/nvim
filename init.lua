@@ -34,8 +34,8 @@ local cfg = {
     rust = true,
   },
   leader = '\\',
+  line_number = false,
   shell = 'bash',
-  theme = 'tovim' -- tovim | melange
 }
 
 local ok, tovim = pcall(require, 'tovim')

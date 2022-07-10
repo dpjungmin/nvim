@@ -24,7 +24,7 @@ map('n', '<leader>Q', '<cmd>xa<cr>', { desc = 'Write all changed buffers and exi
 map('n', '<leader>y', '<cmd>%y<cr>', { desc = 'Copy the entire buffer' })
 map('n', '<leader>cd', '<cmd>lcd %:p:h<cr><cmd>pwd<cr>', { desc = 'Change current working directory locally and print cwd' })
 
-map('n', '<space>tc', require('lib.utils').toggle_cursorcolumn, { desc = 'Toggle cursorcolumn' })
+map('n', '<space>tc', require('lib.utils').toggle_cursorhl, { desc = 'Toggle cursor highlight' })
 map('n', '<space><space>', 'a<space><esc>h', { desc = 'Insert a space after the current character' })
 map('n', '<space>ao', function() return string.format('m`%so<esc>``', vim.v.count1) end, { expr = true, desc = 'Add a blank line below the current line' })
 map('n', '<space>aO', function() return string.format('m`%sO<esc>``', vim.v.count1) end, { expr = true, desc = 'Add a blank line above the current line' })

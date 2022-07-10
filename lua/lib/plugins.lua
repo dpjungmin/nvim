@@ -38,8 +38,7 @@ M.telescope = {
         border = true,
         cwd = '~/.config/nvim',
         prompt = '',
-        prompt_prefix = 'Search Neovim config files: ',
-        height = 10,
+        prompt_prefix = '[nvim config files]: ',
       }
     )
   end,

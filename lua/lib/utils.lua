@@ -6,13 +6,15 @@ M.map = function(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
-M.toggle_cursorcolumn = function()
-  if vim.opt.cursorcolumn:get() then
+M.toggle_cursorhl = function()
+  if vim.opt.cursorline:get() then
+    vim.opt.cursorline = false
     vim.opt.cursorcolumn = false
-    vim.notify('cursorcolumn OFF', vim.log.levels.ERROR, { timeout = 500 })
+    vim.notify('cursor highlight OFF', vim.log.levels.ERROR, { timeout = 500 })
   else
+    vim.opt.cursorline = true
     vim.opt.cursorcolumn = true
-    vim.notify('cursorcolumn ON', vim.log.levels.INFO, { timeout = 500 })
+    vim.notify('cursor highlight ON', vim.log.levels.INFO, { timeout = 500 })
   end
 end
 
@@ -32,6 +34,11 @@ M.make_custom_highlights = function()
     highlight WarningFloat guibg=None
     highlight InfoFloat guibg=None
     highlight HintFloat guibg=None
+
+    " For git signs
+    highlight GitGutterAdd guibg=None
+    highlight GitGutterChange guibg=None
+    highlight GitGutterDelete guibg=None
 
     " Highlight for matching parentheses
     highlight MatchParen cterm=bold,underline gui=bold,underline

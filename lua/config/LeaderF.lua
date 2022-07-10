@@ -25,14 +25,14 @@ vim.g.Lf_PopupColorscheme = 'default' -- https://github.com/Yggdroot/LeaderF/tre
 
 local map = require('lib.utils').map
 
-map('n', '<space>.', '<cmd>Leaderf file --bottom<cr>', { desc = 'Search files' })
-map('n', '<space>>', '<cmd>Leaderf file --popup<cr>', { desc = 'Show popup to search files' })
-map('n', '<space>,', '<cmd>Leaderf buffer --bottom<cr>', { desc = 'Search buffers' })
-map('n', '<space><', '<cmd>Leaderf buffer --popup<cr>', { desc = 'Show popup to search buffers' })
-map('n', '<space>fr', '<cmd>Leaderf mru --bottom<cr>', { desc = 'Search most recently used files' })
-map('n', '<space>fl', '<cmd>Leaderf line --fullScreen<cr>', { desc = 'Search a line in the current buffer' })
-map('n', '<space>g', '<cmd>Leaderf rg --fullScreen<cr>', { desc = 'Run ripgrep will full screen' })
-map('n', '<space>G', '<cmd>Leaderf rg --popup<cr>', { desc = 'Show a popup to run ripgrep' })
+map('n', '<leader>.', '<cmd>Leaderf file --bottom<cr>', { desc = 'Search files' })
+map('n', '<leader>>', '<cmd>Leaderf file --popup<cr>', { desc = 'Show popup to search files' })
+map('n', '<leader>,', '<cmd>Leaderf buffer --bottom<cr>', { desc = 'Search buffers' })
+map('n', '<leader><', '<cmd>Leaderf buffer --popup<cr>', { desc = 'Show popup to search buffers' })
+map('n', '<leader>fr', '<cmd>Leaderf mru --bottom<cr>', { desc = 'Search most recently used files' })
+map('n', '<leader>fl', '<cmd>Leaderf line --fullScreen<cr>', { desc = 'Search a line in the current buffer' })
+map('n', '<leader>g', '<cmd>Leaderf rg --fullScreen<cr>', { desc = 'Run ripgrep will full screen' })
+map('n', '<leader>G', '<cmd>Leaderf rg --popup<cr>', { desc = 'Show a popup to run ripgrep' })
 
 -- Customize highlights (https://github.com/Yggdroot/LeaderF/blob/master/autoload/leaderf/colorscheme/popup/default.vim)
 vim.cmd [[

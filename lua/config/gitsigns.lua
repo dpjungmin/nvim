@@ -8,8 +8,8 @@ require('gitsigns').setup {
     topdelete    = { hl = 'GitSignsDelete', text = '‾', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
     changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
   },
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = true,  -- Toggle with `:Gitsigns toggle_numhl`
+  signcolumn = false, -- Toggle with `:Gitsigns toggle_signs`
+  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
@@ -74,6 +74,7 @@ require('gitsigns').setup {
 
     map('n', '<space>tgb', gs.toggle_current_line_blame, { desc = 'Toggle current-line git blame' })
     map('n', '<space>tgd', gs.toggle_deleted, { desc = 'Toggle git deleted' })
+    map('n', '<space>tgs', gs.toggle_signs, { desc = 'Toggle git signs' })
 
     -- Text object
     map({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>')
