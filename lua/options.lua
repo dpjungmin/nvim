@@ -94,3 +94,4 @@ set.colorcolumn = '80'
 set.textwidth = 80
 set.shiftround = true
 set.hidden = true
+set.signcolumn = 'yes'
