@@ -5,7 +5,7 @@ mod sc {
     pub struct USC<R> {
         reader: R,
         tokens: std::str::SplitAsciiWhitespace<'static>,
-        buf: Vec<u8>,
+        bytes: Vec<u8>,
     }
 
     impl<R: std::io::BufRead> USC<R> {
@@ -13,7 +13,7 @@ mod sc {
             Self {
                 reader,
                 tokens: "".split_ascii_whitespace(),
-                buf: Vec::new(),
+                bytes: Vec::new(),
             }
         }
 
@@ -32,9 +32,9 @@ mod sc {
         }
 
         pub fn read_line(&mut self) -> &str {
-            self.buf.clear();
-            self.reader.read_until(b'\n', &mut self.buf).unwrap();
-            unsafe { std::str::from_utf8_unchecked(&self.buf) }
+            self.bytes.clear();
+            self.reader.read_until(b'\n', &mut self.bytes).unwrap();
+            unsafe { std::str::from_utf8_unchecked(&self.bytes) }
         }
     }
 }
