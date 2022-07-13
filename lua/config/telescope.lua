@@ -97,6 +97,7 @@ require('telescope').setup {
     diagnostics = {
       theme = 'ivy',
       prompt_prefix = '[diagnostics]: ',
+      prompt_title = '',
       preview_title = '',
     },
     lsp_implementations = {
@@ -128,7 +129,7 @@ map('n', '<space>fh', '<cmd>Telescope help_tags<cr>', { desc = 'List available h
 map('n', '<space>fH', '<cmd>Telescope highlights<cr>', { desc = 'List available highlights' })
 
 map('n', '<space>fcr', '<cmd>Telescope lsp_references<cr>', { desc = 'Lists LSP references for the work under the cursor' })
-map('n', '<space>fcd', '<cmd>Telescope diagnostics<cr>', { desc = 'Lists diagnostics for all open buffers' })
+map('n', '<space>D', '<cmd>Telescope diagnostics<cr>', { desc = 'Lists diagnostics for all open buffers' })
 map('n', '<space>fci', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Lists implementations of the work under the cursor' })
 
 map('n', '<space>fn', require('lib.plugins').telescope.find_nvim_configs, { desc = 'List Neovim config files' })
