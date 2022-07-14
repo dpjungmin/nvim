@@ -41,6 +41,10 @@ M.autocmds =  {
   _auto_compile_packer = {
     { 'BufWritePost', '*/nvim/lua/plugins.lua', 'source <afile> | PackerCompile' },
   },
+  _puppet = {
+    { 'BufNewFile,BufRead', '*.pp', 'setfiletype puppet' },
+    { 'BufNewFile,BufRead', '*.pp', 'set shiftwidth=2 softtabstop=2 filetype=puppet' },
+  },
 }
 
 M.load = function()
