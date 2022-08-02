@@ -45,6 +45,9 @@ M.autocmds =  {
     { 'BufNewFile,BufRead', '*.pp', 'setfiletype puppet' },
     { 'BufNewFile,BufRead', '*.pp', 'set shiftwidth=2 softtabstop=2 filetype=puppet' },
   },
+  _justfile = {
+    { 'BufNewFile,BufRead', 'justfile', 'setf make' },
+  }
 }
 
 M.load = function()
