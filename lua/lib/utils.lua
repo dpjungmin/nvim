@@ -1,51 +1,47 @@
 local M = {}
 
-M.map = function(mode, lhs, rhs, opts)
+function M.map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
-  if opts then options = vim.tbl_extend('force', options, opts) end
+
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
-M.toggle_cursorhl = function()
-  if vim.opt.cursorline:get() then
-    vim.opt.cursorline = false
-    vim.opt.cursorcolumn = false
-    vim.notify('cursor highlight OFF', vim.log.levels.ERROR, { timeout = 500 })
+function M.notify(msg, log_level, opts)
+  local level = log_level or 0 and vim.log.levels.ERROR
+  local options = {}
+
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+
+  if vim.in_fast_event() then
+    vim.schedule(function()
+      vim.notify(msg, level, options)
+    end)
   else
-    vim.opt.cursorline = true
-    vim.opt.cursorcolumn = true
-    vim.notify('cursor highlight ON', vim.log.levels.INFO, { timeout = 500 })
+    vim.notify(msg, level, options)
   end
 end
 
-M.make_custom_highlights = function()
-  vim.cmd [[
-    " For yank highlight
-    highlight YankColor ctermfg=59 ctermbg=41 guifg=#34495E guibg=#2ECC71
+function M.toggle_cursorhl()
+  local opt = vim.opt
 
-    " For cursor colors
-    highlight Cursor cterm=bold gui=bold guibg=#00c918 guifg=black
-    highlight Cursor2 guifg=red guibg=red
-
-    " For floating windows highlight
-    highlight NormalFloat guifg=#d5c4a1 guibg=#3c3836
-    highlight FloatBorder guifg=LightGreen guibg=None
-    highlight ErrorFloat guibg=None
-    highlight WarningFloat guibg=None
-    highlight InfoFloat guibg=None
-    highlight HintFloat guibg=None
-
-    " For git signs
-    highlight GitGutterAdd guibg=None
-    highlight GitGutterChange guibg=None
-    highlight GitGutterDelete guibg=None
-
-    " Highlight for matching parentheses
-    highlight MatchParen cterm=bold,underline gui=bold,underline
-  ]]
+  if opt.cursorline:get() then
+    opt.cursorline = false
+    opt.cursorcolumn = false
+    M.notify('Disabled cursor-highlight', vim.log.levels.INFO)
+  else
+    opt.cursorline = true
+    opt.cursorcolumn = true
+    M.notify('Enabled cursor-highlight', vim.log.levels.INFO)
+  end
 end
 
-M.resume_last_cursor_position = function()
+function M.resume_last_cursor_position()
   vim.cmd [[
     let ok = v:true
 
@@ -64,6 +60,41 @@ M.resume_last_cursor_position = function()
       endif
     endif
   ]]
+end
+
+function M.highlight(name, props)
+  if props.link then
+    vim.cmd('highlight! link ' .. name .. ' ' .. props.link)
+    return
+  end
+
+  local val = {}
+
+  if props.fg then
+    val.fg = props.fg
+  end
+
+  if props.bg then
+    val.bg = props.bg
+  end
+
+  if props.sp then
+    val.sp = props.sp
+  end
+
+  if props.style and not (props.style == 'NONE') then
+    if type(props.style) == 'string' then
+      val[props.style] = true
+    end
+
+    if type(props.style) == 'table' then
+      for _, style in ipairs(props.style) do
+        val[style] = true
+      end
+    end
+  end
+
+  vim.api.nvim_set_hl(0, name, val)
 end
 
 return M

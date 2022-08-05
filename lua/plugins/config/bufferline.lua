@@ -1,22 +1,5 @@
 --[[ https://github.com/akinsho/bufferline.nvim ]]
 
-local buffer_groups = _G.tovim.buffer_groups
-local groups = {}
-
-for i, v in pairs(buffer_groups) do
-  local group = {
-    auto_close = false,
-    separator = {
-      style = require('bufferline.groups').separator.tab
-    },
-  }
-
-  group = vim.tbl_extend('force', group, v)
-  groups[i] = group
-end
-
-vim.tbl_extend('force', groups, require('bufferline.groups').builtin.ungrouped)
-
 local highlights = {
   fill = {
     guifg = 'NONE',
@@ -161,7 +144,7 @@ local highlights = {
     guifg = '#fb4934',
     guibg = 'NONE',
   },
-};
+}
 
 require('bufferline').setup {
   highlights = highlights,
@@ -189,12 +172,12 @@ require('bufferline').setup {
     diagnostics_update_in_insert = true,
     diagnostics_indicator = function(count, _, _, context)
       if context.buffer:current() then
-          return ''
+        return ''
       end
 
       return '(' .. count .. ')'
     end,
-    offsets = {{ filetype = 'NvimTree', text = '📁', text_align = 'center' }},
+    offsets = { { filetype = 'NvimTree', text = '📁', text_align = 'center' } },
     show_buffer_icons = false,
     show_buffer_close_icons = false,
     show_close_icon = false,
@@ -204,12 +187,6 @@ require('bufferline').setup {
     always_show_bufferline = true,
     separator_style = 'thin',
     sort_by = 'id',
-    groups = {
-      options = {
-        toggle_hidden_on_enter = true,
-      },
-      items = groups,
-    }
   },
 }
 
@@ -226,16 +203,15 @@ map('n', '<space>8', '<cmd>BufferLineGoToBuffer 8<cr>', { desc = 'Go to buffer 8
 map('n', '<space>9', '<cmd>BufferLineGoToBuffer 9<cr>', { desc = 'Go to buffer 9' })
 map('n', '<tab>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Go to the next buffer' })
 map('n', '<s-tab>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Go to the previous buffer' })
-map('n', '<s-l>', '<cmd>BufferLineMoveNext<cr>', { desc = 'Move the current buffer to the next buffer position' })
-map('n', '<s-h>', '<cmd>BufferLineMovePrev<cr>', { desc = 'Move the current buffer to the previous buffer position' })
-
-for _, g in ipairs(buffer_groups) do
-  map('n', g.keymapping.toggle,
-  '<cmd>BufferLineGroupToggle ' .. g.name .. "<cr> \z
-  <cmd>lua vim.notify('Toggle buffer-group \"" .. g.name .. "\"', vim.log.levels.INFO)<cr>",
-  { desc = "Toggle buffer-group '" .. g.name .. "'" })
-  map('n', g.keymapping.close,
-  '<cmd>BufferLineGroupClose ' .. g.name .. "<cr> \z
-  <cmd>lua vim.notify('Close buffer-group \"" .. g.name .. "\"', vim.log.levels.INFO)<cr>",
-  { desc = "Close buffer-group '" .. g.name .. "'" })
-end
+map(
+  'n',
+  '<s-l>',
+  '<cmd>BufferLineMoveNext<cr>',
+  { desc = 'Move the current buffer to the next buffer position' }
+)
+map(
+  'n',
+  '<s-h>',
+  '<cmd>BufferLineMovePrev<cr>',
+  { desc = 'Move the current buffer to the previous buffer position' }
+)

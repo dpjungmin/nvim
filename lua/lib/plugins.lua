@@ -1,19 +1,22 @@
+-- Functions for plugins
+
+local notify = require('lib.utils').notify
 local M = {}
 
 M.indent_blankline = {
   toggle = function()
-    if _G.tovim.indent_blankline then
-      _G.tovim.indent_blankline = false
-      vim.notify('indent-blankline OFF', vim.log.levels.ERROR, { timeout = 500 })
+    if vim.g._indent_blankline then
+      vim.g._indent_blankline = false
+      notify('Disabled indent-blankline', vim.log.levels.INFO)
     else
-      _G.tovim.indent_blankline = true
-      vim.notify('indent-blankline ON', vim.log.levels.INFO, { timeout = 500 })
+      vim.g._indent_blankline = true
+      notify('Enabled indent-blankline', vim.log.levels.INFO)
     end
 
     vim.cmd 'IndentBlanklineToggle'
   end,
   activate = function()
-    if not _G.tovim.indent_blankline then
+    if not vim.g._indent_blankline then
       return
     end
 
@@ -32,27 +35,13 @@ M.telescope = {
     require('telescope.builtin').reloader()
   end,
   find_nvim_configs = function()
-    require('telescope.builtin').find_files(
-      require('telescope.themes').get_ivy {
-        shorten_path = true,
-        border = true,
-        cwd = '~/.config/nvim',
-        prompt = '',
-        prompt_prefix = '[nvim config files]: ',
-      }
-    )
-  end,
-}
-
-M.autosave = {
-  toggle = function()
-    if vim.g.autosave_state then
-      vim.notify('Auto-save OFF', vim.log.levels.ERROR)
-    else
-      vim.notify('Auto-save ON', vim.log.levels.INFO)
-    end
-
-    vim.cmd('ASToggle')
+    require('telescope.builtin').find_files(require('telescope.themes').get_ivy {
+      shorten_path = true,
+      border = true,
+      cwd = '~/.config/nvim',
+      prompt = '',
+      prompt_prefix = '[nvim config files]: ',
+    })
   end,
 }
 

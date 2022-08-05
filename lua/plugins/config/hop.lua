@@ -8,4 +8,6 @@ require('hop').setup {
 
 local map = require('lib.utils').map
 
-map('n', 'f', function() return require('hop').hint_char2() end, { desc = 'Hop to the occurrence of a bigram' })
+map('n', 'f', function()
+  return require('hop').hint_char2()
+end, { desc = 'Hop to the occurrence of a bigram' })
