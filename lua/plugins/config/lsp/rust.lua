@@ -3,7 +3,6 @@
 require('rust-tools').setup {
   tools = {
     autoSetHints = true,
-    hover_with_actions = true,
     inlay_hints = {
       only_current_line = false,
       show_parameter_hints = true,
@@ -14,7 +13,7 @@ require('rust-tools').setup {
       max_len_align_padding = 1,
       right_align = false,
       right_align_padding = 7,
-      highlight = 'Comment',
+      highlight = 'InlayHints',
     },
     hover_actions = {
       border = 'single',
@@ -98,6 +97,16 @@ require('rust-tools').setup {
 
 local map = require('lib.utils').map
 
-map('n', 'K', require('rust-tools.hover_actions').hover_actions, {  desc = 'Display symbol information at the cursor' })
-map('n', '<space>oc', require('rust-tools.open_cargo_toml').open_cargo_toml, {  desc = 'Open Cargo.toml' })
+map(
+  'n',
+  'K',
+  require('rust-tools.hover_actions').hover_actions,
+  { desc = 'Display symbol information at the cursor' }
+)
+map(
+  'n',
+  '<space>oc',
+  require('rust-tools.open_cargo_toml').open_cargo_toml,
+  { desc = 'Open Cargo.toml' }
+)
 map('n', '<space>rr', require('rust-tools.runnables').runnables, { desc = 'Run a Rust runnable' })

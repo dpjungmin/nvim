@@ -19,8 +19,11 @@ end
 vim.g.colors_name = 'dpjungmin'
 
 vim.cmd [[
-  set t_Co=256
-  let base16colorspace=256
+  if exists('base16colorspace')
+    set t_Co=256
+    let base16colorspace=256
+  endif
+
   syntax enable
   set termguicolors
 ]]

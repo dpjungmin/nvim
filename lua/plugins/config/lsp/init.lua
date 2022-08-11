@@ -173,6 +173,11 @@ for server, opts in pairs(require 'plugins.config.lsp.servers') do
   lspconfig[server].setup(options)
 end
 
+local map = require('lib.utils').map
+
+map('n', '<leader>l', '<cmd>LspStart<cr>', { desc = 'Start LSP client' })
+map('n', '<leader><leader>l', '<cmd>LspStop<cr>', { desc = 'Stop LSP client' })
+
 -- Load language specific plugins
 require 'plugins.config.lsp.clang'
 require 'plugins.config.lsp.rust'

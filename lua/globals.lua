@@ -41,6 +41,9 @@ vim.cmd [[
         \ 'startify#pad(g:ascii + startify#fortune#boxed())'
 ]]
 
+-- https://github.com/preservim/vim-markdown
+g.vim_markdown_folding_disabled = 1
+
 -- https://github.com/SirVer/ultisnips
 g.UltiSnipsSnippetDirectories = { 'UltiSnips', 'snips' }
 g.UltiSnipsJumpForwardTrigger = '<c-j>'

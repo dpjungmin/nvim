@@ -45,32 +45,17 @@ map('n', '<space>ot', ':<c-u>ToggleTerm direction=tab<cr>', { desc = 'Open $TERM
 -- Custom terminals
 local Terminal = require('toggleterm.terminal').Terminal
 
-local lazygit = Terminal:new {
-  cmd = 'lazygit',
-  direction = 'float',
-  close_on_exit = true,
-  float_opts = {
-    border = 'single',
-    winblend = 5,
-  },
-}
-
 local python = Terminal:new {
   cmd = 'python3',
   direction = 'horizontal',
   close_on_exit = true,
-  on_open = function(term)
+  on_open = function(_)
     vim.notify('Run python3', vim.log.levels.INFO)
   end,
 }
 
-local toggle_lazygit = function()
-  lazygit:toggle()
-end
-
-local toggle_python = function()
+local function toggle_python()
   python:toggle()
 end
 
-map('n', '<space>rg', toggle_lazygit, { desc = 'Run lazygit in a floating terminal' })
 map('n', '<space>rp', toggle_python, { desc = 'Run python3 in a terminal' })

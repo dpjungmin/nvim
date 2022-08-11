@@ -40,7 +40,7 @@ wk.setup {
     position = 'bottom',
     margin = { 1, 0, 1, 0 }, -- [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- [top, right, bottom, left]
-    winblend = 0
+    winblend = 0,
   },
   layout = {
     height = { min = 4, max = 25 },
@@ -49,7 +49,7 @@ wk.setup {
     align = 'left',
   },
   ignore_missing = false,
-  hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', '<cr>', 'call', 'lua', '^:', '^ '},
+  hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', '<cr>', 'call', 'lua', '^:', '^ ' },
   show_help = true,
   triggers = 'auto',
   triggers_blacklist = {
@@ -71,7 +71,7 @@ wk.register {
     },
   },
   ['<leader>'] = {
-    f = { name = 'telescope'},
-    g = { name = 'git'},
-  }
+    f = { name = 'telescope' },
+    g = { name = 'git' },
+  },
 }

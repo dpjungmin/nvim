@@ -8,4 +8,4 @@ vim.g.mundo_playback_delay = 60
 
 local map = require('lib.utils').map
 
-map('n', '<space>tu', "<cmd>MundoToggle<cr>", { desc = 'Toggle undo tree' })
+map('n', '<space>tu', '<cmd>MundoToggle<cr>', { desc = 'Toggle undo tree' })
