@@ -10,4 +10,9 @@ require('indent_blankline').setup {
 
 local map = require('lib.utils').map
 
-map('n', '<space>ti', require('lib.plugins').indent_blankline.toggle, { desc = 'Toggle indent blankline' })
+map(
+  'n',
+  '<space>ti',
+  require('lib.plugins').indent_blankline.toggle,
+  { desc = 'Toggle indent blankline' }
+)

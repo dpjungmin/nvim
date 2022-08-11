@@ -14,9 +14,10 @@
 --   NONE            no attributes used (used to reset it)
 
 return {
-  comment = 'italic',
+  comment = {},
   constant = {},
-  string = {},
+  string = { 'italic' },
   number = {},
   conditional = {},
+  folded = { 'italic' },
 }

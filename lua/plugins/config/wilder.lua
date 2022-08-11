@@ -2,7 +2,7 @@
 
 local wilder = require 'wilder'
 
-wilder.setup { modes = { ':', '/', '?' }}
+wilder.setup { modes = { ':', '/', '?' } }
 
 wilder.set_option('pipeline', {
   wilder.branch(
@@ -17,15 +17,18 @@ wilder.set_option('pipeline', {
   ),
 })
 
-wilder.set_option('renderer', wilder.popupmenu_renderer {
-  highlighter = {
-    wilder.lua_fzy_highlighter(), -- requires `romgrk/fzy-lua-native`
-  },
-  highlights = {
-    accent = wilder.make_hl('WilderAccent', 'Pmenu', {{ a = 1 }, { a = 1 }, { foreground = '#f4468f' }}),
-  },
-  left = { ' ', wilder.popupmenu_devicons() },
-  right = { ' ', wilder.popupmenu_scrollbar() },
-  pumblend = 15,
-  max_height = '50%',
-})
+wilder.set_option(
+  'renderer',
+  wilder.popupmenu_renderer {
+    highlighter = {
+      wilder.lua_fzy_highlighter(), -- requires `romgrk/fzy-lua-native`
+    },
+    highlights = {
+      accent = 'MatchAccent',
+    },
+    left = { ' ', wilder.popupmenu_devicons() },
+    right = { ' ', wilder.popupmenu_scrollbar() },
+    pumblend = 5,
+    max_height = '50%',
+  }
+)

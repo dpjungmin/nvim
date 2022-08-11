@@ -24,7 +24,7 @@ cmp.setup {
         fallback()
       end
     end,
-    ['<cr>'] = cmp.mapping.confirm({ select = true }),
+    ['<cr>'] = cmp.mapping.confirm { select = true },
     ['<c-e>'] = cmp.mapping.abort(),
     ['<esc>'] = cmp.mapping.close(),
     ['<d-d>'] = cmp.mapping.scroll_docs(-4),
@@ -107,7 +107,7 @@ cmp.setup {
     { name = 'buffer', keyword_length = 4 },
     { name = 'omni' },
     -- https://github.com/Saecki/crates.nvim#nvim-cmp-source
-    { name = 'crates' }
+    { name = 'crates' },
   }),
   windows = {
     completion = cmp.config.window.bordered(),
@@ -115,7 +115,7 @@ cmp.setup {
   },
   experimental = {
     ghost_text = true,
-  }
+  },
 }
 
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu

@@ -9,37 +9,37 @@ require('telescope').setup {
     selection_caret = '- ',
     results_title = '',
     border = true,
-    -- preview = true,
+    multi_icon = '',
     layout_config = {
       bottom_pane = {
         height = 25,
         preview_cutoff = 120,
-        prompt_position = 'top'
+        prompt_position = 'top',
       },
       center = {
         height = 0.4,
         preview_cutoff = 40,
         prompt_position = 'top',
-        width = 0.5
+        width = 0.5,
       },
       cursor = {
         height = 0.9,
         preview_cutoff = 40,
-        width = 0.8
+        width = 0.8,
       },
       horizontal = {
         height = 0.9,
         preview_cutoff = 120,
         prompt_position = 'bottom',
-        width = 0.8
+        width = 0.8,
       },
       vertical = {
         height = 0.9,
         preview_cutoff = 40,
         prompt_position = 'bottom',
-        width = 0.8
+        width = 0.8,
       },
-    }
+    },
   },
   pickers = {
     find_files = {
@@ -105,7 +105,7 @@ require('telescope').setup {
       prompt_prefix = ':',
       prompt_title = '[implementations]',
       preview_title = '',
-    }
+    },
   },
   extensions = {
     -- Your extension configuration goes here:
@@ -113,14 +113,24 @@ require('telescope').setup {
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
-  }
+  },
 }
 
 local map = require('lib.utils').map
 
 map('n', '<space>.', '<cmd>Telescope find_files<cr>', { desc = 'List files in current directory' })
-map('n', '<space>g', "<cmd>Telescope grep_string<cr>", { desc = 'Searches for the string under your cursor in your current working directory' })
-map('n', '<space>G', "<cmd>Telescope live_grep<cr>", { desc = 'Search for a string in your current directory' })
+map(
+  'n',
+  '<space>g',
+  '<cmd>Telescope grep_string<cr>',
+  { desc = 'Searches for the string under your cursor in your current working directory' }
+)
+map(
+  'n',
+  '<space>G',
+  '<cmd>Telescope live_grep<cr>',
+  { desc = 'Search for a string in your current directory' }
+)
 
 map('n', '<space>,', '<cmd>Telescope buffers<cr>', { desc = 'List open buffers' })
 map('n', '<space>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Lists most recently opened files' })
@@ -128,8 +138,28 @@ map('n', '<space>fm', '<cmd>Telescope man_pages<cr>', { desc = 'Lists man page e
 map('n', '<space>fh', '<cmd>Telescope help_tags<cr>', { desc = 'List available help tags' })
 map('n', '<space>fH', '<cmd>Telescope highlights<cr>', { desc = 'List available highlights' })
 
-map('n', '<space>fcr', '<cmd>Telescope lsp_references<cr>', { desc = 'Lists LSP references for the work under the cursor' })
-map('n', '<space>D', '<cmd>Telescope diagnostics<cr>', { desc = 'Lists diagnostics for all open buffers' })
-map('n', '<space>fci', '<cmd>Telescope lsp_implementations<cr>', { desc = 'Lists implementations of the work under the cursor' })
+map(
+  'n',
+  '<space>fcr',
+  '<cmd>Telescope lsp_references<cr>',
+  { desc = 'Lists LSP references for the work under the cursor' }
+)
+map(
+  'n',
+  '<space>D',
+  '<cmd>Telescope diagnostics<cr>',
+  { desc = 'Lists diagnostics for all open buffers' }
+)
+map(
+  'n',
+  '<space>fci',
+  '<cmd>Telescope lsp_implementations<cr>',
+  { desc = 'Lists implementations of the work under the cursor' }
+)
 
-map('n', '<space>fn', require('lib.plugins').telescope.find_nvim_configs, { desc = 'List Neovim config files' })
+map(
+  'n',
+  '<space>fn',
+  require('lib.plugins').telescope.find_nvim_configs,
+  { desc = 'List Neovim config files' }
+)

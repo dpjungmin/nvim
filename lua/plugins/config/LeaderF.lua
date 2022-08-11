@@ -5,7 +5,7 @@ vim.g.Lf_WindowHeight = 0.40
 vim.g.Lf_TabpagePosition = 3 -- Make the newly opened tab page the last one
 vim.g.Lf_FollowLinks = 1 -- Visit directories pointed to by symlinks when indexing
 vim.g.Lf_DisableStl = 0
-vim.g.Lf_StlColorscheme = 'gruvbox_material' -- https://github.com/Yggdroot/LeaderF/tree/master/autoload/leaderf/colorscheme
+vim.g.Lf_StlColorscheme = 'one' -- https://github.com/Yggdroot/LeaderF/tree/master/autoload/leaderf/colorscheme
 vim.g.Lf_StlSeparator = { left = '', right = '' }
 vim.g.Lf_DefaultExternalTool = 'rg'
 vim.g.Lf_RememberLastSearch = 0 -- The search string will remain when LeaderF is re-launched
@@ -29,9 +29,24 @@ map('n', '<leader>.', '<cmd>Leaderf file --bottom<cr>', { desc = 'Search files' 
 map('n', '<leader>>', '<cmd>Leaderf file --popup<cr>', { desc = 'Show popup to search files' })
 map('n', '<leader>,', '<cmd>Leaderf buffer --bottom<cr>', { desc = 'Search buffers' })
 map('n', '<leader><', '<cmd>Leaderf buffer --popup<cr>', { desc = 'Show popup to search buffers' })
-map('n', '<leader>fr', '<cmd>Leaderf mru --bottom<cr>', { desc = 'Search most recently used files' })
-map('n', '<leader>fl', '<cmd>Leaderf line --fullScreen<cr>', { desc = 'Search a line in the current buffer' })
-map('n', '<leader>g', '<cmd>Leaderf rg --fullScreen<cr>', { desc = 'Run ripgrep will full screen' })
+map(
+  'n',
+  '<leader>fr',
+  '<cmd>Leaderf mru --bottom<cr>',
+  { desc = 'Search most recently used files' }
+)
+map(
+  'n',
+  '<leader>fl',
+  '<cmd>Leaderf line --fullScreen<cr>',
+  { desc = 'Search a line in the current buffer' }
+)
+map(
+  'n',
+  '<leader>g',
+  '<cmd>Leaderf rg --fullScreen<cr>',
+  { desc = 'Run ripgrep will full screen' }
+)
 map('n', '<leader>G', '<cmd>Leaderf rg --popup<cr>', { desc = 'Show a popup to run ripgrep' })
 
 -- Customize highlights (https://github.com/Yggdroot/LeaderF/blob/master/autoload/leaderf/colorscheme/popup/default.vim)

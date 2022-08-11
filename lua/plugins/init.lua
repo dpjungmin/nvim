@@ -16,13 +16,22 @@ require('packer').startup {
 
     --[[ Use default configuration ]]
     use {
-      'mhinz/vim-startify', -- Configuration is set in 'global.lua'
-      { 'norcalli/nvim-colorizer.lua', event = 'VimEnter' },
       { 'machakann/vim-swap', event = 'VimEnter' }, -- `g>`, `g<`, and `gs` (swap-mode) to swap arguments
       { 'machakann/vim-sandwich', event = 'VimEnter' }, -- `saiw(` makes foo to (foo), `sdb` makes (foo) to foo, `srb]` makes (foo) to [foo]
       { 'itchyny/vim-highlighturl', event = 'VimEnter' }, -- Highlight URL
       { 'windwp/nvim-ts-autotag', event = 'InsertEnter' }, -- Use treesitter to auto-close and auto-rename html tag
       { 'tpope/vim-commentary', event = 'VimEnter' }, -- `gcc` to comment stuff out
+      {
+        'norcalli/nvim-colorizer.lua',
+        event = 'VimEnter',
+        config = "require('colorizer').setup()",
+      },
+    }
+
+    --[[ Configuration set in 'global.lua' ]]
+    use {
+      'mhinz/vim-startify',
+      { 'preservim/vim-markdown', ft = { 'markdown' } },
     }
 
     --[[ Use custom configuration ]]
@@ -47,14 +56,6 @@ require('packer').startup {
       {
         'itchyny/lightline.vim',
         config = "require('plugins.config.lightline')",
-      },
-      {
-        'iamcco/markdown-preview.nvim',
-        run = function()
-          vim.fn['mkdp#util#install']()
-        end,
-        ft = { 'markdown' },
-        config = "require('plugins.config.markdown-preview')",
       },
       {
         'Yggdroot/LeaderF',
@@ -171,9 +172,12 @@ require('packer').startup {
         config = "require('plugins.config.crates')",
       },
       {
-        'preservim/vim-markdown',
+        'iamcco/markdown-preview.nvim',
+        run = function()
+          vim.fn['mkdp#util#install']()
+        end,
         ft = { 'markdown' },
-        config = "require('plugins.config.vim-markdown')",
+        config = "require('plugins.config.markdown-preview')",
       },
       { 'cespare/vim-toml', ft = { 'toml' } },
       { 'stephpy/vim-yaml', ft = { 'yaml' } },

@@ -31,7 +31,7 @@ require('nvim-treesitter.configs').setup {
     -- the name of the parser)
     -- list of language that will be disabled
     disable = {
-      'rust',
+      -- 'rust',
     },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -60,5 +60,5 @@ require('nvim-treesitter.configs').setup {
       goto_node = '<cr>',
       show_help = '?',
     },
-  }
+  },
 }

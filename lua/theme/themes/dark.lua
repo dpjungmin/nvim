@@ -2,52 +2,81 @@ local palette = require 'theme.themes.palette'
 
 -- stylua: ignore
 local colors = {
-  bg               = palette.base00,
-  fg               = palette.base05,
-  comment          = palette.base03,
-  const            = palette.base09,
-  string           = palette.base11,
-  number           = palette.base09,
-  ident            = palette.base08,
-  func             = palette.base13,
-  keyword          = palette.base14,
-  conditional      = palette.base05,
-  operator         = palette.base05,
-  preproc          = palette.base13,
-  type             = palette.base10,
+  bg0         = '#0a0b0c',
+  bg1         = '#1d1f21', -- default background
+  bg2         = '#282A2E',
+  bg3         = '#393e46',
+
+  fg0         = '#fbfbfb',
+  fg1         = '#ccd6f6', -- default foreground
+  fg2         = '#a8b2d1',
+  fg3         = '#8892b0',
+
+  comment     = '#fe8019',
+  cursor      = '#00ff00',
+  const       = '#fbfbfb',
+  char        = '#c9d05c',
+  string      = '#b8bb26',
+  number      = '#d65d0e',
+  ident       = '#fbfbfb',
+  func        = '#83a598',
+  keyword     = '#d3869b',
+  conditional = '#fbfbfb',
+  operator    = '#fbfbfb',
+  preproc     = '#fb4934',
+  type        = '#fabd2f',
+  buf         = '#e1acff', -- current buffer
+  yank        = '#2ecc71',
+  inlay_hints = '#d5c4a1',
+  match       = '#f4468f',
+
+  pmenu = {
+    sel = {
+      fg     = '#885df1',
+      bg     = '#f5f2fe',
+    },
+  },
 
   diag = {
-    error          = '#d95555',
-    warn           = '#ffc24b',
-    info           = '#acb0d0',
-    hint           = '#acb0d0',
+    error     = '#fb4934',
+    warn      = '#fabd2f',
+    info      = '#78c1ff',
+    hint      = '#acb0d0',
   },
 
   diff = {
-    add            = palette.base11,
-    change         = palette.base14,
-    delete         = palette.base08,
-    text           = palette.base06,
+    add       = '#b8bb26',
+    change    = '#e1acff',
+    delete    = '#fb4934',
+    text      = '#fbfbfb',
+    changed   = '#e1acff',
+    removed   = '#fb4934',
   },
 
   git = {
-    add            = palette.base11,
-    removed        = palette.base08,
-    change         = palette.base14,
+    add       = '#b8bb26',
+    change    = '#e1acff',
+    delete    = '#fb4934',
   },
+
+  telescope = {
+    border    = '#393e46',
+    preview = {
+      border  = '',
+    }
+  }
 }
 
 local s = require 'theme.themes.styles'
 local c = vim.tbl_extend('force', colors, palette)
 
--- stylua: ignore
 return {
   -- [[ Syntax ]]
 
   Comment = { fg = c.comment, style = s.comment },
   Constant = { fg = c.const, style = s.constant },
-  String = { fg = c.string, style = s.string }, -- 'Hello!'
-  Character = { link = 'String' }, -- 'c', '\n'
+  Character = { fg = c.char, style = s.string }, -- 'c', '\n'
+  String = { fg = c.string, style = s.string }, -- "Hello!"
 
   Number = { fg = c.number, style = s.number }, -- 234, 0xa5
   Float = { link = 'Number' }, -- 5.3, 9e10
@@ -56,7 +85,7 @@ return {
   Identifier = { fg = c.ident }, -- variable name
   Function = { fg = c.func }, -- function name and methods for classes
 
-  Statement = { fg = c.keyword },
+  Statement = { fg = c.cursor },
   Conditional = { fg = c.conditional, style = s.conditional }, -- if-else, switch
   Repeat = { link = 'Conditional' }, -- for, while
   Label = { link = 'Conditional' }, -- case, default
@@ -75,19 +104,19 @@ return {
   StorageClass = { link = 'Type' }, -- static, register, volatile
   Structure = { link = 'Type' }, -- struct, union, enum
 
-  Special = { fg = c.func },
+  Special = { fg = c.fg0 },
   SpecialChar = { link = 'Special' },
   Tag = { link = 'Special' },
-  Delimiter = { link = 'Special' },
   SpecialComment = { link = 'Special' },
   Debug = { link = 'Special' },
+  Delimiter = { fg = c.fg2 },
 
   Underlined = { style = 'underline' },
   Bold = { style = 'bold' },
   Italic = { style = 'italic' },
 
   Error = { fg = c.diag.error },
-  Todo = { fg = c.base09, bg = c.base07 },
+  Todo = { fg = c.fg1, bg = c.diag.warn },
 
   -- qfLineNr         = {},
   -- qfFileName       = {},
@@ -110,14 +139,14 @@ return {
 
   -- [[ Editor ]]
 
-  ColorColumn = { bg = c.base01 }, -- color for column set with 'set colorcolumn'
-  Conceal = { fg = c.base03 }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+  ColorColumn = { bg = c.bg2 }, -- color for column set with 'set colorcolumn'
+  Conceal = { fg = c.bg2 }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 
-  Cursor = { fg = c.bg, bg = '#00c918' }, -- cursor in normal mode
+  Cursor = { fg = c.bg1, bg = c.cursor }, -- cursor in normal mode
   Cursor2 = { fg = 'red', bg = 'red' }, -- cursor in insert mode
   lCursor = { link = 'Cursor' },
   CursorIM = { link = 'Cursor' },
-  CursorLine = { bg = c.base01 },
+  CursorLine = { bg = c.bg2 },
   CursorColumn = { link = 'CursorLine' },
 
   DiffAdd = { bg = c.diff.add },
@@ -125,22 +154,21 @@ return {
   DiffDelete = { bg = c.diff.delete },
   DiffText = { bg = c.diff.text }, -- changed text within a changed line
 
-  Directory = { fg = c.base13 }, -- directory names
-  EndOfBuffer = { fg = c.base01 }, -- filler lines (~) after the end of the buffer
+  Directory = { fg = c.diag.info }, -- directory names
+  EndOfBuffer = { fg = c.bg3 }, -- filler lines (~) after the end of the buffer
   ErrorMsg = { fg = c.diag.error }, -- error messages on the command line
-  VertSplit = { fg = c.bg }, -- the column separating vertically split windows
+  VertSplit = { fg = c.bg3 }, -- the column separating vertically split windows
 
   -- TermCursor       = {}, -- cursor in a focused terminal
   -- TermCursorNC     = {}, -- cursor in an unfocused terminal
+  Folded = { fg = c.buf, bg = c.bg2, style = s.folded }, -- line used for closed folds
+  FoldColumn = { fg = c.fg1 },
 
-  Folded = { fg = c.base05, bg = c.base02 }, -- line used for closed folds
-  FoldColumn = { fg = c.base05 },
-
-  SignColumn = { fg = c.bg }, -- column where `signs` are displayed
+  SignColumn = { fg = c.bg1 }, -- column where `signs` are displayed
   SignColumnSB = { link = 'SignColumn' },
 
-  Substitute = { fg = c.base01, bg = c.diag.error }, -- `:substitute` replacement text highlighting
-  LineNr = { fg = c.base05 },
+  Substitute = { fg = c.bg3, bg = c.diag.error }, -- `:substitute` replacement text highlighting
+  LineNr = { fg = c.fg3 },
   CursorLineNr = { fg = c.diag.warn, style = 'bold' }, -- shows when `cursorline` is set
 
   MatchParen = { fg = c.diag.warn, style = { 'reverse', 'bold' } }, -- `:h pi_paren.txt`
@@ -148,18 +176,19 @@ return {
   -- MsgArea          = {},
   -- MsgSeparator     = {},
   MoreMsg = { fg = c.diag.info, style = 'bold' }, -- `h: more-prompt`
-  NonText = { fg = c.base03 },
+  NonText = { fg = c.fg3 },
 
-  Normal = { fg = c.fg, bg = c.bg },
-  NormalNC = { fg = c.fg, bg = c.base01 }, -- normal text in non-current windows
+  Normal = { fg = c.fg, bg = c.bg1 },
+  NormalNC = { fg = c.fg, bg = c.bg1 }, -- normal text in non-current windows
 
-  NormalFloat = { fg = c.fg, bg = '#3c3836' },
-  FloatBorder = { fg = 'LightGreen' },
+  NormalFloat = { fg = c.fg1, bg = c.bg3 },
+  FloatBorder = { fg = c.bg3, bg = c.bg3 },
 
-  Pmenu = { fg = c.fg, bg = c.base01 }, -- popup menu (normal item)
-  PmenuSel = { bg = c.base02 }, -- popup menu (selected item)
-  PmenuSbar = { link = 'Pmenu' }, -- popup menu (scroll bar)
-  PmenuThumb = { bg = c.base02 }, -- popup menu (thumb of the scroll bar)
+  Pmenu = { fg = c.fg1, bg = c.bg3 }, -- popup menu (normal item)
+  PmenuSel = { fg = c.pmenu.sel.fg, bg = c.pmenu.sel.bg, style = 'bold' }, -- popup menu (selected item)
+  PmenuSbar = { bg = c.bg2 }, -- popup menu (scroll bar)
+  -- PmenuSbar = { link = 'Pmenu' }, -- popup menu (scroll bar)
+  PmenuThumb = { bg = c.bg0 }, -- popup menu (thumb of the scroll bar)
 
   Question = { link = 'MoreMsg' }, -- `h: hit-enter` prompt and yes/no questions
   QuickFixLine = { link = 'CursorLine' }, -- current 'quickfix' item in the quickfix window
@@ -175,23 +204,23 @@ return {
   SpellLocal = { sp = c.diag.info, style = 'undercurl' },
   SpellRare = { sp = c.diag.info, style = 'undercurl' },
 
-  StatusLine = { fg = c.base05, bg = c.base01 },
-  StatueLineNC = { fg = c.base06, bg = c.base01 }, -- statue line of not-current windows (Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window)
+  StatusLine = { fg = c.fg1, bg = c.bg2 },
+  StatueLineNC = { fg = c.fg0, bg = c.bg2 }, -- statue line of not-current windows (Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window)
 
-  TabLine = { fg = c.base05, bg = c.base01 },
-  TabLineFill = { bg = c.base01 },
-  TabLineSel = { fg = c.base06, bg = c.base01 },
+  TabLine = { fg = c.fg1, bg = c.bg2 },
+  TabLineFill = { bg = c.bg2 },
+  TabLineSel = { fg = c.fg2, bg = c.bg2 },
 
-  Title = { fg = c.func },
+  Title = { fg = c.fg0 }, -- vim default title
 
-  Visual = { bg = c.base01 },
+  Visual = { bg = c.bg3 },
   VisualNOS = { link = 'Visual' },
 
   WarningMsg = { fg = c.diag.warn },
-  Whitespace = { fg = c.base02 }, -- 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
+  Whitespace = { fg = c.fg2 }, -- 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
   WildMenu = { link = 'Pmenu' }, -- current match in 'wildmenu' completion
-  WinBar = { fg = c.base05, bg = c.base01, style = 'bold' }, -- window bar of current window
-  WinBarNC = { fg = c.base05, bg = c.base02, style = 'bold' }, -- window bar of not-current windows
+  WinBar = { fg = c.fg1, bg = c.bg1, style = 'bold' }, -- window bar of current window
+  WinBarNC = { fg = c.fg1, bg = c.bg2, style = 'bold' }, -- window bar of not-current windows
 
   -- qfLineNr        = {},
   -- qfFileName      = {},
@@ -199,9 +228,9 @@ return {
   -- debugPC         = {}, -- used for highlighting the current line in terminal-debug
   -- debugBreakpoint = {}, -- used for breakpoint colors in terminal-debug
 
-  diffAdded = { fg = c.git.add },
-  diffRemoved = { fg = c.git.removed },
-  diffChanged = { fg = c.git.changed },
+  diffAdded = { fg = c.diff.add },
+  diffRemoved = { fg = c.diff.removed },
+  diffChanged = { fg = c.diff.changed },
   diffOldFile = { fg = c.diag.warn },
   diffNewFile = { fg = c.diag.hint },
   diffFile = { fg = c.diag.info },
@@ -210,20 +239,58 @@ return {
 
   -- [[ Custom highlights ]]
 
-  YankColor = { bg = '#2ecc71' },
+  YankColor = { bg = c.yank },
+  InlayHints = { fg = c.inlay_hints, bg = 'NONE' },
+  MatchAccent = { fg = c.match, bg = 'NONE' },
 
   -- [[ Plugins ]]
+  -- https://github.com/akinsho/bufferline.nvim
+  BufferLineBackground = { fg = c.fg3, bg = c.bg1 },
+  BufferLineBufferVisible = { link = 'BufferLineBackground' },
+  BufferLineSeparator = { fg = c.bg1, bg = c.bg1 },
+  BufferLineIndicatorSelected = { fg = c.bg1, bg = c.bg1 },
+  BufferLineFill = { fg = 'NONE', bg = c.bg1 },
+  BufferLineBufferSelected = { fg = c.buf, bg = c.bg1, style = 'bold' },
+  BufferLineTab = { fg = c.fg3, bg = c.bg1 },
+  BufferLineTabSelected = { fg = c.buf, bg = c.bg1, style = 'bold' },
+  BufferLineDuplicate = { fg = c.diag.info, bg = 'NONE', style = 'italic' },
+  BufferLineDuplicateVisible = { fg = c.diag.info, bg = 'NONE' },
+  BufferLineDuplicateSelected = { fg = c.diag.info, bg = 'NONE', style = 'italic' },
+  BufferLineHint = { fg = c.diag.hint, bg = 'NONE' },
+  BufferLineHintVisible = { fg = c.diag.hint, bg = 'NONE' },
+  BufferLineHintSelected = { fg = c.diag.hint, bg = 'NONE', style = 'bold' },
+  BufferLineHintDiagnostic = { fg = c.diag.hint, bg = 'NONE' },
+  BufferLineHintDiagnosticVisible = { fg = c.diag.hint, bg = 'NONE' },
+  BufferLineHintDiagnosticSelected = { fg = c.diag.hint, bg = 'NONE', style = 'bold' },
+  BufferLineInfo = { fg = c.diag.info, bg = 'NONE' },
+  BufferLineInfoVisible = { fg = c.diag.info, bg = 'NONE' },
+  BufferLineInfoSelected = { fg = c.diag.info, bg = 'NONE', style = 'bold' },
+  BufferLineInfoDiagnostic = { fg = c.diag.info, bg = 'NONE' },
+  BufferLineInfoDiagnosticVisible = { fg = c.diag.info, bg = 'NONE' },
+  BufferLineInfoDiagnosticSelected = { fg = c.diag.info, bg = 'NONE', style = 'bold' },
+  BufferLineWarning = { fg = c.diag.warn, bg = 'NONE' },
+  BufferLineWarningVisible = { fg = c.diag.warn, bg = 'NONE' },
+  BufferLineWarningSelected = { fg = c.diag.warn, bg = 'NONE', style = 'bold' },
+  BufferLineWarningDiagnostic = { fg = c.diag.warn, bg = 'NONE' },
+  BufferLineWarningDiagnosticVisible = { fg = c.diag.warn, bg = 'NONE' },
+  BufferLineWarningDiagnosticSelected = { fg = c.diag.warn, bg = 'NONE', style = 'bold' },
+  BufferLineError = { fg = c.diag.error, bg = 'NONE' },
+  BufferLineErrorVisible = { fg = c.diag.error, bg = 'NONE' },
+  BufferLineErrorSelected = { fg = c.diag.error, bg = 'NONE', style = 'bold' },
+  BufferLineErrorDiagnostic = { fg = c.diag.error, bg = 'NONE' },
+  BufferLineErrorDiagnosticVisible = { fg = c.diag.error, bg = 'NONE' },
+  BufferLineErrorDiagnosticSelected = { fg = c.diag.error, bg = 'NONE', style = 'bold' },
 
   -- https://github.com/lewis6991/gitsigns.nvim
-  GitSignsAdd = { fg = c.base11, bg = 'NONE' },
-  GitSignsChange = { fg = c.base14, bg = 'NONE' },
-  GitSignsDelete = { fg = c.base08, bg = 'NONE' },
+  GitSignsAdd = { fg = c.git.add, bg = 'NONE' },
+  GitSignsChange = { fg = c.git.change, bg = 'NONE' },
+  GitSignsDelete = { fg = c.git.delete, bg = 'NONE' },
 
   -- https://github.com/lukas-reineke/indent-blankline.nvim
-  IndentBlanklineChar = { fg = c.base01 },
-  IndentBlanklineContextChar = { fg = c.base01 },
-  IndentBlanklineSpaceChar = { fg = c.base01 },
-  IndentBlanklineSpaceCharBlankline = { fg = c.base01 },
+  IndentBlanklineChar = { fg = c.bg3 },
+  IndentBlanklineContextChar = { fg = c.bg3 },
+  IndentBlanklineSpaceChar = { fg = c.bg3 },
+  IndentBlanklineSpaceCharBlankline = { fg = c.bg3 },
 
   -- https://github.com/kyazdani42/nvim-tree.lua
   -- NvimTreeNormal           = { fg = spec.fg1, bg = config.transparent and "NONE" or spec.bg0 },
@@ -248,8 +315,10 @@ return {
   -- NvimTreeGitStaged        = { link = "NvimTreeGitStaged" },
 
   -- https://github.com/nvim-telescope/telescope.nvim
-  -- TelescopeBorder         = { fg = spec.bg4 },
-  -- TelescopeSelectionCaret = { fg = spec.diag.hint },
-  -- TelescopeSelection      = { link = "CursorLine" },
-  -- TelescopeMatching       = { link = "Search" },
+  TelescopeBorder = { fg = c.telescope.border },
+  TelescopeSelectionCaret = { fg = c.diag.hint },
+  TelescopeSelection = { fg = c.cursor, bg = c.bg1, style = 'bold' },
+  TelescopeMultiSelection = { fg = c.fg1, bg = c.bg1 },
+  TelescopeMatching = { link = 'MatchAccent' },
+  TelescopePromptPrefix = { fg = c.buf, style = 'bold' },
 }
