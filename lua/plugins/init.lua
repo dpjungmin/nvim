@@ -31,13 +31,7 @@ require('packer').startup {
     --[[ Configuration set in 'global.lua' ]]
     use {
       'mhinz/vim-startify',
-      {
-        'iamcco/markdown-preview.nvim',
-        run = function()
-          vim.fn['mkdp#util#install']()
-        end,
-        ft = { 'markdown' },
-      },
+      { 'preservim/vim-markdown', ft = { 'markdown' } },
     }
 
     --[[ Use custom configuration ]]
@@ -178,9 +172,12 @@ require('packer').startup {
         config = "require('plugins.config.crates')",
       },
       {
-        'preservim/vim-markdown',
+        'iamcco/markdown-preview.nvim',
+        run = function()
+          vim.fn['mkdp#util#install']()
+        end,
         ft = { 'markdown' },
-        config = "require('plugins.config.vim-markdown')",
+        config = "require('plugins.config.markdown-preview')",
       },
       { 'cespare/vim-toml', ft = { 'toml' } },
       { 'stephpy/vim-yaml', ft = { 'yaml' } },
