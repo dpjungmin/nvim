@@ -150,11 +150,12 @@ require('packer').startup {
     -- Language support
     use {
       -- Auto-completion
-      { 'hrsh7th/cmp-nvim-lua' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
-      { 'hrsh7th/cmp-omni' },
+      -- { 'hrsh7th/cmp-nvim-lua' },
+      { 'ii14/emmylua-nvim', ft = 'lua' }, -- For better completion
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-omni',
       {
         'hrsh7th/nvim-cmp',
         requires = { 'onsails/lspkind-nvim' },
