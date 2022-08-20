@@ -28,6 +28,7 @@ map('n', '<leader>cd', '<cmd>lcd %:p:h<cr><cmd>pwd<cr>', { desc = 'Change curren
 map('n', '<leader><leader>x', '<cmd>update<cr><cmd>source %<cr>', { desc = 'Source current file' })
 
 map('n', '<space>d', '<cmd>bd<cr>', { desc = 'Delete current buffer' })
+map('n', '<space>D', '<cmd>close<cr>', { desc = 'Close current window' })
 map('n', '<space>ao', function() return string.format('m`%so<esc>``', vim.v.count1) end, { expr = true, desc = 'Add a blank line below the current line' })
 map('n', '<space>aO', function() return string.format('m`%sO<esc>``', vim.v.count1) end, { expr = true, desc = 'Add a blank line above the current line' })
 map('n', '<space>ov', '<cmd>vs %<cr><c-w>h', { desc = 'Open current file in a vertical split' })

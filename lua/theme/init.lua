@@ -253,6 +253,10 @@ theme.plugins = {
 
   -- https://github.com/simrat39/symbols-outline.nvim
   FocusedSymbol = { link = 'Title' },
+
+  -- https://github.com/j-hui/fidget.nvim
+  FidgetTitle = { fg = c.green2, bg = c.none, style = 'bold' },
+  FidgetTask = { fg = c.green0, bg = c.none },
 }
 
 for _, group in pairs(theme) do

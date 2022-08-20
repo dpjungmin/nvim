@@ -197,6 +197,10 @@ require('packer').startup {
         after = 'nvim-cmp',
         config = "require('plugins.config.lsp')",
       },
+      {
+        'j-hui/fidget.nvim',
+        config = "require('plugins.config.fidget')",
+      },
     }
 
     -- Load theme

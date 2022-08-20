@@ -159,7 +159,7 @@ map(
 )
 map(
   'n',
-  '<space>D',
+  '<space>fd',
   '<cmd>Telescope diagnostics<cr>',
   { desc = 'Lists diagnostics for all open buffers' }
 )
