@@ -8,7 +8,7 @@ Email: dpjungmin@gmail.com
 ]]
 
 _G.config = {
-  line_number = true,
+  line_number = false,
   shell = 'fish',
   theme = 'dark',
 }

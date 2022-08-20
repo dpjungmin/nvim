@@ -22,7 +22,7 @@ vim.cmd [[
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'gitbranch' ],
-        \             [ 'readonly', 'filename', 'modified' ],
+        \             [ 'readonly', 'filename', 'modified', 'method' ],
         \           ],
         \   'right': [ [ 'lineinfo' ],
         \              [ 'percent' ],
@@ -33,6 +33,7 @@ vim.cmd [[
         \ 'component_function': {
         \   'gitbranch': 'FugitiveHead',
         \   'filename': 'LightlineFilename',
+        \   'method': 'NearestMethodOrFunction',
         \   'lsp_client': 'GetActiveLspClients',
         \ },
         \ }

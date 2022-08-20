@@ -150,6 +150,7 @@ theme.editor = {
 }
 
 theme.custom = {
+  EditorBackground = { fg = c.none, bg = c.editor.background },
   YankColor = { bg = c.yank },
   InlayHints = { fg = c.editor.line_number.foreground, bg = c.none },
   MatchAccent = { fg = c.red5, bg = c.none, style = 'bold' },
@@ -249,6 +250,9 @@ theme.plugins = {
   NvimTreeRootFolder = { fg = c.editor.foreground, bg = c.none },
   NvimTreeGitDeleted = { fg = c.editor.git.deleted_resource_foreground, bg = c.none },
   NvimTreeSpecialFile = { fg = c.editor.foreground, bg = c.none, style = { 'underline', 'bold' } },
+
+  -- https://github.com/simrat39/symbols-outline.nvim
+  FocusedSymbol = { link = 'Title' },
 }
 
 for _, group in pairs(theme) do

@@ -166,6 +166,7 @@ require('packer').startup {
       { 'honza/vim-snippets', after = 'ultisnips' },
       { 'quangnguyen30192/cmp-nvim-ultisnips', after = { 'nvim-cmp', 'ultisnips' } },
       -- Language enhancements
+      { 'simrat39/symbols-outline.nvim', config = "require('plugins.config.symbols-outline')" },
       {
         'saecki/crates.nvim',
         tag = 'v0.2.1',
