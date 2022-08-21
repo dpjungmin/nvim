@@ -46,8 +46,8 @@ g.vim_markdown_folding_disabled = 1
 
 -- https://github.com/SirVer/ultisnips
 g.UltiSnipsSnippetDirectories = { 'UltiSnips', 'snips' }
-g.UltiSnipsJumpForwardTrigger = '<tab>'
-g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
+g.UltiSnipsJumpForwardTrigger = '<c-j>'
+g.UltiSnipsJumpBackwardTrigger = '<c-k>'
 
 -- https://github.com/norcalli/nvim-colorizer.lua requires this to be set
 vim.opt.termguicolors = true

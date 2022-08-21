@@ -20,7 +20,7 @@ require('toggleterm').setup {
   direction = 'float', -- 'vertical' | 'horizontal' | 'tab' | 'float'
   float_opts = {
     border = 'single', -- 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
-    winblend = 0,
+    winblend = 10,
   },
 }
 
