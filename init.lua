@@ -10,12 +10,15 @@ TODO:
   - customize highlight for treesitter
   - create light theme
 
-]]
+--]]
 
 _G.config = {
-  line_number = false,
+  line_number = true,
   shell = 'fish',
-  theme = 'dark',
 }
+
+local theme = os.getenv 'THEME' or 'dark'
+assert(theme == 'light' or theme == 'dark', 'Invalid THEME')
+vim.opt.background = theme
 
 require('lib').run()

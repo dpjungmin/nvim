@@ -200,6 +200,86 @@ if vim.o.background == 'dark' then
 else
   assert(vim.o.background == 'light', 'Invalid theme ' .. vim.o.background)
   -- TODO: create light theme
+  colors = {
+    error_foreground = '#cb2431',
+    warning_foreground = '#f9c513',
+    info_foreground = '#005cc5',
+    hint_foreground = palette.gray5,
+
+    syntax = {
+      comment = '#6a737d',
+      number = palette.coral5,
+      constant = '#005cc5',
+      func = '#6f42c1',
+      character = '#22863a',
+      string = '#032f62',
+      identifier = '#005cc5',
+      keyword = '#d73a49',
+      storage = '#d73a49',
+      tag = '#22863a',
+      debug = '#586069',
+      delimiter = '#586069',
+      operator = '#24292e',
+      type = '#e36209',
+      todo = '#22863a',
+      include = '#d73a49',
+      exception = palette.teal5,
+      preprocessor = '#24292e',
+      macro = '#ffdf5d',
+    },
+
+    editor = {
+      background = '#ffffff',
+      bracket_match_background = palette.green3,
+      bufferline = {
+        active_border = palette.coral3,
+        foreground = palette.gray1,
+        active_foreground = palette.gray5,
+      },
+      colorcolumn = '#f6f8fa',
+      diff = {
+        inserted_line_background = palette.green7,
+        inserted_text_background = palette.green5,
+        removed_line_background = palette.red7,
+        removed_text_background = palette.red5,
+        old_file = palette.coral5,
+        new_file = palette.green5,
+        file = palette.blue5,
+      },
+      find_match = { background = '#ffdf5d', current = palette.yellow2 },
+      fold_background = palette.gray4,
+      foreground = '#24292e',
+      git = {
+        added_resource_foreground = palette.green4,
+        modified_resource_foreground = palette.yellow4,
+        deleted_resource_foreground = palette.red4,
+        untracked_resource_foreground = palette.green4,
+        ignored_resource_foreground = palette.gray5,
+        conflicting_resource_foreground = palette.orange4,
+        submodule_resource_foreground = palette.gray3,
+        blame_text_foreground = palette.gray5,
+      },
+      indent_guide = {
+        background = '#f6f8fa',
+        active_background = '#e1e4e8',
+      },
+      line_highlight_background = '#f6f8fa',
+      line_number = {
+        foreground = palette.gray1,
+        active_foreground = palette.gray4,
+      },
+      popup = {
+        foreground = '#24292e',
+        background = '#e1e4e8',
+        highlight_blue = '#accbff',
+        highlight_gray = '#d1d5da',
+      },
+      selection = palette.blue0,
+      split_border = palette.gray2,
+      title_foreground = palette.blue2,
+      whitespace = '#d1d5da',
+    },
+  }
 end
 
 -- Shared colors

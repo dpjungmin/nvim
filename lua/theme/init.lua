@@ -1,9 +1,5 @@
-local t = _G.config.theme
-assert(t == nil or t == 'dark' or t == 'light')
-
 local o = vim.opt
 
-o.background = t or 'dark' -- Background should be set before importing colors
 o.syntax = 'ON'
 o.termguicolors = true
 

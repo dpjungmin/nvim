@@ -1,4 +1,9 @@
---[[ https://github.com/p00f/clangd_extensions.nvim ]]
+--[[
+
+https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd
+https://github.com/p00f/clangd_extensions.nvim
+
+--]]
 
 require('clangd_extensions').setup {
   server = {
