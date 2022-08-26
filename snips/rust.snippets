@@ -57,18 +57,3 @@ fn main() -> Result<()> {
     Ok(())
 }
 endsnippet
-
-snippet yewfc "yew functional component" b
-#[derive(Properties, PartialEq, Clone)]
-pub struct ${1:name}Props {
-}
-
-#[function_component($1)]
-pub fn ${2:fn_name}(props: &$1Props) -> Html {
-
-
-    html! {
-        <${3:tag}>${4}</$3>
-    }
-}
-endsnippet
