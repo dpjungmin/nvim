@@ -13,7 +13,7 @@ TODO:
 --]]
 
 _G.config = {
-  line_number = true,
+  line_number = false,
   shell = 'fish',
 }
 

@@ -1,9 +1,14 @@
---[[ https://github.com/sbdchd/neoformat ]]
+--[[
+
+https://github.com/sbdchd/neoformat
+https://clang.llvm.org/docs/ClangFormatStyleOptions.html#clang-format-style-options
+
+--]]
 
 local g = vim.g
 local fos = {
   c = false,
-  cpp = false,
+  cpp = true,
   python = false,
   rust = true,
 }
@@ -31,10 +36,10 @@ end
 
 g.neoformat_c_clangformat = {
   exe = 'clang-format',
-  args = { "--style='{IndentWidth: 8}'" },
+  args = { "--style='{BasedOnStyle: Mozilla}'" },
 }
 
 g.neoformat_cpp_clangformat = {
   exe = 'clang-format',
-  args = { "--style='{IndentWidth: 4}'" },
+  args = { "--style='{BasedOnStyle: Mozilla}'" },
 }
