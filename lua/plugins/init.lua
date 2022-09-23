@@ -94,7 +94,10 @@ require('packer').startup {
       },
       {
         'nvim-treesitter/playground',
-        requires = { 'nvim-treesitter/nvim-treesitter' },
+        requires = {
+          'nvim-treesitter/nvim-treesitter',
+          'nvim-treesitter/nvim-treesitter-context',
+        },
         event = 'BufEnter',
         after = 'nvim-treesitter',
         run = ':TSUpdate',

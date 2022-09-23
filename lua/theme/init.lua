@@ -255,6 +255,9 @@ theme.plugins = {
   -- https://github.com/j-hui/fidget.nvim
   FidgetTitle = { fg = c.green2, bg = c.none, style = 'bold' },
   FidgetTask = { fg = c.green0, bg = c.none },
+
+  -- https://github.com/nvim-treesitter/nvim-treesitter-context
+  TreesitterContext = { fg = c.editor.foreground, bg = c.editor.selection },
 }
 
 for _, group in pairs(theme) do
