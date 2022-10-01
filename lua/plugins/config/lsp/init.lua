@@ -125,7 +125,7 @@ local on_attach = function(client, bufnr)
     )
   end, { desc = 'List workspace folders' })
 
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     map(
       'n',
       '<space>cf',
@@ -134,11 +134,11 @@ local on_attach = function(client, bufnr)
     )
   end
 
-  if client.resolved_capabilities.document_range_formatting then
+  if client.server_capabilities.document_range_formatting then
     map('x', '<space>cf', vim.lsp.buf.range_formatting, { desc = 'Formats a given range' })
   end
 
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.cmd [[
       hi! link LspReferenceRead Visual
       hi! link LspReferenceText Visual
