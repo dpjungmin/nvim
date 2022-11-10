@@ -155,7 +155,7 @@ end
 
 -- Add additional capabilities supported by `nvim_cmp`
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 assert(
   capabilities.textDocument.completion.completionItem.snippetSupport,
   '[lspconfig] snippet support disabled'

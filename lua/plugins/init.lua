@@ -93,15 +93,18 @@ require('packer').startup {
         config = "require('plugins.config.indent-blankline')",
       },
       {
+        'nvim-treesitter/nvim-treesitter',
+        event = 'BufEnter',
+        run = ':TSUpdate',
+        config = "require('plugins.config.nvim-treesitter')",
+      },
+      {
         'nvim-treesitter/playground',
         requires = {
           'nvim-treesitter/nvim-treesitter',
           'nvim-treesitter/nvim-treesitter-context',
         },
-        event = 'BufEnter',
         after = 'nvim-treesitter',
-        run = ':TSUpdate',
-        config = "require('plugins.config.nvim-treesitter')",
       },
       {
         'akinsho/bufferline.nvim',
@@ -187,6 +190,7 @@ require('packer').startup {
       },
       { 'cespare/vim-toml', ft = { 'toml' } },
       { 'stephpy/vim-yaml', ft = { 'yaml' } },
+      { 'jaawerth/fennel.vim', ft = { 'fnl' } },
       -- LSP
       {
         'neovim/nvim-lspconfig',

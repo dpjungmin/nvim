@@ -94,5 +94,5 @@ o.shiftround = true
 o.hidden = true
 o.signcolumn = 'yes'
 o.cursorline = true
-o.laststatus = 0
-o.cmdheight = 0
+-- o.laststatus = 0
+-- o.cmdheight = 0
