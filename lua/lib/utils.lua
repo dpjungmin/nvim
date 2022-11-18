@@ -41,6 +41,32 @@ function M.toggle_cursorhl()
   end
 end
 
+function M.toggle_number()
+  local opt = vim.opt
+
+  if opt.number:get() then
+    opt.number = false
+    opt.relativenumber = false
+    M.notify('Disabled number', vim.log.levels.INFO)
+  else
+    opt.number = true
+    opt.relativenumber = true
+    M.notify('Enabled number', vim.log.levels.INFO)
+  end
+end
+
+function M.toggle_status()
+  local opt = vim.opt
+
+  if opt.laststatus:get() == 2 then
+    opt.laststatus = 0
+    M.notify('Disabled status-bar', vim.log.levels.INFO)
+  else
+    opt.laststatus = 2
+    M.notify('Enabled status-bar', vim.log.levels.INFO)
+  end
+end
+
 function M.resume_last_cursor_position()
   vim.cmd [[
     let ok = v:true

@@ -1,42 +1,24 @@
 -- stylua: ignore
 local palette = {
-  base00= "#2d302f", -- # ----
-  base01= "#434846", -- # ---
-  base02= "#5a605d", -- # --
-  base03= "#9da8a3", -- # -
-  base04= "#cad8d2", -- # +
-  base05= "#e0f0eF", -- # ++ 素
-  base06= "#ecf6f2", -- # +++
-  base07= "#fcfefd", -- # ++++
-  base08= "#F9906F", -- # red 酡颜
-  base09= "#B38A61", -- # orange 姜黄
-  base0A= "#F0C239", -- # yellow 缃色
-  base0B= "#8AB361", -- # green 蟹壳青
-  base0C= "#30DFF3", -- # aqua/cyan 湖蓝
-  base0D= "#B0A4E3", -- # blue 雪青
-  base0E= "#CCA4E3", -- # purple 丁香紫
-  base0F= "#CA6924", -- # brown 琥珀
+  base00= "#2d302f", -- # Default Background
+  base01= "#434846", -- # Lighter Background (Used for status bars, line number and folding marks)
+  base02= "#5a605d", -- # Selection Background
+  base03= "#9da8a3", -- # Comments, Invisibles, Line Highlighting
+  base04= "#cad8d2", -- # Dark Foreground (Used for status bars)
+  base05= "#e0f0ef", -- # Default Foreground, Caret, Delimiters, Operators
+  base06= "#ecf6f2", -- # Light Foreground (Not often used)
+  base07= "#fcfefd", -- # Light Background (Not often used)
+  base08= "#f9906f", -- # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+  base09= "#b38a61", -- # Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  base0A= "#f0c239", -- # Classes, Markup Bold, Search Text Background
+  base0B= "#8ab361", -- # Strings, Inherited Class, Markup Code, Diff Inserted
+  base0C= "#30dff3", -- # Support, Regular Expressions, Escape Characters, Markup Quotes
+  base0D= "#b0a4e3", -- # Functions, Methods, Attribute IDs, Headings
+  base0E= "#cca4e3", -- # Keywords, Storage, Selector, Markup Italic, Diff Changed
+  base0F= "#ca6924", -- # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
   black = "#2d302f",
   white = "#e0f0eF",
-
-  -- base00 - Default Background
-  -- base01 - Lighter Background (Used for status bars, line number and folding marks)
-  -- base02 - Selection Background
-  -- base03 - Comments, Invisibles, Line Highlighting
-  -- base04 - Dark Foreground (Used for status bars)
-  -- base05 - Default Foreground, Caret, Delimiters, Operators
-  -- base06 - Light Foreground (Not often used)
-  -- base07 - Light Background (Not often used)
-  -- base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-  -- base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url
-  -- base0A - Classes, Markup Bold, Search Text Background
-  -- base0B - Strings, Inherited Class, Markup Code, Diff Inserted
-  -- base0C - Support, Regular Expressions, Escape Characters, Markup Quotes
-  -- base0D - Functions, Methods, Attribute IDs, Headings
-  -- base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed
-  -- base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
-
 
   gray0   = '#cdd9e5',
   gray1   = '#adbac7',
@@ -151,36 +133,36 @@ local palette = {
 
 local colors = {
   syntax = {
-    comment = palette.gray3,
-    number = palette.coral5,
-    constant = palette.blue2,
-    func = palette.purple2,
-    character = palette.green1,
-    string = palette.blue1,
-    identifier = palette.blue2,
-    keyword = palette.red3,
-    storage = palette.red3,
-    tag = palette.gray1,
-    debug = palette.gray3,
-    delimiter = palette.gray1,
-    operator = palette.gray1,
-    type = palette.orange2,
-    todo = palette.green2,
-    include = palette.red3,
-    exception = palette.teal5,
-    preprocessor = palette.gray1,
-    macro = palette.yellow1,
+    comment = palette.base03,
+    number = palette.base09,
+    constant = palette.base09,
+    func = palette.base0D,
+    character = palette.base0B,
+    string = palette.base0B,
+    identifier = palette.base04,
+    keyword = palette.base0E,
+    storage = palette.base0E,
+    tag = palette.base04,
+    debug = palette.base04,
+    delimiter = palette.base06,
+    operator = palette.base05,
+    type = palette.base0A,
+    todo = palette.base0D,
+    include = palette.base0C,
+    exception = palette.base0C,
+    preprocessor = palette.base04,
+    macro = palette.base0A,
   },
 
   editor = {
     background = palette.base00,
-    bracket_match_background = palette.green3,
+    bracket_match_background = palette.base01,
     bufferline = {
       active_border = palette.coral3,
       foreground = palette.gray5,
       active_foreground = palette.gray1,
     },
-    colorcolumn = palette.gray8,
+    colorcolumn = palette.base01,
     cursor = {
       background = '#00ff00',
       active_background = '#ff0000',
@@ -194,9 +176,9 @@ local colors = {
       new_file = palette.green5,
       file = palette.blue5,
     },
-    find_match = { background = palette.yellow5, current = palette.yellow2 },
-    fold_background = palette.gray4,
-    foreground = palette.gray1,
+    find_match = { background = palette.base0A, current = palette.base0A },
+    fold_background = palette.base01,
+    foreground = palette.base05,
     git = {
       added_resource_foreground = palette.green4,
       modified_resource_foreground = palette.yellow4,
@@ -208,10 +190,10 @@ local colors = {
       blame_text_foreground = palette.gray5,
     },
     indent_guide = {
-      background = palette.gray7,
-      active_background = palette.gray5,
+      background = palette.base01,
+      active_background = palette.base01,
     },
-    line_highlight_background = palette.gray8,
+    line_highlight_background = palette.gray7,
     line_number = {
       foreground = palette.gray4,
       active_foreground = palette.gray1,
@@ -222,10 +204,10 @@ local colors = {
       highlight_blue = '#004b72',
       highlight_gray = '#343b41',
     },
-    selection = '#264f78',
+    selection = palette.base01,
     split_border = palette.gray6,
     title_foreground = palette.blue2,
-    whitespace = palette.gray5,
+    whitespace = palette.base01,
   },
 
   error_foreground = palette.red4,

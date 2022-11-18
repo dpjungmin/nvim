@@ -115,5 +115,5 @@ require('nvim-tree').setup {
 
 local map = require('lib.utils').map
 
-map('n', '<space>s', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle nvim-tree' })
+map('n', '<c-b>', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle nvim-tree' })
 map('n', '<leader>r', '<cmd>NvimTreeRefresh<cr>', { desc = 'Refresh nvim-tree' })

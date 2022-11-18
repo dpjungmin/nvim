@@ -96,7 +96,7 @@ require('packer').startup {
       },
       {
         'akinsho/bufferline.nvim',
-        tag = 'v2.*',
+        tag = 'v3.*',
         requires = { 'kyazdani42/nvim-web-devicons' },
         event = 'VimEnter',
         config = "require('plugins.config.bufferline')",

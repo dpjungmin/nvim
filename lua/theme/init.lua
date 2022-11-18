@@ -91,8 +91,8 @@ theme.editor = {
   Title = { fg = c.editor.title_foreground, bg = c.none, style = 'bold' }, -- vim default title
   Visual = { fg = c.none, bg = c.editor.selection },
   VisualNOS = { link = 'Visual' },
-  Search = { fg = c.none, bg = c.editor.find_match.background }, -- `h: hlsearch`
-  IncSearch = { fg = c.none, bg = c.editor.find_match.current }, -- `h: incsearch`
+  Search = { fg = c.editor.background, bg = c.editor.find_match.background }, -- `h: hlsearch`
+  IncSearch = { fg = c.editor.background, bg = c.editor.find_match.current }, -- `h: incsearch`
   CurSearch = { link = 'IncSearch' }, -- search result under cursor Substitute = { link = 'Search' }, -- `:substitute` replacement text highlighting
   EndOfBuffer = { fg = c.editor.background, bg = c.none }, -- filler lines (~) after the end of the buffer
   Whitespace = { fg = c.editor.whitespace }, -- 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
@@ -180,15 +180,14 @@ theme.plugins = {
   -- https://github.com/lukas-reineke/indent-blankline.nvim
   IndentBlanklineChar = { fg = c.editor.indent_guide.background },
   IndentBlanklineContextChar = { fg = c.editor.indent_guide.active_background },
-  IndentBlanklineContextStart = { fg = c.editor.foreground, bg = c.none, style = 'bold' },
 
   -- https://github.com/nvim-telescope/telescope.nvim
   TelescopeBorder = { fg = c.editor.line_number.foreground, bg = c.none },
   TelescopeSelectionCaret = { fg = c.blue, bg = c.none },
-  TelescopeSelection = { fg = c.editor.foreground, bg = c.editor.popup.highlight_blue },
+  TelescopeSelection = { fg = c.editor.foreground, bg = c.editor.selection },
   TelescopeMultiSelection = { link = 'TelescopeSelection' },
   TelescopeMatching = { link = 'MatchAccent' },
-  TelescopePromptPrefix = { fg = c.warning_foreground, bg = c.none, style = 'bold' },
+  TelescopePromptPrefix = { fg = c.base0C, bg = c.none, style = 'bold' },
 
   -- https://github.com/akinsho/bufferline.nvim
   BufferLineFill = { fg = c.none, bg = c.editor.background },
