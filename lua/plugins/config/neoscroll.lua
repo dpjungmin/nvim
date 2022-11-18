@@ -15,12 +15,12 @@ require('neoscroll').setup {
 -- t[keys] = { function, { function arguments }}
 local t = {}
 
-t['<s-u>'] = { 'scroll', { '-vim.wo.scroll', 'true', '20', [['cubic']] } }
-t['<s-d>'] = { 'scroll', { 'vim.wo.scroll', 'true', '20', [['cubic']] } }
-t['<s-b>'] = { 'scroll', { '-vim.api.nvim_win_get_height(0)', 'true', '50', [['cubic']] } }
-t['<s-f>'] = { 'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '50', [['cubic']] } }
-t['<s-y>'] = { 'scroll', { '-0.10', 'false', '100', nil } }
-t['<s-e>'] = { 'scroll', { '0.10', 'false', '100', nil } }
+t['<c-u>'] = { 'scroll', { '-vim.wo.scroll', 'true', '20', [['cubic']] } }
+t['<d-d>'] = { 'scroll', { 'vim.wo.scroll', 'true', '20', [['cubic']] } }
+t['<c-b>'] = { 'scroll', { '-vim.api.nvim_win_get_height(0)', 'true', '50', [['cubic']] } }
+t['<c-f>'] = { 'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '50', [['cubic']] } }
+t['<c-y>'] = { 'scroll', { '-0.10', 'false', '100', nil } }
+t['<c-e>'] = { 'scroll', { '0.10', 'false', '100', nil } }
 t['zt'] = { 'zt', { '10' } }
 t['zz'] = { 'zz', { '10' } }
 t['zb'] = { 'zb', { '10' } }

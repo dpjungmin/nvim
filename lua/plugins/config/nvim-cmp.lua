@@ -1,8 +1,6 @@
 --[[
-
-- https://github.com/hrsh7th/nvim-cmp
-- https://github.com/onsails/lspkind.nvim
-
+https://github.com/hrsh7th/nvim-cmp
+https://github.com/onsails/lspkind.nvim
 ]]
 
 local cmp = require 'cmp'
@@ -98,17 +96,17 @@ cmp.setup {
       cmp.config.compare.order,
     },
   },
-  sources = cmp.config.sources({
+  sources = cmp.config.sources {
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'ultisnips' },
-  }, {
     { name = 'path' },
     { name = 'buffer', keyword_length = 4 },
-    { name = 'omni' },
     -- https://github.com/Saecki/crates.nvim#nvim-cmp-source
     { name = 'crates' },
-  }),
+    -- https://github.com/mtoohey31/cmp-fish
+    { name = 'fish' },
+  },
   windows = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),

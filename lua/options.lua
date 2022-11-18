@@ -52,8 +52,8 @@ o.diffopt:append { 'vertical', 'filler', 'closeoff', 'context:3', 'internal' }
 o.diffopt:append { 'indent-heuristic', 'algorithm:histogram' }
 
 -- Other settings
-o.number = _G.config.line_number or false or false
-o.relativenumber = _G.config.line_number or false or false
+o.number = false
+o.relativenumber = false
 o.guicursor = 'n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor20'
 o.linebreak = true
 o.showbreak = '↪'

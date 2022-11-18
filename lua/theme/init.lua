@@ -2,6 +2,7 @@ local o = vim.opt
 
 o.syntax = 'ON'
 o.termguicolors = true
+o.background = 'dark'
 
 local c = require 'theme.colors'
 local s = require 'theme.styles'

@@ -97,21 +97,4 @@ function M.highlight(name, props)
   vim.api.nvim_set_hl(0, name, val)
 end
 
--- Normalizes a RGBA hex value to a RGB hex value
-function M.normalize(hex)
-  assert(string.sub(hex, 1, 1) == '#')
-  local n = tonumber(string.sub(hex, 2), 16)
-
-  local R = bit.band(bit.rshift(n, 24), 0xff)
-  local G = bit.band(bit.rshift(n, 16), 0xff)
-  local B = bit.band(bit.rshift(n, 8), 0xff)
-  local A = bit.band(n, 0xff)
-
-  R = string.format('%x', ((1 - A) * R) + (A * R))
-  G = string.format('%x', ((1 - A) * G) + (A * G))
-  B = string.format('%x', ((1 - A) * B) + (A * B))
-
-  return '#' .. tostring(R) .. tostring(G) .. tostring(B)
-end
-
 return M

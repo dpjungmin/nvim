@@ -49,6 +49,10 @@ g.UltiSnipsSnippetDirectories = { 'UltiSnips', 'snips' }
 g.UltiSnipsJumpForwardTrigger = '<c-j>'
 g.UltiSnipsJumpBackwardTrigger = '<c-k>'
 
+-- https://github.com/jdhao/better-escape.vim
+g.better_escape_shortcut = 'jj'
+g.better_escape_interval = 200
+
 -- https://github.com/norcalli/nvim-colorizer.lua requires this to be set
 vim.opt.termguicolors = true
 

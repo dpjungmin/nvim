@@ -1,9 +1,7 @@
 --[[ https://github.com/akinsho/toggleterm.nvim ]]
 
-local shell = _G.config.shell or 'bash'
-
 require('toggleterm').setup {
-  shell = shell,
+  shell = os.getenv 'SHELL' or 'sh',
   open_mapping = '<c-\\>',
   size = function(term)
     if term.direction == 'horizontal' then

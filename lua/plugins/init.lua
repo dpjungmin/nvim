@@ -31,6 +31,7 @@ require('packer').startup {
     --[[ Configuration set in 'global.lua' ]]
     use {
       'mhinz/vim-startify',
+      'jdhao/better-escape.vim',
       { 'preservim/vim-markdown', ft = { 'markdown' } },
     }
 
@@ -41,14 +42,6 @@ require('packer').startup {
       { 'simnalamburt/vim-mundo', config = "require('plugins.config.vim-mundo')" },
       { 'sbdchd/neoformat', config = "require('plugins.config.neoformat')" },
       {
-        'jdhao/better-escape.vim',
-        config = function()
-          -- https://github.com/jdhao/better-escape.vim
-          vim.g.better_escape_shortcut = 'jj'
-          vim.g.better_escape_interval = 200
-        end,
-      },
-      {
         'folke/which-key.nvim',
         event = 'VimEnter',
         config = "require('plugins.config.which-key')",
@@ -56,11 +49,6 @@ require('packer').startup {
       {
         'itchyny/lightline.vim',
         config = "require('plugins.config.lightline')",
-      },
-      {
-        'Yggdroot/LeaderF',
-        run = ':LeaderfInstallCExtension',
-        config = "require('plugins.config.LeaderF')",
       },
       {
         'jdhao/whitespace.nvim',
@@ -156,18 +144,17 @@ require('packer').startup {
     -- Language support
     use {
       -- Auto-completion
-      -- { 'hrsh7th/cmp-nvim-lua' },
-      { 'ii14/emmylua-nvim', ft = 'lua' }, -- For better completion
+      'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-omni',
       {
         'hrsh7th/nvim-cmp',
         requires = { 'onsails/lspkind-nvim' },
         after = 'lspkind-nvim',
         config = "require('plugins.config.nvim-cmp')",
       },
+      { 'mtoohey31/cmp-fish', ft = 'fish' },
       -- Snippets
       { 'SirVer/ultisnips' },
       { 'honza/vim-snippets', after = 'ultisnips' },
@@ -194,6 +181,7 @@ require('packer').startup {
       -- LSP
       {
         'neovim/nvim-lspconfig',
+        tag = 'v0.1.3',
         requires = {
           'williamboman/nvim-lsp-installer',
           'hrsh7th/cmp-nvim-lsp',

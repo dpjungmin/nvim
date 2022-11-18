@@ -153,19 +153,22 @@ local on_attach = function(client, bufnr)
   end
 end
 
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+
 -- Add additional capabilities supported by `nvim_cmp`
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-assert(
-  capabilities.textDocument.completion.completionItem.snippetSupport,
-  '[lspconfig] snippet support disabled'
-)
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Enable language servers
 local lspconfig = require 'lspconfig'
 
 for server, opts in pairs(require 'plugins.config.lsp.servers') do
-  local options = { on_attach = on_attach, capabilities = capabilities }
+  local options = { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+
   if opts then
     options = vim.tbl_extend('force', options, opts)
   end
