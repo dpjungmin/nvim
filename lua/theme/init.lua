@@ -178,8 +178,9 @@ theme.plugins = {
   GitSignsDeleteLnVirtLnInline = { link = 'GitSignsDeleteInline' },
 
   -- https://github.com/lukas-reineke/indent-blankline.nvim
-  IndentBlanklineChar = { fg = c.editor.indent_guide.background },
-  IndentBlanklineContextChar = { fg = c.editor.indent_guide.active_background },
+  IndentBlanklineChar = { fg = c.editor.indent_guide.background, bg = c.none },
+  IndentBlanklineContextChar = { fg = c.editor.indent_guide.active_background, bg = c.none },
+  IndentBlanklineContextStart = { fg = c.editor.indent_guide.background, c.none },
 
   -- https://github.com/nvim-telescope/telescope.nvim
   TelescopeBorder = { fg = c.editor.line_number.foreground, bg = c.none },

@@ -32,9 +32,10 @@ map('n', '<space>D', '<cmd>close<cr>', { desc = 'Close current window' })
 map('n', '<space>ao', function() return string.format('m`%so<esc>``', vim.v.count1) end, { expr = true, desc = 'Add a blank line below the current line' })
 map('n', '<space>aO', function() return string.format('m`%sO<esc>``', vim.v.count1) end, { expr = true, desc = 'Add a blank line above the current line' })
 map('n', '<space>ov', '<cmd>vs %<cr><c-w>h', { desc = 'Open current file in a vertical split' })
-map('n', '<space>tc', require('lib.utils').toggle_cursorhl, { desc = 'Toggle cursor highlight' })
+map('n', '<space>tc', require('lib.utils').toggle_colorcolumn, { desc = 'Toggle colorcolumn' })
+map('n', '<space>tC', require('lib.utils').toggle_cursorhl, { desc = 'Toggle cursor highlight' })
 map('n', '<space>tn', require('lib.utils').toggle_number, { desc = 'Toggle number' })
-map('n', '<space>s', require('lib.utils').toggle_status, { desc = 'Toggle number' })
+map('n', '<space>s', require('lib.utils').toggle_status, { desc = 'Toggle status' })
 map('n', '<space><space>', 'a<space><esc>h', { desc = 'Insert a space after the current character' })
 
 -- Better window navigation/resize

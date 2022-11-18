@@ -32,12 +32,24 @@ function M.toggle_cursorhl()
 
   if opt.cursorline:get() then
     opt.cursorline = false
-    opt.cursorcolumn = false
+    -- opt.cursorcolumn = false
     M.notify('Disabled cursor-highlight', vim.log.levels.INFO)
   else
     opt.cursorline = true
-    opt.cursorcolumn = true
+    -- opt.cursorcolumn = true
     M.notify('Enabled cursor-highlight', vim.log.levels.INFO)
+  end
+end
+
+function M.toggle_colorcolumn()
+  local opt = vim.opt
+
+  if next(opt.cc:get()) then
+    opt.cc = ''
+    M.notify('Disabled colorcolumn', vim.log.levels.INFO)
+  else
+    opt.cc = '100'
+    M.notify('Enabled colorcolumn', vim.log.levels.INFO)
   end
 end
 
