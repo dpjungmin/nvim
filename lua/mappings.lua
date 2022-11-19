@@ -35,7 +35,7 @@ map('n', '<space>ov', '<cmd>vs %<cr><c-w>h', { desc = 'Open current file in a ve
 map('n', '<space>tc', require('lib.utils').toggle_colorcolumn, { desc = 'Toggle colorcolumn' })
 map('n', '<space>tC', require('lib.utils').toggle_cursorhl, { desc = 'Toggle cursor highlight' })
 map('n', '<space>tn', require('lib.utils').toggle_number, { desc = 'Toggle number' })
-map('n', '<space>s', require('lib.utils').toggle_status, { desc = 'Toggle status' })
+map('n', '<space>ts', require('lib.utils').toggle_status, { desc = 'Toggle status' })
 map('n', '<space><space>', 'a<space><esc>h', { desc = 'Insert a space after the current character' })
 
 -- Better window navigation/resize

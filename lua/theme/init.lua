@@ -258,7 +258,7 @@ theme.plugins = {
   FidgetTask = { fg = c.green0, bg = c.none },
 
   -- https://github.com/nvim-treesitter/nvim-treesitter-context
-  TreesitterContext = { fg = c.editor.foreground, bg = c.editor.selection },
+  TreesitterContext = { fg = c.editor.foreground, bg = c.base01, style = s.context },
 }
 
 for _, group in pairs(theme) do

@@ -68,6 +68,7 @@ wk.register {
     t = {
       name = 'toggle',
       g = { name = 'git' },
+      b = { name = 'bufferline' },
     },
   },
   ['<leader>'] = {

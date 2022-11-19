@@ -2,9 +2,12 @@
 
 require('bufferline').setup {
   options = {
+    -- indicator = {
+    --   style = 'icon',
+    --   icon = '▎',
+    -- },
     indicator = {
-      style = 'icon',
-      icon = '▎',
+      style = 'none',
     },
     buffer_close_icon = '',
     modified_icon = '●',
@@ -37,10 +40,10 @@ require('bufferline').setup {
     show_buffer_icons = false,
     show_buffer_close_icons = false,
     show_close_icon = false,
-    show_tab_indicators = true,
+    show_tab_indicators = false,
     persist_buffer_sort = true,
     enforce_regular_tabs = false,
-    always_show_bufferline = true,
+    always_show_bufferline = false,
     separator_style = 'thin',
     sort_by = 'id',
   },
@@ -59,6 +62,7 @@ map('n', '<space>8', '<cmd>BufferLineGoToBuffer 8<cr>', { desc = 'Go to buffer 8
 map('n', '<space>9', '<cmd>BufferLineGoToBuffer 9<cr>', { desc = 'Go to buffer 9' })
 map('n', '<tab>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Go to the next buffer' })
 map('n', '<s-tab>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Go to the previous buffer' })
+map('n', '<space>bp', '<cmd>BufferLineTogglePin<cr>', { desc = 'Toggle pin for current buffer' })
 map(
   'n',
   '<s-l>',

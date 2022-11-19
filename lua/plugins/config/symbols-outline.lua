@@ -63,4 +63,4 @@ require('symbols-outline').setup {
 
 local map = require('lib.utils').map
 
-map('n', '<space>ts', '<cmd>SymbolsOutline<cr>', { desc = 'Toggle symbols outline' })
+map('n', '<space>tS', '<cmd>SymbolsOutline<cr>', { desc = 'Toggle symbols outline' })

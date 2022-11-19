@@ -2,6 +2,7 @@
 
 require('nvim-tree').setup {
   auto_reload_on_write = true,
+  create_in_closed_folder = false,
   disable_netrw = false,
   hijack_cursor = false,
   hijack_netrw = true,
@@ -13,27 +14,39 @@ require('nvim-tree').setup {
   sort_by = 'name',
   update_cwd = false,
   view = {
-    width = 50,
-    height = 50,
+    width = 100,
+    height = 100,
     hide_root_folder = false,
     side = 'right',
-    preserve_window_proportions = false,
+    preserve_window_proportions = true,
     number = false,
     relativenumber = false,
     signcolumn = 'yes',
-    mappings = {
-      custom_only = false,
-      list = {
-        -- user mappings go here
+    float = {
+      enable = true,
+      open_win_config = {
+        relative = 'editor',
+        border = 'single',
+        width = 100,
+        height = 100,
+        row = 2,
+        col = 2,
       },
     },
   },
   renderer = {
+    add_trailing = false,
+    group_empty = false,
+    highlight_git = false,
+    full_name = false,
+    highlight_opened_files = 'none',
     indent_markers = {
       enable = false,
+      inline_arrows = true,
       icons = {
         corner = '└ ',
         edge = '│ ',
+        item = '│ ',
         none = '  ',
       },
     },
@@ -115,5 +128,5 @@ require('nvim-tree').setup {
 
 local map = require('lib.utils').map
 
-map('n', '<c-b>', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle nvim-tree' })
-map('n', '<leader>r', '<cmd>NvimTreeRefresh<cr>', { desc = 'Refresh nvim-tree' })
+map('n', '<space>s', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle nvim-tree' })
+map('n', '<leader>r', '<cmd>NvimTreeCollapse<cr>', { desc = 'Collapse nvim-tree' })

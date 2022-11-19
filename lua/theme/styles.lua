@@ -21,4 +21,5 @@ return {
   func = {},
   conditional = {},
   macro = {},
+  context = { 'bold' },
 }

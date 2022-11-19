@@ -99,12 +99,13 @@ require('packer').startup {
         tag = 'v3.*',
         requires = { 'kyazdani42/nvim-web-devicons' },
         event = 'VimEnter',
-        config = "require('plugins.config.bufferline')",
+        -- config = "require('plugins.config.bufferline')",
       },
       {
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
         tag = 'nightly',
+        -- after = { 'karb94/neoscroll.nvim' },
         config = "require('plugins.config.nvim-tree')",
       },
       {
