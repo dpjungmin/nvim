@@ -23,6 +23,7 @@ map('n', '<leader>so', ':so ' .. vim.g.sessiondir .. '/', { desc = 'Open session
 map('n', '<leader>w', '<cmd>update<cr>', { desc = 'Write only when the buffer has been modified' })
 map('n', '<leader>q', '<cmd>x<cr>', { desc = 'Write only when changes have been made and quit' })
 map('n', '<leader>Q', '<cmd>xa<cr>', { desc = 'Write all changed buffers and exit' })
+map('n', '<leader><leader>q', '<cmd>qa!<cr>', { desc = 'Force close all buffers and exit' })
 map('n', '<leader>y', '<cmd>%y<cr>', { desc = 'Copy the entire buffer' })
 map('n', '<leader>cd', '<cmd>lcd %:p:h<cr><cmd>pwd<cr>', { desc = 'Change current working directory locally and print cwd' })
 map('n', '<leader><leader>x', '<cmd>update<cr><cmd>source %<cr>', { desc = 'Source current file' })

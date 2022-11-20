@@ -203,7 +203,7 @@ require('packer').startup {
     -- Load theme
     use {
       vim.fn.stdpath 'config' .. '/lua/theme',
-      after = { 'bufferline.nvim' },
+      after = { 'bufferline.nvim', 'which-key.nvim' },
       config = function()
         require 'theme'
       end,
@@ -217,6 +217,11 @@ require('packer').startup {
       'lua',
       'packer_compiled.lua'
     ),
+    display = {
+      open_fn = function()
+        return require('packer.util').float { border = 'single' }
+      end,
+    },
   },
 }
 

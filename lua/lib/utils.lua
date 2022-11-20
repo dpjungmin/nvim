@@ -70,11 +70,11 @@ end
 function M.toggle_status()
   local opt = vim.opt
 
-  if opt.laststatus:get() == 2 then
+  if opt.laststatus:get() == 3 then
     opt.laststatus = 0
     M.notify('Disabled status-bar', vim.log.levels.INFO)
   else
-    opt.laststatus = 2
+    opt.laststatus = 3
     M.notify('Enabled status-bar', vim.log.levels.INFO)
   end
 end

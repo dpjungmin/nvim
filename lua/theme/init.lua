@@ -111,8 +111,8 @@ theme.editor = {
   diffOldFile = { fg = c.editor.diff.old_file },
   diffNewFile = { fg = c.editor.diff.new_file },
   diffFile = { fg = c.editor.diff.file },
-  NormalFloat = { fg = c.editor.foreground, bg = c.none },
-  FloatBorder = { fg = c.editor.line_number.foreground, bg = c.none },
+  NormalFloat = { fg = c.base06, bg = c.none },
+  FloatBorder = { fg = c.base04, bg = c.none },
   Directory = { fg = c.blue2 }, -- directory names
   ModeMsg = { fg = c.editor.foreground, bg = c.editor.background }, -- 'showmode' message
   MoreMsg = { link = 'ModeMsg' }, -- `h: more-prompt`
@@ -141,7 +141,7 @@ theme.editor = {
   -- diffLine         = {}, -- NOTE: not sure what this really is
   -- diffIndexLine    = {}, -- NOTE: not sure what this really is
   -- StatusLine = {},
-  -- StatueLineNC = {}, -- statue line of not-current windows (Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window)
+  -- StatusLineNC = {}, -- statue line of not-current windows (Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window)
   -- qfLineNr        = {},
   -- qfFileName      = {},
   -- debugPC         = {}, -- used for highlighting the current line in terminal-debug
@@ -152,7 +152,7 @@ theme.custom = {
   EditorBackground = { fg = c.none, bg = c.editor.background },
   YankColor = { bg = c.yank },
   InlayHints = { fg = c.editor.line_number.foreground, bg = c.none },
-  MatchAccent = { fg = c.red5, bg = c.none, style = 'bold' },
+  MatchAccent = { fg = c.base0C, bg = c.none, style = 'bold' },
 }
 
 theme.plugins = {
@@ -254,15 +254,33 @@ theme.plugins = {
   FocusedSymbol = { link = 'Title' },
 
   -- https://github.com/j-hui/fidget.nvim
-  FidgetTitle = { fg = c.green2, bg = c.none, style = 'bold' },
-  FidgetTask = { fg = c.green0, bg = c.none },
+  FidgetTitle = { fg = c.base0E, bg = c.none, style = 'bold' },
+  FidgetTask = { fg = c.syntax.comment, bg = c.none },
 
   -- https://github.com/nvim-treesitter/nvim-treesitter-context
   TreesitterContext = { fg = c.editor.foreground, bg = c.base01, style = s.context },
+
+  -- https://github.com/folke/which-key.nvim
+  WhichKeyBorder = { fg = c.editor.foreground, bg = c.none },
+
+  -- https://github.com/hrsh7th/nvim-cmp
+  CmpItemMenu = { link = 'Comment' },
+  CmpItemAbbrDeprecated = { fg = '#808080', bg = c.none, style = 'strikethrough' },
+  CmpItemAbbrMatch = { fg = c.base0C, bg = c.none, style = 'bold' },
+  CmpItemAbbrMatchFuzzy = { fg = c.base0C, bg = c.none, style = 'bold' },
+  CmpItemKindVariable = { fg = c.blue2, bg = c.none },
+  CmpItemKindInterface = { link = 'CmpItemKindVariable' },
+  CmpItemKindText = { link = 'CmpItemKindVariable' },
+  CmpItemKindFunction = { fg = c.base0D, bg = c.none },
+  CmpItemKindMethod = { link = 'CmpItemKindFunction' },
+  CmpItemKindKeyword = { fg = c.base05, bg = c.none },
+  CmpItemKindUnit = { link = 'CmpItemKindKeyword' },
 }
+
+local hl = require('lib.utils').highlight
 
 for _, group in pairs(theme) do
   for name, props in pairs(group) do
-    require('lib.utils').highlight(name, props)
+    hl(name, props)
   end
 end
