@@ -36,11 +36,23 @@ M.telescope = {
   end,
   find_nvim_configs = function()
     require('telescope.builtin').find_files(require('telescope.themes').get_ivy {
-      shorten_path = true,
       border = true,
+      borderchars = {
+        preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+        prompt = { 'ㅡ' },
+        results = { 'ㅡ', ' ', 'ㅡ', ' ', ' ', ' ', ' ', ' ' },
+      },
+      layout_config = {
+        prompt_position = 'top',
+        mirror = false,
+        height = 0.4,
+      },
+      layout_strategy = 'bottom_pane',
       cwd = '~/.config/nvim',
       prompt = '',
       prompt_prefix = '[nvim config files]: ',
+      shorten_path = true,
+      sorting_strategy = 'ascending',
     })
   end,
 }
