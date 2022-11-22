@@ -7,8 +7,8 @@ Email: dpjungmin@gmail.com
 
 ]]
 
-require('lib').run {
-  features = { 'nvim-0.7.0', 'python3' },
-  executables = { 'git', 'rg', 'fd', 'lazygit' },
-  modules = { 'globals', 'mappings', 'options', 'plugins' },
-}
+local fennel = require 'fennel'
+local path = vim.fn.stdpath 'config' .. '/fnl'
+
+fennel.path = fennel.path .. ';' .. path .. '/?.fnl'
+fennel.install().dofile(path .. '/main.fnl')

@@ -56,6 +56,9 @@ g.better_escape_interval = 200
 -- https://github.com/norcalli/nvim-colorizer.lua requires this to be set
 vim.opt.termguicolors = true
 
+-- https://github.com/Olical/conjure/wiki/Quick-start:-Fennel-(Aniseed)
+vim.cmd 'let g:conjure#client#fennel#aniseed#aniseed_module_prefix = "aniseed."'
+
 --[[ Global functions ]]
 P = function(x)
   print(vim.inspect(x))
