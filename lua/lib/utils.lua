@@ -27,46 +27,6 @@ function M.notify(msg, log_level, opts)
   end
 end
 
-function M.toggle_cursorhl()
-  local opt = vim.opt
-
-  if opt.cursorline:get() then
-    opt.cursorline = false
-    -- opt.cursorcolumn = false
-    M.notify('Disabled cursor-highlight', vim.log.levels.INFO)
-  else
-    opt.cursorline = true
-    -- opt.cursorcolumn = true
-    M.notify('Enabled cursor-highlight', vim.log.levels.INFO)
-  end
-end
-
-function M.toggle_colorcolumn()
-  local opt = vim.opt
-
-  if next(opt.cc:get()) then
-    opt.cc = ''
-    M.notify('Disabled colorcolumn', vim.log.levels.INFO)
-  else
-    opt.cc = '100'
-    M.notify('Enabled colorcolumn', vim.log.levels.INFO)
-  end
-end
-
-function M.toggle_number()
-  local opt = vim.opt
-
-  if opt.number:get() then
-    opt.number = false
-    opt.relativenumber = false
-    M.notify('Disabled number', vim.log.levels.INFO)
-  else
-    opt.number = true
-    opt.relativenumber = true
-    M.notify('Enabled number', vim.log.levels.INFO)
-  end
-end
-
 function M.toggle_status()
   local opt = vim.opt
 
