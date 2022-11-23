@@ -1,106 +1,87 @@
-(var o vim.opt)
+(import-macros {: set!} :macros)
 
 ; Turn on filetype 'detection', 'plugin', and 'indent' (see `:h filetype-overview`)
 (vim.cmd "filetype plugin indent on")
 
 ; A list of file patterns that should be ignored when expanding wildcards
-(set o.wildignorecase true)
-(set o.wildignore ["*.o" "*.obj" "*.dylib" "*.bin" "*.dll" "*.exe"])
-(o.wildignore:append ["*/.git/*"
-                      "*/.svn/*"
-                      "*/__pycache__/*"
-                      "*/build/**"
-                      "*.jpg"
-                      "*.png"
-                      "*.jpef"
-                      "*.bmp"
-                      "*.gif"
-                      "*.tiff"
-                      "*.svg"
-                      "*.ico"
-                      "*.pyc"
-                      "*.pkl"
-                      "*.DS_Store"
-                      "*.aux"
-                      "*.bbl"
-                      "*.brf"
-                      "*.fls"
-                      "*.fdb_latexmk"
-                      "*.synctex.gz"
-                      "*.xdv"])
+(set! wildignorecase)
+(set! wildignore ["*.o" "*.obj" "*.dylib" "*.bin" "*.dll" "*.exe"])
+(set! wildignore+ ["*/.git/*" "*/.svn/*" "*/__pycache__/*" "*/build/**"])
+(set! wildignore+ ["*.jpg" "*.png" "*.jpef" "*.bmp" "*.gif" "*.tiff" "*.svg" "*.ico"])
+(set! wildignore+ ["*.pyc" "*.pkl" "*.DS_Store" "*.aux" "*.bbl" "*.brf" "*.fls" "*.fdb_latexmk" "*.synctex.gz" "*.xdv"])
 
 ; Set backup directory
-(vim.cmd "
-         let &backupdir=g:backupdir
-         let &backupskip=&wildignore")
-(set o.backup true)
-(set o.backupcopy "yes")
+(vim.cmd "let &backupdir=g:backupdir
+let &backupskip=&wildignore")
+(set! backup)
+(set! backupcopy "yes")
 
 ; General tab settings
-(set o.tabstop 4)
-(set o.softtabstop 4)
-(set o.shiftwidth 4)
-(set o.expandtab true)
+(set! tabstop 4)
+(set! softtabstop 4)
+(set! shiftwidth 4)
+(set! expandtab)
 
 ; Mouse settings
-(set o.mouse "a")
-(set o.mousemodel "popup")
+(set! mouse "a")
+(set! mousemodel "popup")
 
 ; Popup menu settings
-(set o.pumheight 10)
-(set o.pumblend 10)
-(set o.winblend 0)
+(set! pumheight 10)
+(set! pumblend 10)
+(set! winblend 0)
 
 ; Specify how keyword completion works
-(o.complete:append ["kspell"])
-(o.complete:remove ["w" "b" "u" "t"])
+(set! complete+ ["kspell"])
+(set! complete- ["w" "b" "u" "t"])
 
 ; Option settings for diff mode
-(o.diffopt:append ["vertical" "filler" "closeoff" "context:3" "internal"])
-(o.diffopt:append ["indent-heuristic" "algorithm:histogram"])
+(set! diffopt+ ["vertical" "filler" "closeoff" "context:3" "internal"])
+(set! diffopt+ ["indent-heuristic" "algorithm:histogram"])
 
 ; Other settings
-(set o.number false)
-(set o.relativenumber false)
-(set o.guicursor "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor20")
-(set o.linebreak true)
-(set o.showbreak "↪")
-(set o.splitbelow true)
-(set o.splitright true)
-(set o.confirm true)
-(o.clipboard:append ["unnamedplus"])
-(o.matchpairs:append ["<:>" "「:」" "『:』" "【:】" "“:”" "‘:’" "《:》"])
-(set o.list true)
-(set o.listchars {"nbsp" "¬" "extends" "»" "precedes" "«" "trail" "•"})
-(set o.scrolloff 5)
-(set o.swapfile false)
-(set o.autowrite true)
-(set o.virtualedit "block")
-(set o.tildeop true)
-(set o.startofline false)
-(set o.synmaxcol 200)
-(set o.spelllang ["en" "cjk"])
-(set o.undofile true)
-(set o.showmode false)
-(set o.title true)
-(set o.ignorecase true)
-(set o.smartcase true)
-(set o.showcmd true)
-(set o.lazyredraw true)
-(set o.showmatch true)
-(set o.wrap false)
-(set o.autoindent true)
-(set o.smartindent true)
-(set o.foldmethod "manual")
-(set o.foldlevel 0)
-(set o.conceallevel 1)
-(set o.foldenable true)
-(set o.signcolumn "auto:2")
-(set o.colorcolumn "")
-(set o.textwidth 100)
-(set o.shiftround true)
-(set o.hidden true)
-(set o.signcolumn "yes")
-(set o.cursorline false)
-(set o.laststatus 0)
-(set o.cmdheight 0)
+(set! clipboard+ ["unnamedplus"])
+(set! matchpairs+ ["<:>" "「:」" "『:』" "【:】" "“:”" "‘:’" "《:》"])
+
+(set! number false)
+(set! relativenumber false)
+(set! guicursor "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor20")
+(set! linebreak)
+(set! showbreak "↪")
+(set! splitbelow)
+(set! splitright)
+(set! confirm)
+(set! list)
+(set! listchars {"nbsp" "¬" "extends" "»" "precedes" "«" "trail" "•"})
+(set! scrolloff 5)
+(set! swapfile false)
+(set! autowrite)
+(set! virtualedit "block")
+(set! tildeop)
+(set! startofline false)
+(set! synmaxcol 200)
+(set! spelllang ["en" "cjk"])
+(set! undofile)
+(set! showmode false)
+(set! title)
+(set! ignorecase)
+(set! smartcase)
+(set! showcmd)
+(set! lazyredraw)
+(set! showmatch)
+(set! wrap false)
+(set! autoindent)
+(set! smartindent)
+(set! foldmethod "manual")
+(set! foldlevel 0)
+(set! conceallevel 1)
+(set! foldenable)
+(set! signcolumn "auto:2")
+(set! colorcolumn "")
+(set! textwidth 100)
+(set! shiftround)
+(set! hidden)
+(set! signcolumn "yes")
+(set! cursorline false)
+(set! laststatus 0)
+(set! cmdheight 0)

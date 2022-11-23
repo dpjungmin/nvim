@@ -10,6 +10,14 @@
 (fn fn? [x]
   (= :function (type x)))
 
+(lambda set! [key ?value]
+  (let [key (tostring key)]
+    (let [value (if (nil? ?value) true ?value)]
+      (match (key:sub -1)
+        "+" `(doto (. vim.opt ,(key:sub 1 -2)) (: :append ,value))
+        "-" `(doto (. vim.opt ,(key:sub 1 -2)) (: :remove ,value))
+        _ `(tset vim.opt ,key ,value)))))
+
 (lambda map! [[modes] lhs rhs ?opts]
   (assert-compile (sym? modes) "`modes` must be a symbol" modes)
   (assert-compile (or (str? lhs) (tbl? lhs)) "`lhs` must be a string or table" lhs)
@@ -22,4 +30,5 @@
   (let [modes (icollect [ch (string.gmatch (tostring modes) ".")] ch)]
   `(vim.keymap.set ,modes ,lhs ,rhs ,o)))
 
-{: map!}
+{: set!
+ : map!}

@@ -1,4 +1,4 @@
-(import-macros {: map!} :macros)
+(import-macros {: set! : map!} :macros)
 
 ; Leader key
 (set vim.g.mapleader "\\")
@@ -33,34 +33,34 @@
   (fn []
     (let [o vim.opt]
       (if (next (o.cc:get))
-        (set o.cc "")
-        (set o.cc :100))))
+        (set! cc "")
+        (set! cc :100))))
   {:desc "Toggle colorcolumn"})
 
 (map! [n] :<space>tC
   (fn []
     (let [o vim.opt]
       (if (o.cursorline:get)
-        (set o.cursorline false)
-        (set o.cursorline true))))
+        (set! cursorline false)
+        (set! cursorline))))
   {:desc "Toggle cursorline"})
 (map! [n] :<space>tn
   (fn []
     (let [o vim.opt]
       (if (o.number:get)
         (do
-          (set o.number false)
-          (set o.relativenumber false))
+          (set! number false)
+          (set! relativenumber false))
         (do
-          (set o.number true)
-          (set o.relativenumber true)))))
+          (set! number)
+          (set! relativenumber)))))
   {:desc "Toggle number"})
 (map! [n] :<space>ts
   (fn []
     (let [o vim.opt]
       (if (= 3 (o.laststatus:get))
-        (set o.laststatus 0)
-        (set o.laststatus 3))))
+        (set! laststatus 0)
+        (set! laststatus 3))))
   {:desc "Toggle status-line"})
 
 ; Better window navigation/resize
