@@ -178,8 +178,8 @@ require('packer').startup {
       },
       { 'cespare/vim-toml', ft = { 'toml' } },
       { 'stephpy/vim-yaml', ft = { 'yaml' } },
-      'Olical/conjure',
-      'Olical/aniseed',
+      { 'Olical/conjure', ft = { 'fnl' } },
+      { 'Olical/aniseed' },
       -- LSP
       {
         'neovim/nvim-lspconfig',

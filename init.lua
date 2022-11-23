@@ -7,6 +7,11 @@ Email: dpjungmin@gmail.com
 
 ]]
 
+P = function(x)
+  print(vim.inspect(x))
+  return x
+end
+
 local fennel = require 'fennel'
 local path = vim.fn.stdpath 'config' .. '/fnl'
 
