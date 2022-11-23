@@ -10,35 +10,6 @@ function M.map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
-function M.notify(msg, log_level, opts)
-  local level = log_level or 0 and vim.log.levels.ERROR
-  local options = {}
-
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-
-  if vim.in_fast_event() then
-    vim.schedule(function()
-      vim.notify(msg, level, options)
-    end)
-  else
-    vim.notify(msg, level, options)
-  end
-end
-
-function M.toggle_status()
-  local opt = vim.opt
-
-  if opt.laststatus:get() == 3 then
-    opt.laststatus = 0
-    M.notify('Disabled status-bar', vim.log.levels.INFO)
-  else
-    opt.laststatus = 3
-    M.notify('Enabled status-bar', vim.log.levels.INFO)
-  end
-end
-
 function M.resume_last_cursor_position()
   vim.cmd [[
     let ok = v:true

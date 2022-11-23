@@ -2,4 +2,4 @@
 
 (run {"features" [ "nvim-0.7.0" "python3" ]
       "executables" [ "git" "rg" "fd" "lazygit" ]
-      "modules" [ "globals" "mappings" "options" "plugins" ]})
+      "modules" [ "globals" "options" "mappings" "plugins" "xpak" ]})

@@ -253,10 +253,6 @@ theme.plugins = {
   -- https://github.com/simrat39/symbols-outline.nvim
   FocusedSymbol = { link = 'Title' },
 
-  -- https://github.com/j-hui/fidget.nvim
-  FidgetTitle = { fg = c.base0E, bg = c.none, style = 'bold' },
-  FidgetTask = { fg = c.syntax.comment, bg = c.none },
-
   -- https://github.com/nvim-treesitter/nvim-treesitter-context
   TreesitterContext = { fg = c.editor.foreground, bg = c.base01, style = s.context },
 

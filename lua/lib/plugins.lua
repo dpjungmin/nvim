@@ -1,16 +1,15 @@
 -- Functions for plugins
 
-local notify = require('lib.utils').notify
 local M = {}
 
 M.indent_blankline = {
   toggle = function()
     if vim.g._indent_blankline then
       vim.g._indent_blankline = false
-      notify('Disabled indent-blankline', vim.log.levels.INFO)
+      vim.notify('Disabled indent-blankline', vim.log.levels.INFO)
     else
       vim.g._indent_blankline = true
-      notify('Enabled indent-blankline', vim.log.levels.INFO)
+      vim.notify('Enabled indent-blankline', vim.log.levels.INFO)
     end
 
     vim.cmd 'IndentBlanklineToggle'

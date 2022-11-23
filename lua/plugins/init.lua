@@ -227,5 +227,5 @@ require('packer').startup {
 }
 
 if not pcall(require, 'packer_compiled') then
-  require('lib.utils').notify 'Error requiring "packer_compiled.lua". Run PackerSync to fix!'
+  vim.notify 'Error requiring "packer_compiled.lua". Run PackerSync to fix!'
 end
