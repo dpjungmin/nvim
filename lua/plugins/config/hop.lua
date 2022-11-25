@@ -5,9 +5,3 @@ require('hop').setup {
   case_insensitive = true,
   char2_fallback_key = '<cr>',
 }
-
-local map = require('lib.utils').map
-
-map('n', 'f', function()
-  return require('hop').hint_char2()
-end, { desc = 'Hop to the occurrence of a bigram' })

@@ -53,7 +53,6 @@ require('packer').startup {
       {
         'jdhao/whitespace.nvim',
         event = 'VimEnter',
-        config = "require('plugins.config.whitespace')",
       },
       {
         'tyru/open-browser.vim',

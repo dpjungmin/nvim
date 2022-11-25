@@ -283,9 +283,24 @@ map(
   { desc = 'Lists implementations of the work under the cursor' }
 )
 
-map(
-  'n',
-  '<space>fn',
-  require('lib.plugins').telescope.find_nvim_configs,
-  { desc = 'List Neovim config files' }
-)
+map('n', '<space>fn', function()
+  require('telescope.builtin').find_files(require('telescope.themes').get_ivy {
+    border = true,
+    borderchars = {
+      preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+      prompt = { 'ㅡ' },
+      results = { 'ㅡ', ' ', 'ㅡ', ' ', ' ', ' ', ' ', ' ' },
+    },
+    layout_config = {
+      prompt_position = 'top',
+      mirror = false,
+      height = 0.4,
+    },
+    layout_strategy = 'bottom_pane',
+    cwd = '~/.config/nvim',
+    prompt = '',
+    prompt_prefix = '[nvim config files]: ',
+    shorten_path = true,
+    sorting_strategy = 'ascending',
+  })
+end, { desc = 'List Neovim config files' })

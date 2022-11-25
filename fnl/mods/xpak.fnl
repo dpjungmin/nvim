@@ -227,21 +227,10 @@
                    :title_foreground p.blue2
                    :whitespace p.base01}})
 
-(each [k v (pairs p)]
-  (do
-    (assert (= nil (. c k)))
-    (tset c k v)))
-
-; Theme
-; (local t {:syntax {:Normal {:fg c.editor.foreground :bg c.editor.background}
-;                    :NormalNC {:link :Normal}
-;                    :Cursor {:fg c.none :bg c.editor.cursor_background}
-;                    :Cursor2 {:fg c.none :bg c.editor.active_cursor_background}}
-;           :editor {}
-;           :plugins {
-;                     :FidgetTask {:fg c.syntax.comment :bg c.none}
-;                     :FidgetTitle {:fg c.base0E :bg c.none :style :bold}}
-;           :custom {}})
+; (each [k v (pairs p)]
+;   (do
+;     (assert (= nil (. c k)))
+;     (tset c k v)))
 
 ; Plugins
 ; https://github.com/j-hui/fidget.nvim

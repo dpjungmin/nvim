@@ -60,7 +60,3 @@ require('symbols-outline').setup {
     TypeParameter = { icon = '𝙏', hl = 'TSParameter' },
   },
 }
-
-local map = require('lib.utils').map
-
-map('n', '<space>tS', '<cmd>SymbolsOutline<cr>', { desc = 'Toggle symbols outline' })

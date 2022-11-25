@@ -1,5 +1,9 @@
-(local {: run} (require :libx))
+(local {: is-ready? : load-packer} (require :libx))
 
-(run {"features" [ "nvim-0.7.0" "python3" ]
-      "executables" [ "git" "rg" "fd" "lazygit" ]
-      "modules" [ "globals" "options" "mappings" "plugins" "xpak" ]})
+(fn main [feats execs]
+  (if (not (is-ready? feats execs))
+    (vim.cmd :finish))
+  (load-packer)
+  (require :mods))
+
+(main ["nvim-0.7.0" "python3"] ["git" "rg" "fd" "lazygit"])

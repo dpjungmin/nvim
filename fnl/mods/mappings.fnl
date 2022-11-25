@@ -91,3 +91,30 @@
 ; Move text up/down
 (map! [x] :<c-j> ":move '>+1<cr>gv-gv" {:desc "Move text down"})
 (map! [x] :<c-k> ":move '<-2<cr>gv-gv" {:desc "Move text up"})
+
+; Plugins
+
+; https://github.com/simrat39/symbols-outline.nvim
+(map! [n] :<space>tS "<cmd>SymbolsOutline<cr>" {:desc "Toggle symbols outline"})
+
+; https://github.com/phaazon/hop.nvim
+(map! [n] :f (fn s [] ((. (require :hop) :hint_char2))) {:desc "Hop to the occurrence of a bigram"})
+
+; https://github.com/jdhao/whitespace.nvim
+(map! [n] :<leader><space> :<cmd>StripTrailingWhitespace<cr> {:desc "Strip trailing whitespace"})
+
+; https://github.com/akinsho/bufferline.nvim
+(map! [n] :<space>1 "<cmd>BufferLineGoToBuffer 1<cr>" {:desc "Go to buffer 1"})
+(map! [n] :<space>2 "<cmd>BufferLineGoToBuffer 2<cr>" {:desc "Go to buffer 2"})
+(map! [n] :<space>3 "<cmd>BufferLineGoToBuffer 3<cr>" {:desc "Go to buffer 3"})
+(map! [n] :<space>4 "<cmd>BufferLineGoToBuffer 4<cr>" {:desc "Go to buffer 4"})
+(map! [n] :<space>5 "<cmd>BufferLineGoToBuffer 5<cr>" {:desc "Go to buffer 5"})
+(map! [n] :<space>6 "<cmd>BufferLineGoToBuffer 6<cr>" {:desc "Go to buffer 6"})
+(map! [n] :<space>7 "<cmd>BufferLineGoToBuffer 7<cr>" {:desc "Go to buffer 7"})
+(map! [n] :<space>8 "<cmd>BufferLineGoToBuffer 8<cr>" {:desc "Go to buffer 8"})
+(map! [n] :<space>9 "<cmd>BufferLineGoToBuffer 9<cr>" {:desc "Go to buffer 9"})
+(map! [n] :<tab> "<cmd>BufferLineCycleNext<cr>" {:desc "Go to the next buffer"})
+(map! [n] :<s-tab> "<cmd>BufferLineCyclePrev<cr>" {:desc "Go to the previous buffer"})
+(map! [n] :<space>bp "<cmd>BufferLineTogglePin<cr>" {:desc "Toggle pin for current buffer"})
+(map! [n] :<s-l> :<cmd>BufferLineMoveNext<cr> {:desc "Move the current buffer to the next buffer position"})
+(map! [n] :<s-h> :<cmd>BufferLineMovePrev<cr> {:desc "Move the current buffer to the previous buffer position"})

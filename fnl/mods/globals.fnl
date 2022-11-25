@@ -44,6 +44,9 @@
 ; https://github.com/preservim/vim-markdown
 (set g.vim_markdown_folding_disabled 1)
 
+; https://github.com/jdhao/whitespace.nvim
+(set g.trailing_whitespace_exclude_filetypes ["git"])
+
 ; https://github.com/norcalli/nvim-colorizer.lua
 (set vim.opt.termguicolors true)
 
