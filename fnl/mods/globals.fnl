@@ -50,5 +50,24 @@
 ; https://github.com/norcalli/nvim-colorizer.lua
 (set vim.opt.termguicolors true)
 
+; https://github.com/iamcco/markdown-preview.nvim
+(set g.mkdp_auto_start 0)
+(set g.mkdp_auto_close 1)
+(set g.mkdp_refresh_slow 0)
+(set g.mkdp_command_for_global 0)
+(set g.mkdp_open_to_the_world 1)
+(set g.mkdp_open_ip "") ; See: https://github.com/iamcco/markdown-preview.nvim/pull/9
+(set g.mkdp_browser "")
+(set g.mkdp_echo_preview_url 0)
+(set g.mkdp_browserfunc "")
+(set g.mkdp_theme "light") ; 'dark' | 'light' | '' (Defined based on system preference)
+
+; https://github.com/simnalamburt/vim-mundo
+(set g.mundo_width 50)
+(set g.mundo_preview_height 15)
+(set g.mundo_preview_bottom 1)
+(set g.mundo_right 1)
+(set g.mundo_playback_delay 60)
+
 ; https://github.com/Olical/conjure/wiki/Quick-start:-Fennel-(Aniseed)
 (vim.cmd "let g:conjure#client#fennel#aniseed#aniseed_module_prefix = \"aniseed.\"")

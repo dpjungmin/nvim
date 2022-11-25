@@ -16,6 +16,7 @@ require('packer').startup {
 
     --[[ Use default configuration ]]
     use {
+      'andymass/vim-matchup',
       { 'machakann/vim-swap', event = 'VimEnter' }, -- `g>`, `g<`, and `gs` (swap-mode) to swap arguments
       { 'machakann/vim-sandwich', event = 'VimEnter' }, -- `saiw(` makes foo to (foo), `sdb` makes (foo) to foo, `srb]` makes (foo) to [foo]
       { 'itchyny/vim-highlighturl', event = 'VimEnter' }, -- Highlight URL
@@ -32,14 +33,21 @@ require('packer').startup {
     use {
       'mhinz/vim-startify',
       'jdhao/better-escape.vim',
+      'simnalamburt/vim-mundo',
       { 'preservim/vim-markdown', ft = { 'markdown' } },
+      { 'jdhao/whitespace.nvim', event = 'VimEnter' },
+      {
+        'iamcco/markdown-preview.nvim',
+        run = function()
+          vim.fn['mkdp#util#install']()
+        end,
+        ft = { 'markdown' },
+      },
     }
 
     --[[ Use custom configuration ]]
     use {
       { 'karb94/neoscroll.nvim', config = "require('plugins.config.neoscroll')" },
-      { 'andymass/vim-matchup', config = "require('plugins.config.vim-matchup')" },
-      { 'simnalamburt/vim-mundo', config = "require('plugins.config.vim-mundo')" },
       { 'sbdchd/neoformat', config = "require('plugins.config.neoformat')" },
       {
         'folke/which-key.nvim',
@@ -49,10 +57,6 @@ require('packer').startup {
       {
         'itchyny/lightline.vim',
         config = "require('plugins.config.lightline')",
-      },
-      {
-        'jdhao/whitespace.nvim',
-        event = 'VimEnter',
       },
       {
         'tyru/open-browser.vim',
@@ -132,12 +136,11 @@ require('packer').startup {
 
     -- Git
     use {
+      'tpope/vim-fugitive',
       { 'lewis6991/gitsigns.nvim', config = "require('plugins.config.gitsigns')" },
-      { 'tpope/vim-fugitive', config = "require('plugins.config.vim-fugitive')" },
       {
         'rbong/vim-flog',
         requires = { 'tpope/vim-fugitive' },
-        config = "require('plugins.config.vim-flog')",
       },
     }
 
@@ -166,14 +169,6 @@ require('packer').startup {
         tag = 'v0.2.1',
         requires = { 'nvim-lua/plenary.nvim' },
         config = "require('plugins.config.crates')",
-      },
-      {
-        'iamcco/markdown-preview.nvim',
-        run = function()
-          vim.fn['mkdp#util#install']()
-        end,
-        ft = { 'markdown' },
-        config = "require('plugins.config.markdown-preview')",
       },
       { 'cespare/vim-toml', ft = { 'toml' } },
       { 'stephpy/vim-yaml', ft = { 'yaml' } },

@@ -125,8 +125,3 @@ require('nvim-tree').setup {
     },
   },
 }
-
-local map = require('lib.utils').map
-
-map('n', '<space>s', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle nvim-tree' })
-map('n', '<leader>r', '<cmd>NvimTreeCollapse<cr>', { desc = 'Collapse nvim-tree' })

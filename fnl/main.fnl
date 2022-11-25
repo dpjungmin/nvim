@@ -1,4 +1,4 @@
-(local {: is-ready? : load-packer} (require :libx))
+(local {: is-ready? : load-packer} (require :lib))
 
 (fn main [feats execs]
   (if (not (is-ready? feats execs))

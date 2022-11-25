@@ -14,9 +14,9 @@
               ["FocusGained,CursorHold" "*" "if getcmdwintype() == '' | checktime | endif"]]
   :toggle-nu-on-imode [["BufEnter,FocusGained,InsertLeave,WinEnter" "*" "if &nu | set rnu | endif"]
                        ["BufLeave,FocusLost,InsertEnter,WinLeave" "*" "if &nu | set nornu | endif"]]
-  :resume-cursor-position [["BufReadPost" "*" "lua require('libx')['resume-last-cursor-pos']()"]]
+  :resume-cursor-position [["BufReadPost" "*" "lua require('lib')['resume-last-cursor-pos']()"]]
   :toggle-indent-blankline [["InsertEnter" "*" "IndentBlanklineDisable"]
-                            ["InsertLeave" "*" "lua require('libx')['indent-blankline-activate']()"]]
+                            ["InsertLeave" "*" "lua require('lib')['indent-blankline-activate']()"]]
   :format-on-save [["BufWritePre"
                     "*"
                     "try | undojoin | Neoformat | catch /^Vim\\%((\\a\\+)\\)\\=:E790/ | finally | silent Neoformat | endtry"]]

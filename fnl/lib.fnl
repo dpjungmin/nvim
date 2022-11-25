@@ -38,12 +38,6 @@
       endif
     endif"))
 
-(fn indent-blankline-toggle []
-  (if vim.g._indent_blankline
-    (set vim.g._indent_blankline false)
-    (set vim.g._indent_blankline true))
-  (vim.cmd :IndentBlanklineToggle))
-
 (fn indent-blankline-activate []
   (when (not vim.g._indent_blankline)
     (lua "return"))
@@ -55,5 +49,4 @@
 {: is-ready?
  : load-packer
  : resume-last-cursor-pos
- : indent-blankline-toggle
  : indent-blankline-activate}

@@ -12,17 +12,3 @@ require('indent_blankline').setup {
   show_current_context_start = false,
   context_char_list = { '▏' },
 }
-
-local map = require('lib.utils').map
-
-map('n', '<space>ti', function()
-  if vim.g._indent_blankline then
-    vim.g._indent_blankline = false
-    vim.notify('Disabled indent-blankline', vim.log.levels.INFO)
-  else
-    vim.g._indent_blankline = true
-    vim.notify('Enabled indent-blankline', vim.log.levels.INFO)
-  end
-
-  vim.cmd 'IndentBlanklineToggle'
-end, { desc = 'Toggle indent blankline' })

@@ -34,7 +34,15 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by `<c-x><c-o>`
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local map = require('lib.utils').map
+  local function map(mode, lhs, rhs, opts)
+    local options = { noremap = true, silent = true }
+
+    if opts then
+      options = vim.tbl_extend('force', options, opts)
+    end
+
+    vim.keymap.set(mode, lhs, rhs, options)
+  end
 
   map(
     'n',
@@ -175,11 +183,6 @@ for server, opts in pairs(require 'plugins.config.lsp.servers') do
 
   lspconfig[server].setup(options)
 end
-
-local map = require('lib.utils').map
-
-map('n', '<leader>l', '<cmd>LspStart<cr>', { desc = 'Start LSP client' })
-map('n', '<leader><leader>l', '<cmd>LspStop<cr>', { desc = 'Stop LSP client' })
 
 -- Load language specific plugins
 require 'plugins.config.lsp.clang'
