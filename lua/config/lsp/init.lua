@@ -27,7 +27,7 @@ require('nvim-lsp-installer').setup {
 }
 
 -- Load LSP global configurations
-require 'plugins.config.lsp.config'
+require 'config.lsp.config'
 
 -- Custom `on_attach` function
 local on_attach = function(client, bufnr)
@@ -174,7 +174,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Enable language servers
 local lspconfig = require 'lspconfig'
 
-for server, opts in pairs(require 'plugins.config.lsp.servers') do
+for server, opts in pairs(require 'config.lsp.servers') do
   local options = { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
 
   if opts then
@@ -185,5 +185,5 @@ for server, opts in pairs(require 'plugins.config.lsp.servers') do
 end
 
 -- Load language specific plugins
-require 'plugins.config.lsp.clang'
-require 'plugins.config.lsp.rust'
+require 'config.lsp.clang'
+require 'config.lsp.rust'
