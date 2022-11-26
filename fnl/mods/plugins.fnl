@@ -62,12 +62,13 @@
         {1 :honza/vim-snippets :after :ultisnips}
         {1 :quangnguyen30192/cmp-nvim-ultisnips :after [:nvim-cmp :ultisnips]}
         ; Language enhancements
+        :Olical/aniseed
+        {1 :j-hui/fidget.nvim :config "require('config.fidget')"}
         {1 :simrat39/symbols-outline.nvim :config "require('config.symbols-outline')"}
         {1 :saecki/crates.nvim :tag :v0.2.1 :requires [:nvim-lua/plenary.nvim] :config "require('config.crates')"}
         {1 :cespare/vim-toml :ft [:toml]}
         {1 :stephpy/vim-yaml :ft [:yaml]}
         {1 :Olical/conjure :ft [:fnl]}
-        :Olical/aniseed
         {1 :neovim/nvim-lspconfig :tag :v0.1.3
           :requires [:williamboman/nvim-lsp-installer
                     :hrsh7th/cmp-nvim-lsp
@@ -76,14 +77,13 @@
                     :nvim-lua/plenary.nvim
                     :mfussenegger/nvim-dap]
           :after :nvim-cmp
-          :config "require('config.lsp')"}
-        {1 :j-hui/fidget.nvim :config "require('config.fidget')"}])
+          :config "require('config.lsp')"}])
 
   ; Load theme
   (use {
-    1 (.. (vim.fn.stdpath :config) :/lua/theme)
+    1 "~/nvim-plugins/tissue.nvim"
     :after [:bufferline.nvim]
-    :config (fn [] (require :theme))}))
+    :config (fn [] (vim.cmd "colorscheme tissue"))}))
 
 ((. (require :packer) :startup) {
   1 (fn [use] (startup use))

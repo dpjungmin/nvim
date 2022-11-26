@@ -26,7 +26,7 @@
 (map! [n] :<space>d :<cmd>bd<cr> {:desc "Delete current buffer"})
 (map! [n] :<space>D :<cmd>close<cr> {:desc "Close current window"})
 (map! [n] :<space>ao (fn [] (string.format "m`%so<esc>``" vim.v.count1)) {:desc "Add a blank line below the current line" :expr true})
-(map! [n] :<space>aO (fn [] (string.format "m`%sU<esc>``" vim.v.count1)) {:desc "Add a blank line above the current line" :expr true})
+(map! [n] :<space>aO (fn [] (string.format "m`%sO<esc>``" vim.v.count1)) {:desc "Add a blank line above the current line" :expr true})
 (map! [n] :<space>ov "<cmd>vs %<cr><c-w>h" {:desc "Open current file in a vertical split"})
 (map! [n] :<space><space> :a<space><esc>h {:desc "Insert a space after the current character"})
 (map! [n] :<space>tc
