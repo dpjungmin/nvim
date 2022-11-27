@@ -3,7 +3,7 @@
 require('fidget').setup {
   text = {
     spinner = 'dots_toggle', -- animation shown when tasks are ongoing
-    done = '✔', -- character shown when all tasks are complete
+    done = '', -- character shown when all tasks are complete
     commenced = 'Loading', -- message shown when task starts
     completed = 'Completed', -- message shown when task completes
   },
