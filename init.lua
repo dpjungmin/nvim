@@ -12,6 +12,8 @@ P = function(x)
   return x
 end
 
+package.path = package.path .. ';' .. os.getenv 'HOME' .. '/nvim-plugins/?.lua'
+
 local fennel = require 'fennel'
 local path = vim.fn.stdpath 'config' .. '/fnl'
 
