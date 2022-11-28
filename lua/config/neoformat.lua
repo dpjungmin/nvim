@@ -36,10 +36,10 @@ end
 
 g.neoformat_c_clangformat = {
   exe = 'clang-format',
-  args = { "--style='{BasedOnStyle: Mozilla}'" },
+  args = { "--style='{BasedOnStyle: LLVM}'" },
 }
 
 g.neoformat_cpp_clangformat = {
   exe = 'clang-format',
-  args = { "--style='{BasedOnStyle: Mozilla}'" },
+  args = { "--style='{BasedOnStyle: LLVM}'" },
 }

@@ -32,27 +32,5 @@
   (let [modes (icollect [ch (string.gmatch (tostring modes) ".")] ch)]
   `(vim.keymap.set ,modes ,lhs ,rhs ,o)))
 
-(lambda hl! [name props]
-  "Highlight"
-  (let [name (tostring name)]
-    (when (not= nil props.link)
-      `(vim.cmd (.. "highlight! link " name " " props.link))
-      (lua "return"))
-    (var v {})
-    (when (not= nil props.fg)
-      (set v.fg props.fg))
-    (when (not= nil props.bg)
-      (set v.bg props.bg))
-    (when (not= nil props.sp)
-      (set v.sp props.sp))
-    (when (and (not= nil props.style) (not (= :NONE props.style)))
-      (when (str? props.style)
-        (tset v props.style true))
-      (when (tbl? props.style)
-        (each [_ style (ipairs props.style)]
-          (tset v style true))))
-    `(vim.api.nvim_set_hl 0 ,name ,v)))
-
 {: set!
- : map!
- : hl!}
+ : map!}

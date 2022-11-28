@@ -162,8 +162,8 @@
 (map! [t] :<c-k> :<c-\\><c-n><c-w>k {:desc "Move up (window)"})
 (map! [t] :<c-l> :<c-\\><c-n><c-w>l {:desc "Move right (window)"})
 (map! [v] :<leader>s :<cmd>ToggleTermSendVisualSelection<cr> {:desc "Send the visually selected text to the terminal"})
-(map! [n] :<c-n> "<cmd><c-u>ToggleTerm direction=vertical<cr>" {:desc "Toggle $TERM vertically"})
-(map! [n] :<space>ot "<cmd><c-u>ToggleTerm direction=tab<cr>" {:desc "Open $TERM in a new tab"})
+(map! [n] :<c-n> ":<c-u>ToggleTerm direction=vertical<cr>" {:desc "Toggle $TERM vertically"})
+(map! [n] :<space>ot ":<c-u>ToggleTerm direction=tab<cr>" {:desc "Open $TERM in a new tab"})
 (map! [n] :<space>rp
   (fn f []
   (: (: (. (require :toggleterm.terminal) :Terminal) :new
