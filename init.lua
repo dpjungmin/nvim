@@ -15,7 +15,9 @@ end
 local fennel = require 'fennel'
 local path = vim.fn.stdpath 'config' .. '/fnl'
 
-fennel.path = fennel.path .. ';' .. path .. '/?.fnl;' .. path .. '/mods/init.fnl'
+fennel.path = fennel.path .. ';' .. path .. '/?.fnl'
+fennel.path = fennel.path .. ';' .. path .. '/mods/init.fnl'
+
 fennel['macro-path'] = fennel['macro-path'] .. ';' .. path .. '/?.fnl'
 
 fennel.install().dofile(path .. '/main.fnl')

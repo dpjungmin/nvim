@@ -135,25 +135,10 @@
 ; https://github.com/neovim/nvim-lspconfig
 (map! [n] :<leader>l :<cmd>LspStart<cr> {:desc "Start LSP client"})
 (map! [n] :<leader><leader>l :<cmd>LspStop<cr> {:desc "Stop LSP client"})
-(map! [n] :K vim.lsp.buf.hover {:desc "Displays hover information about the symbol under the cursor"})
-(map! [n] :<m-k> vim.lsp.buf.signature_help {:desc "Displays signature information about the symbol under the cursor"})
-(map! [n] "[d" vim.diagnostic.goto_prev {:desc "Move to the previous diagnostic in the current buffer"})
-(map! [n] "]d" vim.diagnostic.goto_next {:desc "Move to the next diagnostic in the current buffer"})
 (map! [n] :<space>q (fn [] (vim.diagnostic.setqflist {:open true})) {:desc "Add all diagnostics to the quickfix list"})
 (map! [n] :<space>e vim.diagnostic.open_float {:desc "Show diagnostics in a floating window"})
-(map! [n] :<space>cd vim.lsp.buf.definition {:desc "Jumps to the definition of the symbol under the cursor"})
-(map! [n] :<space>cD vim.lsp.buf.declaration {:desc "Jumps to the declaration of the symbol under the cursor"})
-(map! [n] :<space>ca vim.lsp.buf.code_action {:desc "Selects a code action available at the current cursor position"})
-(map! [n] :<space>ctd vim.lsp.buf.type_definition {:desc "Jumps to the definition of the type of the symbol under the cursor"})
-(map! [n] :<space>crn vim.lsp.buf.rename {:desc "Renames all references of the symbol under the cursor"})
-(map! [n] :<space>clr vim.lsp.buf.references {:desc "Lists all the references to the symbol under the cursor in the quickfix window"})
-(map! [n] :<space>wa vim.lsp.buf.add_workspace_folder {:desc "Add the folder at path to the workspace folders"})
-(map! [n] :<space>wr vim.lsp.buf.remove_workspace_folder {:desc "Remove the folder at path from the workspace folders"})
-(map! [n] :<space>wl
-  (fn []
-    (vim.notify (vim.inspect (vim.lsp.buf.list_workspace_folders))
-    vim.log.levels.INFO {:render :default :title "Workspace folders"}))
-  {:desc "List workspace folders"})
+(map! [n] "[d" vim.diagnostic.goto_prev {:desc "Move to the previous diagnostic in the current buffer"})
+(map! [n] "]d" vim.diagnostic.goto_next {:desc "Move to the next diagnostic in the current buffer"})
 
 ; https://github.com/akinsho/toggleterm.nvim
 (map! [t] :<esc> :<c-\\><c-n> {:desc "Go from Insert mode to Normal mode"})

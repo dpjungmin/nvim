@@ -37,7 +37,7 @@
 (set g.better_escape_interval 200)
 
 ; https://github.com/SirVer/ultisnips
-(set g.UltiSnipsSnippetDirectories [ "UltiSnips" "snis" ])
+(set g.UltiSnipsSnippetDirectories [ "UltiSnips" "snips" ])
 (set g.UltiSnipsJumpForwardTrigger "<c-j>")
 (set g.UltiSnipsJumpBackwardTrigger "<c-k>")
 

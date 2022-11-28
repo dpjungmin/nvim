@@ -73,7 +73,6 @@ cmp.setup {
         ultisnips = '[US]',
         path = '[Path]',
         buffer = '[Buffer]',
-        omni = '[Omni]',
         emoji = '[Emoji]',
       },
     },

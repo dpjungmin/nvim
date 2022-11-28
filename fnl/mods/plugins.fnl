@@ -70,20 +70,26 @@
         {1 :stephpy/vim-yaml :ft [:yaml]}
         {1 :Olical/conjure :ft [:fnl]}
         {1 :neovim/nvim-lspconfig :tag :v0.1.3
-          :requires [:williamboman/nvim-lsp-installer
-                    :hrsh7th/cmp-nvim-lsp
-                    :simrat39/rust-tools.nvim
-                    :p00f/clangd_extensions.nvim
-                    :nvim-lua/plenary.nvim
-                    :mfussenegger/nvim-dap]
+          :requires [:williamboman/mason.nvim
+                     :williamboman/mason-lspconfig.nvim
+                     :hrsh7th/cmp-nvim-lsp
+                     :simrat39/rust-tools.nvim
+                     :p00f/clangd_extensions.nvim
+                     :nvim-lua/plenary.nvim
+                     :mfussenegger/nvim-dap]
           :after :nvim-cmp
-          :config "require('config.lsp')"}])
+          :config (fn [] (require :lsp.init))}]) ; NOTE: Why doesn't `require('lsp')` work?
 
   ; Load theme
   (use {
     1 "~/nvim-plugins/tissue.nvim"
     :after [:bufferline.nvim]
     :config (fn [] (vim.cmd "colorscheme tissue"))}))
+
+  ; (use {
+  ;   1 :dpjungmin/tissue.nvim
+  ;   :after [:bufferline.nvim]
+  ;   :config (fn [] (vim.cmd "colorscheme tissue"))}))
 
 ((. (require :packer) :startup) {
   1 (fn [use] (startup use))
