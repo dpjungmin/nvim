@@ -28,7 +28,7 @@
 
   ; Use custom configuration
   (use [{1 :karb94/neoscroll.nvim :config "require('config.neoscroll')"}
-        {1 :sbdchd/neoformat :config "require('config.neoformat')"}
+        {1 :mhartington/formatter.nvim :config "require('config.formatter')"}
         {1 :folke/which-key.nvim :event :VimEnter :config "require('config.which-key')"}
         {1 :itchyny/lightline.vim :config "require('config.lightline')"}
         {1 :tyru/open-browser.vim :event :VimEnter :config "require('config.open-browser')"}
