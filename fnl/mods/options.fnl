@@ -5,16 +5,25 @@
 
 ; A list of file patterns that should be ignored when expanding wildcards
 (set! wildignorecase)
-(set! wildignore ["*.o" "*.obj" "*.dylib" "*.bin" "*.dll" "*.exe"])
-(set! wildignore+ ["*/.git/*" "*/.svn/*" "*/__pycache__/*" "*/build/**"])
-(set! wildignore+ ["*.jpg" "*.png" "*.jpef" "*.bmp" "*.gif" "*.tiff" "*.svg" "*.ico"])
-(set! wildignore+ ["*.pyc" "*.pkl" "*.DS_Store" "*.aux" "*.bbl" "*.brf" "*.fls" "*.fdb_latexmk" "*.synctex.gz" "*.xdv"])
+(set! wildignore [:*.o :*.obj :*.dylib :*.bin :*.dll :*.exe])
+(set! wildignore+ [:*/.git/* :*/.svn/* :*/__pycache__/* :*/build/**])
+(set! wildignore+ [:*.jpg :*.png :*.jpef :*.bmp :*.gif :*.tiff :*.svg :*.ico])
+(set! wildignore+ [:*.pyc
+                   :*.pkl
+                   :*.DS_Store
+                   :*.aux
+                   :*.bbl
+                   :*.brf
+                   :*.fls
+                   :*.fdb_latexmk
+                   :*.synctex.gz
+                   :*.xdv])
 
 ; Set backup directory
-(vim.cmd "let &backupdir=g:backupdir
-let &backupskip=&wildignore")
+(vim.cmd "let &backupdir=g:backupdir\nlet &backupskip=&wildignore")
+
 (set! backup)
-(set! backupcopy "yes")
+(set! backupcopy :yes)
 
 ; General tab settings
 (set! tabstop 4)
@@ -23,8 +32,8 @@ let &backupskip=&wildignore")
 (set! expandtab)
 
 ; Mouse settings
-(set! mouse "a")
-(set! mousemodel "popup")
+(set! mouse :a)
+(set! mousemodel :popup)
 
 ; Popup menu settings
 (set! pumheight 10)
@@ -32,35 +41,43 @@ let &backupskip=&wildignore")
 (set! winblend 0)
 
 ; Specify how keyword completion works
-(set! complete+ ["kspell"])
-(set! complete- ["w" "b" "u" "t"])
+(set! complete+ [:kspell])
+(set! complete- [:w :b :u :t])
 
 ; Option settings for diff mode
-(set! diffopt+ ["vertical" "filler" "closeoff" "context:3" "internal"])
-(set! diffopt+ ["indent-heuristic" "algorithm:histogram"])
+(set! diffopt+ [:vertical :filler :closeoff "context:3" :internal])
+(set! diffopt+ [:indent-heuristic "algorithm:histogram"])
 
 ; Other settings
-(set! clipboard+ ["unnamedplus"])
-(set! matchpairs+ ["<:>" "「:」" "『:』" "【:】" "“:”" "‘:’" "《:》"])
+(set! clipboard+ [:unnamedplus])
+(set! matchpairs+ ["<:>"
+                   "「:」"
+                   "『:』"
+                   "【:】"
+                   "“:”"
+                   "‘:’"
+                   "《:》"])
 
 (set! number false)
 (set! relativenumber false)
-(set! guicursor "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor20")
+(set! guicursor
+      "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor20")
+
 (set! linebreak)
 (set! showbreak "↪")
 (set! splitbelow)
 (set! splitright)
 (set! confirm)
 (set! list)
-(set! listchars {"nbsp" "¬" "extends" "»" "precedes" "«" "trail" "•"})
+(set! listchars {:nbsp "¬" :extends "»" :precedes "«" :trail "•"})
 (set! scrolloff 5)
 (set! swapfile false)
 (set! autowrite)
-(set! virtualedit "block")
+(set! virtualedit :block)
 (set! tildeop)
 (set! startofline false)
 (set! synmaxcol 200)
-(set! spelllang ["en" "cjk"])
+(set! spelllang [:en :cjk])
 (set! undofile)
 (set! showmode false)
 (set! title)
@@ -72,7 +89,7 @@ let &backupskip=&wildignore")
 (set! wrap false)
 (set! autoindent)
 (set! smartindent)
-(set! foldmethod "manual")
+(set! foldmethod :manual)
 (set! foldlevel 0)
 (set! conceallevel 1)
 (set! foldenable)
@@ -81,7 +98,7 @@ let &backupskip=&wildignore")
 (set! textwidth 100)
 (set! shiftround)
 (set! hidden)
-(set! signcolumn "yes")
+(set! signcolumn :yes)
 (set! cursorline false)
 (set! laststatus 0)
 (set! cmdheight 0)

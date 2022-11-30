@@ -1,22 +1,23 @@
 (fn is-ready? [feats execs]
   (var ok true)
-  (each [_  f (ipairs feats)]
+  (each [_ f (ipairs feats)]
     (if (not= 1 (vim.fn.has f))
-      (vim.notify (.. "Feature " f " is required, but is missing!")
-        (set ok false))))
-  (each [_  e (ipairs execs)]
+        (vim.notify (.. "Feature " f " is required, but is missing!")
+                    (set ok false))))
+  (each [_ e (ipairs execs)]
     (if (not= 1 (vim.fn.executable e))
-      (vim.notify (.. "Executable " e " is required, but is missing!")
-        (set ok false))))
+        (vim.notify (.. "Executable " e " is required, but is missing!")
+                    (set ok false))))
   ok)
 
 (fn load-packer []
   (let [repo "https://github.com/wbthomason/packer.nvim"]
-    (let [path (.. (vim.fn.stdpath "data") "/site/pack/packer/start/packer.nvim")]
+    (let [path (.. (vim.fn.stdpath :data) :/site/pack/packer/start/packer.nvim)]
       (if (= 1 (vim.fn.empty (vim.fn.glob path)))
-        (let [cmd (string.format "20split |term git clone --depth=1 %s %s" repo path)]
-          (vim.cmd (.. cmd " && echo Re-start Neovim and run \"PackerSync\""))
-          (vim.cmd :finish)))))
+          (let [cmd (string.format "20split |term git clone --depth=1 %s %s"
+                                   repo path)]
+            (vim.cmd (.. cmd " && echo Re-start Neovim and run \"PackerSync\""))
+            (vim.cmd :finish)))))
   (vim.cmd "packadd packer.nvim"))
 
 (fn resume-last-cursor-pos []
@@ -40,10 +41,10 @@
 
 (fn indent-blankline-activate []
   (when (not vim.g._indent_blankline)
-    (lua "return"))
+    (lua :return))
   (each [_ ft (ipairs vim.g.indent_blankline_filetype_exclude)]
     (when (= ft vim.bo.filetype)
-      (lua "return")))
+      (lua :return)))
   (vim.cmd :IndentBlanklineEnable))
 
 {: is-ready?

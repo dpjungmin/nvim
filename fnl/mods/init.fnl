@@ -1,2 +1,2 @@
-(each [_ m (ipairs ["auto-cmds" "globals" "mappings" "options" "plugins"])]
-  (require (.. "mods." m)))
+(each [_ m (ipairs [:auto-cmds :globals :mappings :options :plugins])]
+  (require (.. :mods. m)))
