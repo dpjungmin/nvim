@@ -93,6 +93,10 @@
   :cmake {:cmd [:cmake-language-server]
           :filetypes [:cmake]
           :init_options {:buildDirectory :build}}
+  :tsserver {:cmd [:typescript-language-server :--stdio]
+             :filetypes [:javascript :javascriptreact :javascript.jsx :typescript :typescriptreact :typescript.tsx]
+             :init_options [:hostInfo :neovim]
+             :root_dir ((. (require :lspconfig.util) :root_pattern) :package.json :tsconfig.json :jsconfig.json :.git)}
   :clangd (fn [] (require :lsp.clang))
   :rust_analyzer (fn [] (require :lsp.rust))})
 
