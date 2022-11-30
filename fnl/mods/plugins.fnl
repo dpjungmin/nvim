@@ -116,7 +116,7 @@
                     :mfussenegger/nvim-dap]
          :after :nvim-cmp
          :config (fn []
-                   (require :lsp.init))}]) ; NOTE: Why doesn't `require('lsp')` work? ; Load theme
+                   (require :lsp.init))}]) ; NOTE: Why doesn't `require('lsp')` work?
   (use {1 "~/nvim-plugins/tissue.nvim"
         :after [:bufferline.nvim]
         :config (fn []
@@ -127,16 +127,17 @@
 ;   :after [:bufferline.nvim]
 ;   :config (fn [] (vim.cmd "colorscheme tissue"))}))
 
-(local startup (. (require :packer) :startup))
-(local util (require :packer.util))
-
-(startup {1 (fn [use]
-              (startup use))
-          :config {:max_jobs 16
-                   :compile_path (util.join_paths (vim.fn.stdpath :data) :site
-                                                  :lua :packer_compiled.lua)
-                   :display {:open_fn (fn []
-                                        (util.float {:border :single}))}}})
+((. (require :packer) :startup) {1 (fn [use]
+                                     (startup use))
+                                 :config {:max_jobs 16
+                                          :compile_path ((. (require :packer.util)
+                                                            :join_paths) (vim.fn.stdpath :data)
+                                                                                                                                                            :site
+                                                                                                                                                            :lua
+                                                                                                                                                            :packer_compiled.lua)
+                                          :display {:open_fn (fn []
+                                                               ((. (require :packer.util)
+                                                                   :float) {:border :single}))}}})
 
 (when (not (pcall require :packer_compiled))
   (vim.notify "Error requiring \"packer_compiled.lua\". Run PackerSync to fix!"))
