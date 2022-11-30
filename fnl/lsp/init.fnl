@@ -56,7 +56,7 @@
 ; Language servers
 ; https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 (local language-servers {
- :bashls {:cmd [:bash-language-server :start]
+  :bashls {:cmd [:bash-language-server :start]
            :filetypes [:sh]
            :single_file_support true}
   :vimls {:cmd [:vim-language-server :--stdio]
