@@ -44,3 +44,9 @@
     (each [_ cmd (ipairs cmds)]
       (vim.cmd (table.concat (vim.tbl_flatten [:autocmd cmd]) " ")))
     (vim.cmd "augroup END")))
+
+; Auto-command for `hotpot.nvim`
+(let [{: nvim_create_autocmd : nvim_create_augroup} vim.api
+      au-group (nvim_create_augroup :hotpot-ft {})
+      cb #(pcall require (.. :ftplugin. (vim.fn.expand :<amatch>)))]
+  (nvim_create_autocmd :FileType {:callback cb :group au-group}))
