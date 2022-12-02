@@ -25,18 +25,18 @@
          :run (fn []
                 ((. vim.fn "mkdp#util#install")))
          :ft [:markdown]}]) ; Use custom configuration
-  (use [{1 :karb94/neoscroll.nvim :config "require('config.neoscroll')"}
-        {1 :mhartington/formatter.nvim :config "require('config.formatter')"}
+  (use [{1 :karb94/neoscroll.nvim :config "require('configs.neoscroll')"}
+        {1 :mhartington/formatter.nvim :config "require('configs.formatter')"}
         {1 :folke/which-key.nvim
          :event :VimEnter
          :config "require('config.which-key')"}
         {1 :itchyny/lightline.vim :config "require('config.lightline')"}
         {1 :tyru/open-browser.vim
          :event :VimEnter
-         :config "require('config.open-browser')"}
+         :config "require('configs.open-browser')"}
         {1 :windwp/nvim-autopairs
          :event :InsertEnter
-         :config "require('config.nvim-autopairs')"}
+         :config "require('configs.nvim-autopairs')"}
         {1 :akinsho/toggleterm.nvim
          :event :VimEnter
          :config "require('config.toggleterm')"}
@@ -45,21 +45,17 @@
          :config "require('config.wilder')"}
         {1 :lukas-reineke/indent-blankline.nvim
          :event :VimEnter
-         :config "require('config.indent-blankline')"}
+         :config "require('configs.indent-blankline')"}
         {1 :nvim-treesitter/nvim-treesitter
          :event :BufEnter
          :run ":TSUpdate"
-         :config "require('config.nvim-treesitter')"}
+         :config "require('configs.nvim-treesitter')"}
         {1 :nvim-treesitter/nvim-treesitter-context
          :after [:nvim-treesitter]
          :config "require('config.nvim-treesitter-context')"}
         {1 :nvim-treesitter/playground
          :requires [:nvim-treesitter/nvim-treesitter]
          :after :nvim-treesitter}
-        {1 :akinsho/bufferline.nvim
-         :tag :v3.*
-         :requires [:kyazdani42/nvim-web-devicons]
-         :event :VimEnter}
         {1 :kyazdani42/nvim-tree.lua
          :requires [:kyazdani42/nvim-web-devicons]
          :tag :nightly
@@ -68,13 +64,13 @@
          :tag :0.1.0
          :requires [:nvim-lua/plenary.nvim]
          :config "require('config.telescope')"}
-        {1 :kevinhwang91/nvim-bqf :ft :qf :config "require('config.nvim-bqf')"}
+        {1 :kevinhwang91/nvim-bqf :ft :qf :config "require('bqf').setup {}"}
         {1 :phaazon/hop.nvim
          :branch :v1
          :event :VimEnter
          :config (fn []
                    (vim.defer_fn (fn []
-                                   (require :config.hop))
+                                   (require :configs.hop))
                                  2000))}]) ; Git
   (use [:tpope/vim-fugitive
         {1 :lewis6991/gitsigns.nvim :config "require('config.gitsigns')"}
@@ -95,13 +91,13 @@
         {1 :quangnguyen30192/cmp-nvim-ultisnips :after [:nvim-cmp :ultisnips]}
         ; Language enhancements
         :Olical/aniseed
-        {1 :j-hui/fidget.nvim :config "require('config.fidget')"}
+        {1 :j-hui/fidget.nvim :config "require('configs.fidget')"}
         {1 :simrat39/symbols-outline.nvim
          :config "require('config.symbols-outline')"}
         {1 :saecki/crates.nvim
          :tag :v0.2.1
          :requires [:nvim-lua/plenary.nvim]
-         :config "require('config.crates')"}
+         :config "require('crates').setup()"}
         {1 :cespare/vim-toml :ft [:toml]}
         {1 :stephpy/vim-yaml :ft [:yaml]}
         {1 :Olical/conjure :ft [:fnl]}
@@ -118,7 +114,6 @@
          :config (fn []
                    (require :lsp.init))}]) ; NOTE: Why doesn't `require('lsp')` work?
   (use {1 "~/nvim-plugins/tissue.nvim"
-        :after [:bufferline.nvim]
         :config (fn []
                   (vim.cmd "colorscheme tissue"))}))
 
