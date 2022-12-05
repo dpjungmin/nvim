@@ -29,8 +29,8 @@
         {1 :mhartington/formatter.nvim :config "require('configs.formatter')"}
         {1 :folke/which-key.nvim
          :event :VimEnter
-         :config "require('config.which-key')"}
-        {1 :itchyny/lightline.vim :config "require('config.lightline')"}
+         :config "require('configs.which-key')"}
+        {1 :itchyny/lightline.vim :config "require('configs.lightline')"}
         {1 :tyru/open-browser.vim
          :event :VimEnter
          :config "require('configs.open-browser')"}
@@ -39,10 +39,10 @@
          :config "require('configs.nvim-autopairs')"}
         {1 :akinsho/toggleterm.nvim
          :event :VimEnter
-         :config "require('config.toggleterm')"}
+         :config "require('configs.toggleterm')"}
         {1 :gelguy/wilder.nvim
          :requires [:romgrk/fzy-lua-native]
-         :config "require('config.wilder')"}
+         :config "require('configs.wilder')"}
         {1 :lukas-reineke/indent-blankline.nvim
          :event :VimEnter
          :config "require('configs.indent-blankline')"}
@@ -52,18 +52,18 @@
          :config "require('configs.nvim-treesitter')"}
         {1 :nvim-treesitter/nvim-treesitter-context
          :after [:nvim-treesitter]
-         :config "require('config.nvim-treesitter-context')"}
+         :config "require('configs.nvim-treesitter-context')"}
         {1 :nvim-treesitter/playground
          :requires [:nvim-treesitter/nvim-treesitter]
          :after :nvim-treesitter}
         {1 :kyazdani42/nvim-tree.lua
          :requires [:kyazdani42/nvim-web-devicons]
          :tag :nightly
-         :config "require('config.nvim-tree')"}
+         :config "require('configs.nvim-tree')"}
         {1 :nvim-telescope/telescope.nvim
          :tag :0.1.0
          :requires [:nvim-lua/plenary.nvim]
-         :config "require('config.telescope')"}
+         :config "require('configs.telescope')"}
         {1 :kevinhwang91/nvim-bqf :ft :qf :config "require('bqf').setup {}"}
         {1 :phaazon/hop.nvim
          :branch :v1
@@ -73,7 +73,7 @@
                                    (require :configs.hop))
                                  2000))}]) ; Git
   (use [:tpope/vim-fugitive
-        {1 :lewis6991/gitsigns.nvim :config "require('config.gitsigns')"}
+        {1 :lewis6991/gitsigns.nvim :config "require('configs.gitsigns')"}
         {1 :rbong/vim-flog :requires [:tpope/vim-fugitive]}]) ; Language suppor
   (use [; Auto-completion
         :hrsh7th/cmp-nvim-lua
@@ -83,7 +83,7 @@
         {1 :hrsh7th/nvim-cmp
          :requires [:onsails/lspkind-nvim]
          :after :lspkind-nvim
-         :config "require('config.nvim-cmp')"}
+         :config "require('configs.nvim-cmp')"}
         {1 :mtoohey31/cmp-fish :ft :fish}
         ; Snippets
         :SirVer/ultisnips
@@ -93,7 +93,7 @@
         :Olical/aniseed
         {1 :j-hui/fidget.nvim :config "require('configs.fidget')"}
         {1 :simrat39/symbols-outline.nvim
-         :config "require('config.symbols-outline')"}
+         :config "require('configs.symbols-outline')"}
         {1 :saecki/crates.nvim
          :tag :v0.2.1
          :requires [:nvim-lua/plenary.nvim]
