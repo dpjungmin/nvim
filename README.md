@@ -1,5 +1,10 @@
-# Installation for macOS
+This is my [Neovim][neovim] configuration.
 
-Install my [dotfiles][.]. This will auto-install all my configurations including my Neovim setup and its dependencies.
+# Installation
 
+- TODO
+
+# Preview
+
+[neovim]: https://github.com/neovim/neovim
 [.]: https://github.com/dpjungmin/dotfiles
