@@ -127,7 +127,8 @@
 
 ; https://github.com/kyazdani42/nvim-tree.lua
 (map! [n] :<space>s :<cmd>NvimTreeToggle<cr> {:desc "Toggle nvim-tree"})
-(map! [n] :<space>S :<cmd>NvimTreeFindFile<cr> {:desc "Open nvim-tree and focus on the current file"})
+(map! [n] :<space>S :<cmd>NvimTreeFindFileToggle<cr> {:desc "Toggle nvim-tree (focus on the current file)"})
+(map! [n] :<space><leader> (.. "<cmd>NvimTreeFindFileToggle " vim.g.sessiondir "<cr>") {:desc "Toggle nvim-tree (open nvim session directory)"})
 (map! [n] :<leader>r :<cmd>NvimTreeCollapse<cr> {:desc "Collapse nvim-tree"})
 
 ; https://github.com/neovim/nvim-lspconfig
