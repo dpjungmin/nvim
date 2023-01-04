@@ -45,6 +45,13 @@ require('nvim-tree').setup {
     group_empty = false,
     highlight_git = false,
     full_name = false,
+    special_files = {
+      'Cargo.toml',
+      'Makefile',
+      'README.md',
+      'LICENSE',
+    },
+    symlink_destination = true,
   },
   hijack_directories = {
     enable = true,

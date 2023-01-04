@@ -43,22 +43,6 @@
 (hl! :Todo {:fg :Red :bg none :style [:bold]})
 (hl! :Error {:fg "#e5534b" :bg none :style [:undercurl]})
 
-; treesitter
-(hl! :TSTag {:link :Tag})
-; -- TSNote = { fg = p.orange, bg = c.none, style = 'bold' },
-; -- TSType = { fg = p.red, bg = c.none },
-; -- TSError = { link = 'Error' },
-; -- TSFunction = { link = 'Function' },
-; -- TSFuncMacro = { c.cursor, bg = c.none },
-; -- TSFuncBuiltin = { fg = c.cursor, bg = c.none },
-; -- TSFunctionCall = { fg = c.cursor, bg = c.none },
-; -- TSConstBuiltin = { fg = c.orange, bg = c.none },
-; -- TSTypeBuiltin = { fg = c.warn, bg = c.none },
-; -- TSField = { fg = c.light_blue, bg = c.none },
-; -- TSMethodCall = { fg = c.light_blue, bg = c.none },
-; -- TSAttribute = { fg = c.warn, bg = c.none },
-; -- TSNamespace = { fg = c.light_blue, bg = c.none },
-
 ; Editor
 (hl! :Normal {:fg "#ffffff" :bg none})
 (hl! :NormalNC {:link :Number})
@@ -147,20 +131,20 @@
 (hl! :TelescopeMatching {:link :MatchAccent})
 (hl! :TelescopePromptPrefix {:fg "#30dff3" :bg none :style [:bold]})
 
-; -- https://github.com/kyazdani42/nvim-tree.lua
-; NvimTreeGitNew = { fg = c.editor.git.added_resource_foreground, bg = c.none },
-; NvimTreeGitRenamed = { fg = c.editor.git.modified_resource_foreground, bg = c.none },
-; NvimTreeRootFolder = { fg = c.editor.foreground, bg = c.none },
-; NvimTreeGitDeleted = { fg = c.editor.git.deleted_resource_foreground, bg = c.none },
-; NvimTreeSpecialFile = { fg = c.editor.foreground, bg = c.none, style = { 'underline', 'bold' } },
+; https://github.com/kyazdani42/nvim-tree.lua
+(hl! :NvimTreeGitNew {:fg "#46954a" :bg none })
+(hl! :NvimTreeGitRenamed {:fg "#ae7c14" :bg none })
+(hl! :NvimTreeGitDeleted {:fg "#e5534b" :bg none })
+(hl! :NvimTreeRootFolder {:fg "#ffffff" :bg none })
+(hl! :NvimTreeSpecialFile {:fg "#ffffff" :bg none :style [:underline :bold]})
 
-; -- https://github.com/nvim-treesitter/nvim-treesitter-context
+; https://github.com/nvim-treesitter/nvim-treesitter-context
 (hl! :TreesitterContext {:fg "#ffffff" :bg "#434846" :style [:bold]})
 
 ; https://github.com/folke/which-key.nvim
 (hl! :WhichKeyBorder {:fg "#aaaaaa" :bg none})
 
-; -- https://github.com/hrsh7th/nvim-cmp
+; https://github.com/hrsh7th/nvim-cmp
 (hl! :CmpItemMenu {:link :Comment})
 (hl! :CmpItemAbbrDeprecated {:fg "#808080" :bg none :style [:strikethrough]})
 (hl! :CmpItemAbbrMatch {:fg "#30dff3" :bg none :style [:bold]})
