@@ -127,6 +127,7 @@
 
 ; https://github.com/kyazdani42/nvim-tree.lua
 (map! [n] :<space>s :<cmd>NvimTreeToggle<cr> {:desc "Toggle nvim-tree"})
+(map! [n] :<space>S :<cmd>NvimTreeFindFile<cr> {:desc "Open nvim-tree and focus on the current file"})
 (map! [n] :<leader>r :<cmd>NvimTreeCollapse<cr> {:desc "Collapse nvim-tree"})
 
 ; https://github.com/neovim/nvim-lspconfig

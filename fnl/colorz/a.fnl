@@ -68,7 +68,9 @@
 (hl! :CursorIM {:link :Cursor})
 (hl! :TermCursor {:link :Cursor})
 (hl! :TermCursorNC {:fg none :bg :Orange}) ; cursor in an unfocused terminal
-(hl! :LineNr {:fg "#636e7b" :bg none})
+(hl! :LineNr {:fg "#adbac7" :bg none})
+(hl! :LineNrAbove {:fg "#636e7b" :bg none})
+(hl! :LineNrBelow {:fg "#636e7b" :bg none})
 (hl! :CursorLine {:fg none :bg "#373e47"})
 (hl! :CursorLineNr {:fg "#adbac7" :bg none :style [:bold]}) ; shows when `cursorline` is set
 (hl! :CursorColumn {:link :CursorLine})
@@ -80,8 +82,8 @@
 (hl! :Title {:fg "#6cb6ff" :bg none :style [:bold]}) ; vim default title
 (hl! :Visual {:fg none :bg "#434846"}) ; visual selection
 (hl! :VisualNOS {:link :Visual})
-(hl! :Search {:fg none :bg "#f0c239"})
-(hl! :IncSearch {:fg none :bg "#f0c239"})
+(hl! :Search {:fg "#000000" :bg "#f0c239"})
+(hl! :IncSearch {:fg "#000000" :bg "#f0c239" :style [:bold]})
 (hl! :CurSearch {:link :IncSearch})
 (hl! :EndOfBuffer {:fg none :bg none}) ; `~` at the end of buffer
 (hl! :Whitespace {:fg "#434846"}) ; 'nbsp', 'space', 'tab' and 'trail' in 'listchars'

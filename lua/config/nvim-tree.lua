@@ -5,19 +5,21 @@ require('nvim-tree').setup {
   hijack_netrw = true,
   sort_by = 'name',
   view = {
-    width = 100,
+    adaptive_size = true,
+    width = '25%',
     side = 'right',
     preserve_window_proportions = true,
     signcolumn = 'yes',
     float = {
       enable = true,
+      quit_on_focus_loss = true,
       open_win_config = {
         relative = 'editor',
         border = 'single',
-        width = 100,
-        height = 100,
-        row = 2,
-        col = 2,
+        width = 10000,
+        height = 10000,
+        row = 5,
+        col = 10000,
       },
     },
     hide_root_folder = false,
@@ -36,16 +38,28 @@ require('nvim-tree').setup {
       },
       enable = false,
     },
-    icons = { webdev_colors = true },
+    icons = {
+      webdev_colors = true,
+    },
     add_trailing = false,
     group_empty = false,
     highlight_git = false,
     full_name = false,
   },
-  hijack_directories = { enable = true, auto_open = true },
-  update_focused_file = { ignore_list = {}, enable = false, update_cwd = false },
+  hijack_directories = {
+    enable = true,
+    auto_open = true,
+  },
+  update_focused_file = {
+    ignore_list = {},
+    enable = false,
+    update_cwd = false,
+  },
   ignore_ft_on_setup = {},
-  system_open = { cmd = '', args = {} },
+  system_open = {
+    cmd = '',
+    args = {},
+  },
   diagnostics = {
     icons = {
       hint = '',
@@ -56,11 +70,23 @@ require('nvim-tree').setup {
     enable = false,
     show_on_dirs = false,
   },
-  filters = { custom = {}, exclude = {}, dotfiles = false },
-  git = { enable = true, ignore = true, timeout = 400 },
+  filters = {
+    custom = {},
+    exclude = {},
+    dotfiles = false,
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 400,
+  },
   actions = {
     use_system_clipboard = true,
-    change_dir = { enable = true, global = false, restrict_above_cwd = false },
+    change_dir = {
+      enable = true,
+      global = false,
+      restrict_above_cwd = false,
+    },
     open_file = {
       window_picker = {
         enable = true,
@@ -74,7 +100,10 @@ require('nvim-tree').setup {
       resize_window = false,
     },
   },
-  trash = { cmd = 'trash', require_confirm = true },
+  trash = {
+    cmd = 'trash',
+    require_confirm = true,
+  },
   log = {
     types = {
       all = false,
