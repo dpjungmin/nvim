@@ -2,7 +2,7 @@
 
 _G.get_active_lsp_client_names = function()
   local client = vim.lsp.get_active_clients()
-  local name = 'NO-LSP'
+  local name = 'no-lsp'
   for i, c in ipairs(client) do
     if i > 0 then
       name = ''
@@ -16,15 +16,14 @@ end
 
 vim.cmd [[
   let g:lightline = {
-    \ 'colorscheme': 'one',
+    \ 'colorscheme': 'powerline',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch' ],
     \             [ 'readonly', 'filename', 'modified', 'method' ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
-    \              [ 'filetype' ],
-    \              [ 'lsp_client' ] ],
+    \              [ 'lsp_client', 'filetype' ] ],
     \ },
     \ 'component_function': {
     \   'gitbranch': 'FugitiveHead',
