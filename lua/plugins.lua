@@ -41,7 +41,7 @@
       { 'folke/which-key.nvim', event = 'VimEnter', config = [[require'config.which-key']] },
       { 'windwp/nvim-autopairs', event = 'InsertEnter', config = [[require'config.nvim-autopairs']] },
       { 'akinsho/toggleterm.nvim', event = 'VimEnter', config = [[require'config.toggleterm']] },
-      { 'gelguy/wilder.nvim', event = 'VimEnter', requires = { 'romgrk/fzy-lua-native' }, config = [[require'config.wilder']] },
+      { 'gelguy/wilder.nvim', event = 'VimEnter', requires = { 'romgrk/fzy-lua-native' }, run = ':UpateRemotePlugins', config = [[require'config.wilder']] },
       { 'lukas-reineke/indent-blankline.nvim', event = 'VimEnter', config = [[require'config.indent-blankline']] },
       { 'nvim-treesitter/nvim-treesitter', event = 'BufEnter', run = ':TSUpdate', config = [[require'config.nvim-treesitter']] },
       { 'nvim-treesitter/nvim-treesitter-context', after = { 'nvim-treesitter' }, config = [[require'config.nvim-treesitter-context']] },

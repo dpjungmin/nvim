@@ -1,8 +1,13 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 
+local parser_install_dir = vim.fn.stdpath 'cache' .. '/treesitter'
+vim.fn.mkdir(parser_install_dir, 'p')
+vim.opt.runtimepath:append(parser_install_dir)
+
 require('nvim-treesitter.configs').setup {
+  parser_install_dir = parser_install_dir,
   ensure_installed = 'all',
-  ignore_install = {},
+  ignore_install = { 'erlang' },
   highlight = {
     enable = true,
     disable = {},

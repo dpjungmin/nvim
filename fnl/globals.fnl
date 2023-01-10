@@ -47,7 +47,7 @@
       endif")))
 
 ; Create session directory
-(os.execute (.. "mkdir -p " g.sessiondir))
+(vim.fn.mkdir g.sessiondir :p)
 
 ; Global plugin configurations
 
