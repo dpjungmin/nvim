@@ -13,7 +13,8 @@
 (map! [n] :<c-a> :gg<s-v>G {:desc "Select all text"})
 (map! [n] :<m-h> "^" {:desc "Go to the start of the line"})
 (map! [n] :<m-l> :g_ {:desc "Go to the end of the line"})
-
+(map! [n] :<space>r :qq {:desc "Start recording commands in register `q`" :silent false})
+(map! [n] "," "@q" {:desc "Replay register `q`" :silent false})
 (map! [n] :<leader>ss (.. ":mks! " vim.g.sessiondir "/") {:desc "Make session" :silent false})
 (map! [n] :<leader>so (.. ":so " vim.g.sessiondir "/") {:desc "Open session" :silent false})
 (map! [n] :<leader>w :<cmd>update<cr> {:desc "Write only when the buffer has been modified"})
@@ -148,7 +149,7 @@
 (map! [v] :<leader>s :<cmd>ToggleTermSendVisualSelection<cr> {:desc "Send the visually selected text to the terminal"})
 (map! [n] :<c-n> ":<c-u>ToggleTerm direction=vertical<cr>" {:desc "Toggle $TERM vertically"})
 (map! [n] :<space>ot ":<c-u>ToggleTerm direction=tab<cr>" {:desc "Open $TERM in a new tab"})
-(map! [n] :<space>rp
+(map! [n] :<space>Rp
   (fn f []
     (: (: (. (require :toggleterm.terminal) :Terminal) :new
           {:cmd :python3
