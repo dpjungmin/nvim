@@ -1,5 +1,5 @@
 local o = vim.opt
 
-o.nowrap = true
+o.wrap = false
 o.sidescroll = 5
 o.sidescrolloff = 2
