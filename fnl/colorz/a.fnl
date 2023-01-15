@@ -2,6 +2,17 @@
 
 (local none :None)
 
+; foreground = "#b7bcba"
+; background = "#161719"
+; cursor_bg = "#b7bcba"
+; cursor_border = "#b7bcba"
+; cursor_fg = "#1e1f22"
+; selection_bg = "#1e1f22"
+; selection_fg = "#b7bcba"
+
+; ansi = ["#2a2e33","#b84d51","#b3bf5a","#e4b55e","#6e90b0","#a17eac","#7fbfb4","#b5b9b6"]
+; brights = ["#1d1f22","#8d2e32","#798431","#e58a50","#4b6b88","#6e5079","#4d7b74","#5a626a"]
+
 ; Custom
 (hl! :YankColor {:fg none :bg "#2ecc71"})
 (hl! :InlayHints {:fg "#636e7b" :bg none})
