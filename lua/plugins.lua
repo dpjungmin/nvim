@@ -86,6 +86,7 @@
       { 'Olical/conjure', ft = { 'fnl' } },
       { 'cespare/vim-toml', ft = { 'toml' } },
       { 'stephpy/vim-yaml', ft = { 'yaml' } },
+      { 'dag/vim-fish', ft = { 'fish' } },
 
       -- completions
       'hrsh7th/cmp-nvim-lua',
