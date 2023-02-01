@@ -50,7 +50,7 @@
 (set! splitright)
 (set! confirm)
 (set! list)
-(set! listchars {:nbsp "¬" :extends "»" :precedes "«" :trail "•"})
+(set! listchars {:nbsp "¬" :extends "»" :precedes "«" :trail "•" :tab ".."})
 (set! scrolloff 5)
 (set! swapfile false)
 (set! autowrite)
