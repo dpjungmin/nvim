@@ -111,9 +111,6 @@
 ; https://github.com/phaazon/hop.nvim
 (map! [n] :f (fn s [] ((. (require :hop) :hint_char2))) {:desc "Hop to the occurrence of a bigram"})
 
-; https://github.com/jdhao/whitespace.nvim
-(map! [n] :<leader><space> :<cmd>StripTrailingWhitespace<cr> {:desc "Strip trailing whitespace"})
-
 ; https://github.com/iamcco/markdown-preview.nvim
 (map! [n] :<space>tm :<cmd>MarkdownPreviewToggle<cr> {:desc "Toggle markdown preview"})
 

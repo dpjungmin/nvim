@@ -1,7 +1,9 @@
-(require 'fidget').setup {
+-- https://github.com/j-hui/fidget.nvim
+
+require('fidget').setup {
   text = {
-    spinner = 'dots_toggle',
-    done = '',
+    spinner = 'flip',
+    done = '끝',
     commenced = 'Loading',
     completed = 'Completed',
   },
@@ -10,7 +12,7 @@
     right = true,
   },
   timer = {
-    spinner_rate = 500,
+    spinner_rate = 200,
     fidget_decay = 1500,
     task_decay = 1000,
   },
