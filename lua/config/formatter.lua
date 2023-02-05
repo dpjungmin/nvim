@@ -48,6 +48,15 @@ require('formatter').setup {
         }
       end,
     },
+    java = {
+      function()
+        return {
+          exe = 'google-java-format',
+          args = { '-' },
+          stdin = true,
+        }
+      end,
+    },
     python = { (require 'formatter.filetypes.python').black },
     markdown = { (require 'formatter.filetypes.markdown').prettier },
     javascript = { (require 'formatter.filetypes.javascript').prettier },
