@@ -2,16 +2,29 @@
 
 (local none :None)
 
-; foreground = "#b7bcba"
-; background = "#161719"
-; cursor_bg = "#b7bcba"
-; cursor_border = "#b7bcba"
-; cursor_fg = "#1e1f22"
-; selection_bg = "#1e1f22"
-; selection_fg = "#b7bcba"
-
-; ansi = ["#2a2e33","#b84d51","#b3bf5a","#e4b55e","#6e90b0","#a17eac","#7fbfb4","#b5b9b6"]
-; brights = ["#1d1f22","#8d2e32","#798431","#e58a50","#4b6b88","#6e5079","#4d7b74","#5a626a"]
+; Terminal colors
+;
+; ansi = [
+;   "#2a2e33", # BLACK
+;   "#b84d51", # DARK-RED
+;   "#b3bf5a", # DARK-GREEN
+;   "#e4b55e", # DARK-YELLOW
+;   "#6e90b0", # DARK-BLUE
+;   "#a17eac", # DARK-MAGENTA
+;   "#7fbfb4", # DARK-CYAN
+;   "#b5b9b6"  # DARK-WHITE
+; ]
+;
+; brights = [
+;   "#1d1f22", # BRIGHT-BLACK
+;   "#8d2e32", # BRIGHT-RED
+;   "#798431", # BRIGHT-GREEN
+;   "#e58a50", # BRIGHT-YELLOW
+;   "#4b6b88", # BRIGHT-BLUE
+;   "#6e5079", # BRIGHT-MAGENTA
+;   "#4d7b74", # BRIGHT-CYAN
+;   "#5a626a"  # WHITE
+; ]
 
 ; Custom
 (hl! :YankColor {:fg none :bg "#2ecc71"})
@@ -20,7 +33,7 @@
 
 ; Syntax
 (hl! :Comment {:fg "#9da8a3" :bg none})
-(hl! :Constant {:fg "#dcbdfb" :bg none})
+(hl! :Constant {:fg "#dcbdfb" :bg none :style [:bold]})
 (hl! :Character {:fg "#ff938a" :bg none}) ; 'c', '\n'
 (hl! :String {:fg "#ff938a" :bg none}) ; "Hello!"
 (hl! :Number {:fg "#c38a61" :bg none}) ; 234, 0xa5
@@ -28,7 +41,7 @@
 (hl! :Identifier {:fg "#cad8d2" :bg none}) ; variable name
 (hl! :Function {:fg "#f69d50" :bg none}) ; function name and methods for classes
 (hl! :Statement {:fg "#8ac361" :bg none}) ; local, struct, let
-(hl! :Keyword {:fg "#8ac361" :bg none})
+(hl! :Keyword {:fg "#8ac361" :bg none :style [:bold]})
 (hl! :Conditional {:fg "#9ac361" :bg none}) ; if-else, switch
 (hl! :Repeat {:link :Conditional}) ; for, while, do-while
 (hl! :Label {:link :Conditional}) ; case, default
@@ -39,7 +52,7 @@
 (hl! :Define {:fg "#8ac361" :bg none})
 (hl! :Macro {:fg "#f0c239" :bg none})
 (hl! :PreCondit {:fg "#f0c239" :bg none})
-(hl! :Type {:fg "#f0c239" :bg none}) ; int, long, char
+(hl! :Type {:fg "#f0c239" :bg none :style [:bold]}) ; int, long, char
 (hl! :StorageClass {:fg "#8ac361" :bg none}) ; static, register, volatile
 (hl! :Structure {:link :StorageClass}) ; struct, union, enum
 (hl! :Special {:fg "#8ac361" :bg none})
