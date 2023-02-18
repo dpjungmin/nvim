@@ -60,6 +60,7 @@ local plugins = {
     { 'cespare/vim-toml', ft = { 'toml' } },
     { 'stephpy/vim-yaml', ft = { 'yaml' } },
     { 'dag/vim-fish', ft = { 'fish' } },
+    { 'LnL7/vim-nix', ft = { 'nix' } },
   },
 
   -- Completion
