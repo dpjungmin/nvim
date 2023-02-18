@@ -272,7 +272,8 @@ local spec = {
     use {
       'dpjungmin/tissue.nvim',
       config = function()
-        vim.cmd 'colorscheme a'
+        local theme = os.getenv 'THEME' or 'tissue'
+        vim.cmd('colorscheme ' .. theme)
       end,
     }
   end,

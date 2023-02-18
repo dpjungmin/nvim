@@ -7,31 +7,34 @@
 (hl! :InlayHints {:fg "#d2e0bf" :bg none :style [:bold]})
 (hl! :MatchAccent {:fg "#f15946" :bg none :style [:bold]})
 
+; ansi = ["#000000","#ff0000","#59d600","#f0cb00","#00a2ff","#c17ecc","#00d0d6","#e6ebe1"]
+; brights = ["#8f928b","#ff0013","#93ff00","#fff121","#88c9ff","#e9a7e1","#00feff","#f6f6f4"]
+
 ; Syntax
 (hl! :Comment {:fg "#9da8a3" :bg none})
-(hl! :Constant {:fg "#ae76a6" :bg none})
-(hl! :Character {:fg "#fe5f55" :bg none}) ; 'c', '\n'
-(hl! :String {:fg "#fe5f55" :bg none}) ; "Hello!"
-(hl! :Number {:fg "#c38a61" :bg none}) ; 234, 0xa5
+(hl! :Constant {:fg "#00a2ff" :bg none :style [:bold]})
+(hl! :Character {:fg "#c38a61" :bg none}) ; 'c', '\n'
+(hl! :String {:fg "#c38a61" :bg none}) ; "Hello!"
+(hl! :Number {:fg "#c17ecc" :bg none :style [:bold]}) ; 234, 0xa5
 (hl! :Float {:link :Number}) ; 5.3, 9e10
-(hl! :Identifier {:fg "#67697c" :bg none}) ; variable name
-(hl! :Function {:fg "#f49d37" :bg none}) ; function name and methods for classes
-(hl! :Statement {:fg "#058e3f" :bg none}) ; local, struct, let
-(hl! :Keyword {:fg "#058e3f" :bg none})
+(hl! :Identifier {:fg "#ff5d16" :bg none}) ; variable name
+(hl! :Function {:fg "#000000" :bg none :style [:bold]}) ; function name and methods for classes
+(hl! :Statement {:fg "#59d600" :bg none}) ; local, struct, let
+(hl! :Keyword {:fg "#59d600" :bg none :style [:bold]})
 (hl! :Conditional {:fg "#058e3f" :bg none}) ; if-else, switch
 (hl! :Repeat {:link :Conditional}) ; for, while, do-while
 (hl! :Label {:link :Conditional}) ; case, default
-(hl! :Operator {:fg "#7aa095" :bg none}) ; +, -, *
-(hl! :Exception {:fg "#0eb1d2" :bg none}) ; try, catch, throw
-(hl! :Include {:fg "#4f5d75" :bg none}) ; use, import, include
-(hl! :PreProc {:fg "#cad8d2" :bg none}) ; preprocessor
-(hl! :Define {:fg "#8ac361" :bg none})
-(hl! :Macro {:fg "#ffd400" :bg none :style [:bold]})
-(hl! :PreCondit {:fg "#ffd400" :bg none :style [:bold]})
-(hl! :Type {:fg "#ffd400" :bg none :style [:bold]}) ; int, long, char
-(hl! :StorageClass {:fg "#058e3f" :bg none}) ; static, register, volatile
+(hl! :Operator {:fg "#c38a61" :bg none}) ; +, -, *
+(hl! :Exception {:fg "#00d0d6" :bg none}) ; try, catch, throw
+(hl! :Include {:fg "#ff5d16" :bg none}) ; use, import, include
+(hl! :PreProc {:fg "#9da8a3" :bg none}) ; preprocessor
+(hl! :Define {:fg "#59d600" :bg none})
+(hl! :Macro {:fg "#c17ecc" :bg none})
+(hl! :PreCondit {:fg "#e58a50" :bg none :style [:bold]})
+(hl! :Type {:fg "#e58a50" :bg none :style [:bold]}) ; int, long, char
+(hl! :StorageClass {:fg "#c17ecc" :bg none}) ; static, register, volatile
 (hl! :Structure {:link :StorageClass}) ; struct, union, enum
-(hl! :Special {:fg "#058e3f" :bg none})
+(hl! :Special {:fg "#c17ecc" :bg none})
 (hl! :SpecialChar {:fg "#ffffff" :bg none})
 (hl! :Tag {:fg "#cad8d2" :bg none})
 (hl! :SpecialComment {:fg "#9da8a3" :bg none})
@@ -64,7 +67,7 @@
 (hl! :SignColumnSB {:link :SignColumn})
 (hl! :VertSplit {:fg "#cad8d2" :bg none}) ; the column separating vertically split windows
 (hl! :Title {:fg "#6cb6ff" :bg none :style [:bold]}) ; vim default title
-(hl! :Visual {:fg none :bg "#e6e6e9"}) ; visual selection
+(hl! :Visual {:fg none :bg "#c1deff"}) ; visual selection
 (hl! :VisualNOS {:link :Visual})
 (hl! :Search {:fg "#000000" :bg "#f0c239"})
 (hl! :IncSearch {:fg "#000000" :bg "#f0c239" :style [:bold]})
@@ -120,16 +123,16 @@
 (hl! :GitSignsDeleteLnVirtLnInline {:link :GitSignsDeleteInline})
 
 ; https://github.com/lukas-reineke/indent-blankline.nvim
-(hl! :IndentBlanklineChar {:fg "#e7e5df" :bg none})
-(hl! :IndentBlanklineContextChar {:fg "#e7e5df" :bg none})
+(hl! :IndentBlanklineChar {:fg "#e6ebe1" :bg none})
+(hl! :IndentBlanklineContextChar {:fg "#e6ebe1" :bg none})
 
 ; https://github.com/nvim-telescope/telescope.nvim
 (hl! :TelescopeBorder {:fg "#636e7b" :bg none})
-(hl! :TelescopeSelectionCaret {:fg "#4a7b9d" :bg none})
+(hl! :TelescopeSelectionCaret {:fg "#00a2ff" :bg none})
 (hl! :TelescopeSelection {:fg "#000000" :bg "#e7e5df"})
 (hl! :TelescopeMultiSelection {:link :TelescopeSelection})
 (hl! :TelescopeMatching {:link :MatchAccent})
-(hl! :TelescopePromptPrefix {:fg "#4a7b9d" :bg none :style [:bold]})
+(hl! :TelescopePromptPrefix {:fg "#00a2ff" :bg none :style [:bold]})
 
 ; https://github.com/kyazdani42/nvim-tree.lua
 (hl! :NvimTreeGitNew {:fg "#46954a" :bg none })
