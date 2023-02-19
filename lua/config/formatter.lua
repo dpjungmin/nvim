@@ -57,6 +57,15 @@ require('formatter').setup {
         }
       end,
     },
+    nix = {
+      function()
+        return {
+          exe = 'nixpkgs-fmt',
+          args = {},
+          stdin = true,
+        }
+      end,
+    },
     python = { (require 'formatter.filetypes.python').black },
     markdown = { (require 'formatter.filetypes.markdown').prettier },
     javascript = { (require 'formatter.filetypes.javascript').prettier },
