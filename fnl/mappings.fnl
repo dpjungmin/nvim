@@ -94,70 +94,6 @@
 (map! [x] :<c-j> ":move '>+1<cr>gv-gv" {:desc "Move text down"})
 (map! [x] :<c-k> ":move '<-2<cr>gv-gv" {:desc "Move text up"})
 
-; Plugins
-
-; https://github.com/lukas-reineke/indent-blankline.nvim
-(map! [n] :<space>ti
-  (fn indent-blankline-toggle []
-    (if vim.g._indent_blankline
-        (set vim.g._indent_blankline false)
-        (set vim.g._indent_blankline true))
-    (vim.cmd :IndentBlanklineToggle))
-  {:desc "Toggle indent blankline"})
-
-; https://github.com/simrat39/symbols-outline.nvim
-(map! [n] :<space>tS :<cmd>SymbolsOutline<cr> {:desc "Toggle symbols outline"})
-
-; https://github.com/phaazon/hop.nvim
-(map! [n] :f (fn s [] ((. (require :hop) :hint_char2))) {:desc "Hop to the occurrence of a bigram"})
-
-; https://github.com/iamcco/markdown-preview.nvim
-(map! [n] :<space>tm :<cmd>MarkdownPreviewToggle<cr> {:desc "Toggle markdown preview"})
-
-; https://github.com/andymass/vim-matchup
-(map! [n] :<space>? :<cmd>MatchupWhereAmI?<cr> {:desc "Echos your position in the code in a breadcrumb-style"})
-
-; https://github.com/tpope/vim-fugitive
-(map! [n] :gst :<cmd>Git<cr> {:desc "Show git status"})
-
-; https://github.com/rbong/vim-flog
-(map! [n] :gl :<cmd>Flog<cr> {:desc "Open git commit graph"})
-
-; https://github.com/kyazdani42/nvim-tree.lua
-(map! [n] :<space>s :<cmd>NvimTreeToggle<cr> {:desc "Toggle nvim-tree"})
-(map! [n] :<space>S :<cmd>NvimTreeFindFileToggle<cr> {:desc "Toggle nvim-tree (focus on the current file)"})
-(map! [n] :<space><leader> (.. "<cmd>NvimTreeFindFileToggle " vim.g.sessiondir "<cr>") {:desc "Toggle nvim-tree (open nvim session directory)"})
-(map! [n] :<leader>r :<cmd>NvimTreeCollapse<cr> {:desc "Collapse nvim-tree"})
-
-; https://github.com/neovim/nvim-lspconfig
-(map! [n] :<leader>l :<cmd>LspStart<cr> {:desc "Start LSP client"})
-(map! [n] :<leader><leader>l :<cmd>LspStop<cr> {:desc "Stop LSP client"})
-(map! [n] :<space>q (fn [] (vim.diagnostic.setqflist {:open true})) {:desc "Add all diagnostics to the quickfix list"})
-(map! [n] :<space>e vim.diagnostic.open_float {:desc "Show diagnostics in a floating window"})
-(map! [n] "[d" vim.diagnostic.goto_prev {:desc "Move to the previous diagnostic in the current buffer"})
-(map! [n] "]d" vim.diagnostic.goto_next {:desc "Move to the next diagnostic in the current buffer"})
-
-; https://github.com/akinsho/toggleterm.nvim
-(map! [t] :<esc> "<c-\\\\><c-n>" {:desc "Go from Insert mode to Normal mode"})
-(map! [t] :<c-h> "<c-\\\\><c-n><c-w>h" {:desc "Move left (window)"})
-(map! [t] :<c-j> "<c-\\\\><c-n><c-w>j" {:desc "Move down (window)"})
-(map! [t] :<c-k> "<c-\\\\><c-n><c-w>k" {:desc "Move up (window)"})
-(map! [t] :<c-l> "<c-\\\\><c-n><c-w>l" {:desc "Move right (window)"})
-(map! [v] :<leader>s :<cmd>ToggleTermSendVisualSelection<cr> {:desc "Send the visually selected text to the terminal"})
-(map! [n] :<c-n> ":<c-u>ToggleTerm direction=vertical<cr>" {:desc "Toggle $TERM vertically"})
-(map! [n] :<space>ot ":<c-u>ToggleTerm direction=tab<cr>" {:desc "Open $TERM in a new tab"})
-(map! [n] :<space>Rp
-  (fn f []
-    (: (: (. (require :toggleterm.terminal) :Terminal) :new
-          {:cmd :python3
-          :direction :horizontal
-          :close_on_exit true
-          :on_open (fn [_]
-                      (vim.notify "Run python3"
-                                  vim.log.levels.INFO))})
-      :toggle))
-  {:desc "Run python3 in a terminal"})
-
 ; https://github.com/akinsho/bufferline.nvim
 (map! [n] :<space>1 "<cmd>BufferLineGoToBuffer 1<cr>" {:desc "Go to buffer 1"})
 (map! [n] :<space>2 "<cmd>BufferLineGoToBuffer 2<cr>" {:desc "Go to buffer 2"})
@@ -175,34 +111,3 @@
 ; (map! [n] :<s-tab> "<cmd>BufferLineCyclePrev<cr>" {:desc "Go to the previous buffer"})
 (map! [n] :<tab> :<cmd>bn<cr> {:desc "Go to the next buffer"})
 (map! [n] :<s-tab> :<cmd>bp<cr> {:desc "Go to the previous buffer"})
-
-; https://github.com/nvim-telescope/telescope.nvim
-(map! [n] :<space>. "<cmd>Telescope find_files<cr>" {:desc "List files in current directory"})
-(map! [n] :<space>g "<cmd>Telescope grep_string<cr>" {:desc "Searches for the string under your cursor in your current working directory"})
-(map! [n] :<space>G "<cmd>Telescope live_grep<cr>" {:desc "Search for a string in your current directory"})
-(map! [n] "<space>," "<cmd>Telescope buffers<cr>" {:desc "List open buffers"})
-(map! [n] :<space>fr "<cmd>Telescope oldfiles<cr>" {:desc "Lists most recently opened files"})
-(map! [n] :<space>fm "<cmd>Telescope man_pages<cr>" {:desc "Lists man page entries"})
-(map! [n] :<space>fh "<cmd>Telescope help_tags<cr>" {:desc "List available help tags"})
-(map! [n] :<space>fH "<cmd>Telescope highlights<cr>" {:desc "List available highlights"})
-(map! [n] :<space>K "<cmd>Telescope lsp_references<cr>" {:desc "Lists LSP references for the work under the cursor"})
-(map! [n] :<space>fd "<cmd>Telescope diagnostics<cr>" {:desc "Lists diagnostics for all open buffers"})
-(map! [n] :<space>i "<cmd>Telescope lsp_implementations<cr>" {:desc "Lists implementations of the work under the cursor"})
-(map! [n] :<space>fn
-  (fn []
-    (local find-files (. (require :telescope.builtin) :find_files))
-    (local get-ivy (. (require :telescope.themes) :get_ivy))
-    (find-files (get-ivy {:border true
-                          :borderchars {:preview [" " "│" "─" "│" " " "│" "┘" "─"]
-                                        :prompt ["─" "│" "─" "│" "┌" "┐" "┘" "└"]
-                                        :results ["─" " " "─" "│" "┌" "┐" "─" "└"]}
-                          :layout_config {:prompt_position :top
-                                          :mirror false
-                                          :height 0.4}
-                          :layout_strategy :bottom_pane
-                          :cwd "~/.config/nvim"
-                          :prompt ""
-                          :prompt_prefix "[nvim config files]: "
-                          :shorten_path true
-                          :sorting_strategy :ascending})))
-  {:desc "List Neovim config files"})

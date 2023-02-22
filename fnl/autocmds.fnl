@@ -22,8 +22,6 @@
      [:InsertLeave "*" "lua _G.dp['indent-blankline-activate']()"]]
   :format-on-save
     [[:BufWritePost "*" :FormatWrite]]
-  :au-compile-packer
-    [[:BufWritePre :*/nvim/lua/plugins.lua "source <afile> | PackerCompile"]]
   :puppet
     [["BufNewFile,BufRead" :*.pp "setfiletype puppet"]
      ["BufNewFile,BufRead" :*.pp "set shiftwidth=2 softtabstop=2 filetype=puppet"]]
