@@ -1,7 +1,9 @@
 -- https://github.com/folke/lazy.nvim
 
 local function REQUIRE(mod)
-  require('plugins.' .. mod)
+  return function()
+    require('plugins.' .. mod)
+  end
 end
 
 return {
@@ -9,15 +11,17 @@ return {
   {
     'dpjungmin/tissue.nvim',
     lazy = false,
-    priority = 999,
+    priority = 1000,
     config = function()
-      vim.opt.termguicolors = true
       local theme = os.getenv 'THEME' or 'tissue-dark'
       vim.cmd('colorscheme ' .. theme)
     end,
   },
 
-  -- Dependencies
+  -- Helpful plugins!
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'rktjmp/hotpot.nvim',
   'nvim-lua/popup.nvim',
   'nvim-lua/plenary.nvim',
   'kyazdani42/nvim-web-devicons',
@@ -37,11 +41,11 @@ return {
   'mtoohey31/cmp-fish',
   'roxma/nvim-yarp',
   'roxma/vim-hug-neovim-rpc',
-
-  -- Helpful plugins!
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  'rktjmp/hotpot.nvim',
+  'machakann/vim-swap',
+  'machakann/vim-sandwich',
+  'itchyny/vim-highlighturl',
+  'tpope/vim-commentary',
+  'RRethy/vim-illuminate',
   {
     'andymass/vim-matchup',
     keys = {
@@ -50,28 +54,40 @@ return {
       desc = 'Echos your position in the code in a breadcrumb-style',
     },
   },
-  'machakann/vim-swap',
-  'machakann/vim-sandwich',
-  'itchyny/vim-highlighturl',
-  'tpope/vim-commentary',
-  'RRethy/vim-illuminate',
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
+      vim.opt.termguicolors = true
       require('colorizer').setup()
     end,
   },
-
-  -- Configuration is set in `fnl/global.fnl`
-  'mhinz/vim-startify',
-  { 'preservim/vim-markdown', ft = { 'markdown' } },
-
+  {
+    'mhinz/vim-startify',
+    config = function()
+      local g = vim.g
+      g.startify_session_dir = g.sessiondir
+      g.ascii = { '작은 일에도 최선을' }
+      g.startify_custom_header = 'startify#pad(g:ascii)'
+      g.startify_lists = {
+        { header = { '   sessions' }, type = 'sessions' },
+        { header = { '   bookmarks' }, type = 'bookmarks' },
+        { header = { '   commands' }, type = 'commands' },
+      }
+      g.startify_bookmarks = {}
+      g.startify_commands = {}
+    end,
+  },
+  {
+    'preservim/vim-markdown',
+    ft = { 'markdown' },
+    config = function()
+      vim.g.vim_markdown_folding_disabled = 1
+    end,
+  },
   -- Git
   {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      REQUIRE 'gitsigns'
-    end,
+    config = REQUIRE 'gitsigns',
   },
   { 'tpope/vim-fugitive', keys = { 'gst', '<cmd>Git<cr>', desc = 'Show git status' } },
   {
@@ -79,15 +95,19 @@ return {
     dependencies = { 'tpope/vim-fugitive' },
     keys = { 'gl', '<cmd>Flog<cr>', desc = 'Open git commit graph' },
   },
-
   -- Language enhancements
   { 'Olical/aniseed', ft = { 'fnl' } },
-  { 'Olical/conjure', ft = { 'fnl' } },
+  {
+    'Olical/conjure',
+    ft = { 'fnl' },
+    config = function()
+      vim.cmd 'let g:conjure#client#fennel#aniseed#aniseed_module_prefix = "aniseed."'
+    end,
+  },
   { 'cespare/vim-toml', ft = { 'toml' } },
   { 'stephpy/vim-yaml', ft = { 'yaml' } },
   { 'dag/vim-fish', ft = { 'fish' } },
   { 'LnL7/vim-nix', ft = { 'nix' } },
-
   -- Completion
   {
     'hrsh7th/nvim-cmp',
@@ -99,16 +119,14 @@ return {
       'hrsh7th/cmp-cmdline',
       'mtoohey31/cmp-fish',
     },
-    config = function()
-      REQUIRE 'nvim-cmp'
-    end,
+    config = REQUIRE 'nvim-cmp',
   },
-
   -- LSP
   {
     'neovim/nvim-lspconfig',
     tag = 'v0.1.3',
-    requires = {
+    lazy = false,
+    dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'hrsh7th/cmp-nvim-lsp',
@@ -144,48 +162,44 @@ return {
       require 'lang'
     end,
   },
-
   -- Snippets
-  'SirVer/ultisnips',
+  {
+    'SirVer/ultisnips',
+    config = function()
+      local g = vim.g
+      g.UltiSnipsSnippetDirectories = { 'UltiSnips', 'snips' }
+      g.UltiSnipsJumpForwardTrigger = ':<c-j>'
+      g.UltiSnipsJumpBackwardTrigger = ':<c-k>'
+    end,
+  },
   { 'honza/vim-snippets', dependencies = { 'SirVer/ultisnips' } },
   {
     'quangnguyen30192/cmp-nvim-ultisnips',
     dependencies = { 'hrsh7th/nvim-cmp', 'SirVer/ultisnips' },
   },
-
   {
     'itchyny/lightline.vim',
-    config = function()
-      REQUIRE 'lightline'
-    end,
+    config = REQUIRE 'lightline',
   },
   {
     'karb94/neoscroll.nvim',
     event = 'VimEnter',
-    config = function()
-      REQUIRE 'neoscroll'
-    end,
+    config = REQUIRE 'neoscroll',
   },
   {
     'mhartington/formatter.nvim',
     event = 'VimEnter',
-    config = function()
-      REQUIRE 'formatter'
-    end,
+    config = REQUIRE 'formatter',
   },
   {
     'folke/which-key.nvim',
     event = 'VimEnter',
-    config = function()
-      REQUIRE 'which-key'
-    end,
+    config = REQUIRE 'which-key',
   },
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    config = function()
-      REQUIRE 'nvim-autopairs'
-    end,
+    config = REQUIRE 'nvim-autopairs',
   },
   {
     'akinsho/toggleterm.nvim',
@@ -194,22 +208,15 @@ return {
       { '<c-n>', ':<c-u>ToggleTerm direction=vertical<cr>', desc = 'Toggle $TERM vertically' },
       { '<space>ot', ':<c-u>ToggleTerm direction=tab<cr>', desc = 'Open $TERM in a new tab' },
     },
-    config = function()
-      REQUIRE 'toggleterm'
-    end,
+    config = REQUIRE 'toggleterm',
   },
-
   {
     'gelguy/wilder.nvim',
     event = 'VimEnter',
     dependencies = { 'romgrk/fzy-lua-native' },
     build = ':UpdateRemotePlugins',
-    config = function()
-      REQUIRE 'wilder'
-    end,
+    config = REQUIRE 'wilder',
   },
-
-  -- https://github.com/lukas-reineke/indent-blankline.nvim
   {
     'lukas-reineke/indent-blankline.nvim',
     event = 'VimEnter',
@@ -227,25 +234,19 @@ return {
         desc = 'Toggle indent-blankline',
       },
     },
-    config = function()
-      REQUIRE 'indent-blankline'
-    end,
+    config = REQUIRE 'indent-blankline',
   },
   {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufEnter',
     build = ':TSUpdate',
     dependencies = { 'windwp/nvim-ts-autotag' },
-    config = function()
-      REQUIRE 'nvim-treesitter'
-    end,
+    config = REQUIRE 'nvim-treesitter',
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      REQUIRE 'nvim-treesitter-context'
-    end,
+    config = REQUIRE 'nvim-treesitter-context',
   },
   {
     'nvim-treesitter/playground',
@@ -265,60 +266,104 @@ return {
       {
         '<space><leader>',
         '<cmd>NvimTreeFindFileToggle ' .. vim.g.sessiondir .. '<cr>',
-        desc = 'Toggle nvim-tree',
         desc = 'Toggle nvim-tree (open nvim session directory)',
       },
       { '<leader>r', '<cmd>NvimTreeCollapse<cr>', desc = 'Collapse nvim-tree' },
     },
-    config = function()
-      REQUIRE 'nvim-tree'
-    end,
+    config = REQUIRE 'nvim-tree',
   },
-
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
-      { '<space>.', '<cmd>Telescope find-files<cr>', desc = 'List files in current directory' },
-      { '<space>.', '<cmd>Telescope find-files<cr>', desc = 'List files in current directory' },
+      { '<space>.', '<cmd>Telescope find_files<cr>', desc = 'List files in current directory' },
+      { '<space>,', '<cmd>Telescope buffers<cr>', desc = 'List open buffers' },
+      {
+        '<space>g',
+        '<cmd>Telescope grep_string<cr>',
+        desc = 'Searches for the string under your cursor in your current working directory',
+      },
+      {
+        '<space>G',
+        '<cmd>Telescope live_grep<cr>',
+        desc = 'Search for a string in your current directory',
+      },
+      { '<space>fr', '<cmd>Telescope oldfiles<cr>', desc = 'Lists most recently opened files' },
+      { '<space>fm', '<cmd>Telescope man_pages<cr>', desc = 'Lists man page entries' },
+      { '<space>fh', '<cmd>Telescope help_tags<cr>', desc = 'Lists available help tags' },
+      { '<space>fH', '<cmd>Telescope highlights<cr>', desc = 'Lists available highlights' },
+      {
+        '<space>K',
+        '<cmd>Telescope lsp_references<cr>',
+        desc = 'Lists LSP references for the work under the cursor',
+      },
+      {
+        '<space>fd',
+        '<cmd>Telescope diagnostic<cr>',
+        desc = 'Lists diagnostics for all open buffers',
+      },
+      {
+        '<space>i',
+        '<cmd>Telescope lsp_implementations<cr>',
+        desc = 'Lists implementations of the work under the cursor',
+      },
+      {
+        '<space>fn',
+        function()
+          require('telescope.builtin').find_files(require('telescope.themes').get_ivy {
+            border = true,
+            borderchars = {
+              preview = {
+                '\226\148\128',
+                '\226\148\130',
+                '\226\148\128',
+                '\226\148\130',
+                '\226\148\140',
+                '\226\148\144',
+                '\226\148\152',
+                '\226\148\148',
+              },
+              prompt = {
+                '\226\148\128',
+                '\226\148\130',
+                '\226\148\128',
+                '\226\148\130',
+                '\226\148\140',
+                '\226\148\144',
+                '\226\148\152',
+                '\226\148\148',
+              },
+              results = {
+                '\226\148\128',
+                '\226\148\130',
+                '\226\148\128',
+                '\226\148\130',
+                '\226\148\140',
+                '\226\148\144',
+                '\226\148\152',
+                '\226\148\148',
+              },
+            },
+            layout_config = {
+              anchor = 'CENTER',
+              prompt_position = 'top',
+              mirror = true,
+              width = 0.6,
+              height = 0.6,
+            },
+            layout_strategy = 'vertical',
+            prompt_prefix = '[nvim config files]: ',
+            prompt_title = '',
+            preview_title = '',
+            sorting_strategy = 'ascending',
+          })
+        end,
+        desc = 'List Neovim config files',
+      },
     },
-    config = function()
-      REQUIRE 'telescope'
-    end,
+    config = REQUIRE 'telescope',
   },
-
-  -- ; https://github.com/nvim-telescope/telescope.nvim
-  -- (map! [n] :<space>. "<cmd>Telescope find_files<cr>" {:desc "List files in current directory"})
-  -- (map! [n] :<space>g "<cmd>Telescope grep_string<cr>" {:desc "Searches for the string under your cursor in your current working directory"})
-  -- (map! [n] :<space>G "<cmd>Telescope live_grep<cr>" {:desc "Search for a string in your current directory"})
-  -- (map! [n] "<space>," "<cmd>Telescope buffers<cr>" {:desc "List open buffers"})
-  -- (map! [n] :<space>fr "<cmd>Telescope oldfiles<cr>" {:desc "Lists most recently opened files"})
-  -- (map! [n] :<space>fm "<cmd>Telescope man_pages<cr>" {:desc "Lists man page entries"})
-  -- (map! [n] :<space>fh "<cmd>Telescope help_tags<cr>" {:desc "List available help tags"})
-  -- (map! [n] :<space>fH "<cmd>Telescope highlights<cr>" {:desc "List available highlights"})
-  -- (map! [n] :<space>K "<cmd>Telescope lsp_references<cr>" {:desc "Lists LSP references for the work under the cursor"})
-  -- (map! [n] :<space>fd "<cmd>Telescope diagnostics<cr>" {:desc "Lists diagnostics for all open buffers"})
-  -- (map! [n] :<space>i "<cmd>Telescope lsp_implementations<cr>" {:desc "Lists implementations of the work under the cursor"})
-  -- (map! [n] :<space>fn
-  --   (fn []
-  --     (local find-files (. (require :telescope.builtin) :find_files))
-  --     (local get-ivy (. (require :telescope.themes) :get_ivy))
-  --     (find-files (get-ivy {:border true
-  --                           :borderchars {:preview [" " "│" "─" "│" " " "│" "┘" "─"]
-  --                                         :prompt ["─" "│" "─" "│" "┌" "┐" "┘" "└"]
-  --                                         :results ["─" " " "─" "│" "┌" "┐" "─" "└"]}
-  --                           :layout_config {:prompt_position :top
-  --                                           :mirror false
-  --                                           :height 0.4}
-  --                           :layout_strategy :bottom_pane
-  --                           :cwd "~/.config/nvim"
-  --                           :prompt ""
-  --                           :prompt_prefix "[nvim config files]: "
-  --                           :shorten_path true
-  --                           :sorting_strategy :ascending})))
-  --   {:desc "List Neovim config files"})
-
   {
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
@@ -329,25 +374,18 @@ return {
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      REQUIRE 'todo-comments'
-    end,
+    config = REQUIRE 'todo-comments',
   },
   {
     'j-hui/fidget.nvim',
-    config = function()
-      REQUIRE 'fidget'
-    end,
+    config = REQUIRE 'fidget',
   },
-  -- https://github.com/simrat39/symbols-outline.nvim
   {
     'simrat39/symbols-outline.nvim',
     keys = {
       { '<space>tS', ':<cmd>SymbolsOutline<cr>', desc = 'Toggle symbols outline' },
     },
-    config = function()
-      REQUIRE 'symbols-outline'
-    end,
+    config = REQUIRE 'symbols-outline',
   },
   {
     'saecki/crates.nvim',
@@ -367,7 +405,6 @@ return {
       ]]
     end,
   },
-  -- https://github.com/phaazon/hop.nvim
   {
     'phaazon/hop.nvim',
     branch = 'v1',
@@ -390,5 +427,34 @@ return {
         }
       end, 2000)
     end,
+  },
+  {
+    'akinsho/bufferline.nvim',
+    event = 'VimEnter',
+    keys = {
+      { '<space>1', '<cmd>BufferLineGoToBuffer 1<cr>', desc = 'Go to buffer 1' },
+      { '<space>2', '<cmd>BufferLineGoToBuffer 2<cr>', desc = 'Go to buffer 2' },
+      { '<space>3', '<cmd>BufferLineGoToBuffer 3<cr>', desc = 'Go to buffer 3' },
+      { '<space>4', '<cmd>BufferLineGoToBuffer 4<cr>', desc = 'Go to buffer 4' },
+      { '<space>5', '<cmd>BufferLineGoToBuffer 5<cr>', desc = 'Go to buffer 5' },
+      { '<space>6', '<cmd>BufferLineGoToBuffer 6<cr>', desc = 'Go to buffer 6' },
+      { '<space>7', '<cmd>BufferLineGoToBuffer 7<cr>', desc = 'Go to buffer 7' },
+      { '<space>8', '<cmd>BufferLineGoToBuffer 8<cr>', desc = 'Go to buffer 8' },
+      { '<space>9', '<cmd>BufferLineGoToBuffer 9<cr>', desc = 'Go to buffer 9' },
+      { '<space>bp', '<cmd>BufferLineTogglePin<cr>', desc = 'Toggle pin for current buffer' },
+      { '<tab>', '<cmd>BufferLineCycleNext<cr>', desc = 'Go to the next buffer' },
+      { '<s-tab>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Go to the previous buffer' },
+      {
+        '<s-l>',
+        '<cmd>BufferLineMoveNext<cr>',
+        desc = 'Move the current buffer to the next buffer position',
+      },
+      {
+        '<s-h>',
+        '<cmd>BufferLineMovePrev<cr>',
+        desc = 'Move the current buffer to the previous buffer position',
+      },
+    },
+    config = REQUIRE 'bufferline',
   },
 }

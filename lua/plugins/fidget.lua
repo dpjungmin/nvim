@@ -3,7 +3,7 @@
 require('fidget').setup {
   text = {
     spinner = 'flip',
-    done = '끝',
+    done = '',
     commenced = 'Loading',
     completed = 'Completed',
   },
