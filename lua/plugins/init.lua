@@ -357,6 +357,8 @@ return {
             prompt_title = '',
             preview_title = '',
             sorting_strategy = 'ascending',
+            shorten_path = true,
+            cwd = '~/.config/nvim',
           })
         end,
         desc = 'List Neovim config files',
