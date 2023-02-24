@@ -61,32 +61,31 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 
 -- https://github.com/neovim/nvim-lspconfig
 local function on_attach(client, bufnr)
-  local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-      options = vim.tbl_extend('force', options, opts)
-    end
-    vim.keymap.set(mode, lhs, rhs, options)
+  local function map(lhs, rhs, desc)
+    local opts = { noremap = true, silent = true, desc = desc }
+    vim.keymap.set('n', lhs, rhs, opts)
   end
 
+  local lsp = vim.lsp
+
   -- stylua: ignore start
-  map('n', 'K', vim.lsp.buf.hover, { desc = 'Displays hover information about the symbol under the cursor' })
-  map('n', '<m-k>', vim.lsp.buf.signature_help, { desc = 'Displays signature information about the symbol under the cursor' })
-  map('n', '<space>cd', vim.lsp.buf.definition, { desc = 'Jumps to the definition of the symbol under the cursor' })
-  map('n', '<space>cD', vim.lsp.buf.declaration, { desc = 'Jumps to the declaration of the symbol under the cursor' })
-  map('n', '<space>ca', vim.lsp.buf.code_action, { desc = 'Selects a code action available at the current cursor position' })
-  map('n', '<space>ctd', vim.lsp.buf.type_definition, { desc = 'Jumps to the definition of the type of the symbol under the cursor' })
-  map('n', '<space>crn', vim.lsp.buf.rename, { desc = 'Renames all references of the symbol under the cursor' })
-  map('n', '<space>clr', vim.lsp.buf.references, { desc = 'Lists all the references to the symbol under the cursor in the quickfix window' })
-  map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'Add the folder at path to the workspace folders' })
-  map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'Remove the folder at path from the workspace folders' })
-  map('n', '<space>wl', function()
+  map('K', lsp.buf.hover, 'Displays hover information about the symbol under the cursor')
+  map('<m-k>', lsp.buf.signature_help, 'Displays signature information about the symbol under the cursor')
+  map('<space>cd', lsp.buf.definition, 'Jumps to the definition of the symbol under the cursor')
+  map('<space>cD', lsp.buf.declaration, 'Jumps to the declaration of the symbol under the cursor')
+  map('<space>ca', lsp.buf.code_action, 'Selects a code action available at the current cursor position')
+  map('<space>ctd', lsp.buf.type_definition, 'Jumps to the definition of the type of the symbol under the cursor')
+  map('<space>crn', lsp.buf.rename, 'Renames all references of the symbol under the cursor')
+  map('<space>clr', lsp.buf.references, 'Lists all the references to the symbol under the cursor in the quickfix window')
+  map('<space>wa', lsp.buf.add_workspace_folder, 'Add the folder at path to the workspace folders')
+  map('<space>wr', lsp.buf.remove_workspace_folder, 'Remove the folder at path from the workspace folders')
+  map('<space>wl', function()
     vim.notify(
       vim.inspect(vim.lsp.buf.list_workspace_folders()),
       vim.log.levels.INFO,
       { render = 'default', title = 'Workspace folders' }
     )
-  end, { desc = 'List workspace folders' })
+  end, 'List workspace folders')
   -- stylua: ignore end
 end
 
