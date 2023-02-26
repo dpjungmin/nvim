@@ -1,17 +1,3 @@
--- https://github.com/williamboman/mason.nvim
-(require 'mason').setup {
-  ui = {
-    icons = {
-      server_installed = '✓',
-      server_pending = '➜',
-      server_uninstalled = '✗',
-    },
-  },
-}
-
--- https://github.com/williamboman/mason-lspconfig.nvim
-require('mason-lspconfig').setup { automatic_installation = false }
-
 -- Define sign names
 -- stylua: ignore start
 vim.fn.sign_define('DiagnosticSignError', { text = 'E', texthl = 'DiagnosticSignError' })
@@ -60,9 +46,9 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 -- stylua: ignore end
 
 -- https://github.com/neovim/nvim-lspconfig
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
   local function map(lhs, rhs, desc)
-    local opts = { noremap = true, silent = true, desc = desc }
+    local opts = { noremap = true, silent = true, desc = desc, buffer = bufnr }
     vim.keymap.set('n', lhs, rhs, opts)
   end
 

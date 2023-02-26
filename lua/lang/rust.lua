@@ -1,6 +1,6 @@
 -- https://github.com/simrat39/rust-tools.nvim
 
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
   local function map(mode, lhs, rhs, opts)
     local options = { noremap = true, silent = true, buffer = bufnr }
     if opts then
@@ -113,7 +113,7 @@ require('rust-tools').setup {
   },
   server = {
     on_attach = on_attach,
-    standalone = false,
+    standalone = true,
     -- NOTE: remove this if the following issue gets fixed: https://github.com/simrat39/rust-tools.nvim/issues/309
     settings = {
       ['rust-analyzer'] = {

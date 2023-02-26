@@ -26,7 +26,7 @@ return {
     single_file_support = true,
     flags = { debounce_text_changes = 500 },
   },
-  sumneko_lua = {
+  lua_ls = {
     filetypes = { 'lua' },
     log_level = 2,
     settings = {
