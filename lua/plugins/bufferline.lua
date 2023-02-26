@@ -1,7 +1,7 @@
 require('bufferline').setup {
   options = {
     mode = 'buffers',
-    numbers = 'none',
+    numbers = 'ordinal',
     close_command = 'bdelete! %d',
     indicator = {
       icon = '▎',
@@ -48,9 +48,6 @@ require('bufferline').setup {
       delay = 200,
       reveal = { 'close' },
     },
-    sort_by = function(buffer_a, buffer_b)
-      -- print(vim.inspect(buffer_a))
-      return buffer_a.id > buffer_b.id
-    end,
+    sort_by = 'insert_at_end',
   },
 }
