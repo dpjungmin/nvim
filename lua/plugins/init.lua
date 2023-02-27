@@ -47,17 +47,6 @@ return {
     end,
   },
 
-  -- Theme
-  {
-    'dpjungmin/tissue.nvim',
-    lazy = false,
-    priority = 999,
-    config = function()
-      local theme = os.getenv 'THEME' or 'tissue-dark'
-      vim.cmd('colorscheme ' .. theme)
-    end,
-  },
-
   -- Helpful plugins!
   'rktjmp/hotpot.nvim',
   'nvim-lua/popup.nvim',

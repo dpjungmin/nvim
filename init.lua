@@ -54,10 +54,16 @@ local function load_lazy()
   require('lazy').setup(plugins, opts)
 end
 
+local function load_theme()
+  local theme = os.getenv 'THEME' or 'tissue-dark'
+  vim.cmd('colorscheme ' .. theme)
+end
+
 local function run()
   load_hotpot()
   require 'main'
   load_lazy()
+  load_theme()
 end
 
 run()
