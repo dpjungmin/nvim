@@ -1,14 +1,24 @@
+# vim: foldmethod=marker foldlevel=1
+
+# ps {{{
 snippet ps "PS template" b
 #![allow(unused)]
 
-mod sc {
-    pub struct USC<R> {
+mod scanner {
+    use std::{
+        fmt::Debug,
+        io::BufRead,
+        mem,
+        str::{self, FromStr, SplitAsciiWhitespace},
+    };
+
+    pub struct UnsafeScanner<R> {
         reader: R,
-        tokens: std::str::SplitAsciiWhitespace<'static>,
+        tokens: SplitAsciiWhitespace<'static>,
         bytes: Vec<u8>,
     }
 
-    impl<R: std::io::BufRead> USC<R> {
+    impl<R: BufRead> UnsafeScanner<R> {
         pub fn new(reader: R) -> Self {
             Self {
                 reader,
@@ -19,15 +29,15 @@ mod sc {
 
         pub fn read<T>(&mut self) -> T
         where
-            T: std::str::FromStr,
-            <T as std::str::FromStr>::Err: std::fmt::Debug,
+            T: FromStr,
+            <T as FromStr>::Err: Debug,
         {
             loop {
                 if let Some(token) = self.tokens.next() {
                     return token.parse().unwrap();
                 }
                 let line = self.read_line();
-                self.tokens = unsafe { std::mem::transmute(line.split_ascii_whitespace()) }
+                self.tokens = unsafe { mem::transmute(line.split_ascii_whitespace()) }
             }
         }
 
@@ -39,21 +49,59 @@ mod sc {
     }
 }
 
-use std::{
-    cmp::{Ordering, Reverse},
-    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, LinkedList, VecDeque},
-    io::{self, BufWriter, Write},
-};
+mod solution {
+    use super::scanner::UnsafeScanner;
+    use std::{
+        cmp::{Ordering, Reverse},
+        collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, LinkedList, VecDeque},
+        io::{self, BufWriter, Write},
+    };
 
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+    type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
-fn main() -> Result<()> {
-    let (stdin, stdout) = (io::stdin(), io::stdout());
-    let mut is = sc::USC::new(stdin.lock());
-    let mut os = BufWriter::new(stdout.lock());
+    pub fn main() -> Result<()> {
+        let (stdin, stdout) = (io::stdin(), io::stdout());
+        let mut input = UnsafeScanner::new(stdin.lock());
+        let mut output = BufWriter::new(stdout.lock());
 
-    ${1:// Add solution here}
+        // let t = input.read::<usize>();
+        // writeln!(output, "{t}")?;
+        ${1:// Add solution here}
 
-    Ok(())
+        Ok(())
+    }
+}
+
+fn main() {
+    if let Err(err) = solution::main() {
+        eprintln!("{err}");
+        std::process::exit(1);
+    };
 }
 endsnippet
+# }}}
+
+
+# if let Ok {{{
+snippet ifletok "if let Ok" b
+if let Ok($1) = $2 {
+	$3
+}
+endsnippet
+# }}}
+
+# if let Err {{{
+snippet ifleterr "if let Err" b
+if let Err($1) = $2 {
+	$3
+}
+endsnippet
+# }}}
+
+# let else {{{
+snippet letelse "let else" b
+let $1($2) = $3 else {
+	$4
+};
+endsnippet
+# }}}
