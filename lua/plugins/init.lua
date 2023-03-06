@@ -154,8 +154,8 @@ return {
     config = function()
       local g = vim.g
       g.UltiSnipsSnippetDirectories = { 'UltiSnips', 'snips' }
-      g.UltiSnipsJumpForwardTrigger = ':<c-j>'
-      g.UltiSnipsJumpBackwardTrigger = ':<c-k>'
+      g.UltiSnipsJumpForwardTrigger = '<tab>'
+      g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
     end,
   },
   { 'honza/vim-snippets', dependencies = { 'SirVer/ultisnips' } },
