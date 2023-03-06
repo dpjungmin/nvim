@@ -7,7 +7,7 @@ int main(void) {
     cin.tie(nullptr)->sync_with_stdio(false);
     cin.exceptions(ios::badbit | ios::failbit);
 
-    ${1:Add solution here}
+    ${1:// Add solution here}
 
     return 0;
 }
@@ -22,5 +22,15 @@ endsnippet
 snippet ld "lambda expression" b
 function<$1($2)> ${3:name} = [&]($4) {
     $5
+};
+endsnippet
+
+snippet dirs "directions (top, bottom, left, right)" b
+vector<pair<int, int>> dirs{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+endsnippet
+
+snippet inside "inside" b
+auto inside = [&](int r, int c) {
+    return 0 <= r and r < $1 and 0 <= c and c < $2;
 };
 endsnippet
