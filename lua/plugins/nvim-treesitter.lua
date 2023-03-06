@@ -10,7 +10,7 @@ require('nvim-treesitter.configs').setup {
   ignore_install = { 'erlang' },
   highlight = {
     enable = true,
-    disable = {},
+    disable = { 'c', 'cc', 'cpp' },
     additional_vim_regex_highlighting = false,
   },
   autotag = {
