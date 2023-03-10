@@ -4,6 +4,10 @@ snippet ps "PS template" b
 using namespace std;
 
 int main(void) {
+#ifdef ONLINE_JUDGE
+  (void)freopen("input", "r", stdin);
+  (void)freopen("output", "w", stdout);
+#endif
     cin.tie(nullptr)->sync_with_stdio(false);
     cin.exceptions(ios::badbit | ios::failbit);
 
