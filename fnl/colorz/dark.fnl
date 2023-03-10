@@ -189,3 +189,8 @@
 (hl! :IlluminatedWordText {:fg none :bg "#373e47" :style []})
 (hl! :IlluminatedWordRead {:fg none :bg "#373e47" :style []})
 (hl! :IlluminatedWordWrite {:fg none :bg "#373e47" :style []})
+
+; https://github.com/kevinhwang91/nvim-hlslens
+(hl! :HlSearchNear {:link :IncSearch})
+(hl! :HlSearchLens {:fg "#ffff00" :bg none})
+(hl! :HlSearchLensNear {:fg "#000000" :bg "#ffff00"})
