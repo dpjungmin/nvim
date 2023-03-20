@@ -1,6 +1,14 @@
 -- https://github.com/folke/todo-comments.nvim
+-- FIX: fix
+-- TODO: todo
+-- WARN: warn
+-- WARNING: warning
+-- NOTE: note
+-- HACK: hack
+-- PERF: perf
+-- TEST: test
 require('todo-comments').setup {
-  signs = false, -- show icons in the signs column
+  signs = true, -- show icons in the signs column
   sign_priority = 8,
   -- keywords recognized as todo comments
   keywords = {
@@ -10,11 +18,11 @@ require('todo-comments').setup {
       alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' }, -- a set of other keywords that all map to this FIX keywords
       -- signs = false, -- configure signs for some keywords individually
     },
-    TODO = { icon = ' ', color = 'info' },
-    HACK = { icon = ' ', color = 'warning' },
-    WARN = { icon = ' ', color = 'warning', alt = { 'WARNING', 'XXX' } },
+    TODO = { icon = ' ', color = 'error' },
+    WARN = { icon = ' ', color = 'warning', alt = { 'WARNING' } },
+    NOTE = { icon = ' ', color = 'note', alt = { 'INFO' } },
+    HACK = { icon = ' ' },
     PERF = { icon = ' ', alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
-    NOTE = { icon = ' ', color = 'hint', alt = { 'INFO' } },
     TEST = { icon = '⏲ ', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
   },
   gui_style = {
@@ -41,12 +49,13 @@ require('todo-comments').setup {
   -- list of named colors where we try to extract the guifg from the
   -- list of highlight groups or use the hex color if hl not found as a fallback
   colors = {
+    default = { '#7C3AED' },
     error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
     warning = { 'DiagnosticWarn', 'WarningMsg', '#FBBF24' },
     info = { 'DiagnosticInfo', '#2563EB' },
     hint = { 'DiagnosticHint', '#10B981' },
-    default = { 'Identifier', '#7C3AED' },
-    test = { 'Identifier', '#FF00FF' },
+    note = { '#30dff3' },
+    test = { '#FF00FF' },
   },
   search = {
     command = 'rg',
