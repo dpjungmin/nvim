@@ -40,58 +40,156 @@ vim.diagnostic.config {
   update_in_insert = false,
 }
 
--- stylua: ignore start
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single', focusable = false })
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single', focusable = false })
--- stylua: ignore end
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
--- https://github.com/neovim/nvim-lspconfig
-local function on_attach(_, bufnr)
-  local function map(lhs, rhs, desc)
-    local opts = { noremap = true, silent = true, desc = desc, buffer = bufnr }
-    vim.keymap.set('n', lhs, rhs, opts)
-  end
+    --   map('K', lsp.buf.hover, 'Displays hover information about the symbol under the cursor')
+    --   map('<m-k>', lsp.buf.signature_help, 'Displays signature information about the symbol under the cursor')
+    --   map('<space>cd', lsp.buf.definition, 'Jumps to the definition of the symbol under the cursor')
+    --   map('<space>cD', lsp.buf.declaration, 'Jumps to the declaration of the symbol under the cursor')
+    --   map('<space>ca', lsp.buf.code_action, 'Selects a code action available at the current cursor position')
+    --   map('<space>ctd', lsp.buf.type_definition, 'Jumps to the definition of the type of the symbol under the cursor')
+    --   map('<space>crn', lsp.buf.rename, 'Renames all references of the symbol under the cursor')
+    --   map('<space>clr', lsp.buf.references, 'Lists all the references to the symbol under the cursor in the quickfix window')
+    --   map('<space>wa', lsp.buf.add_workspace_folder, 'Add the folder at path to the workspace folders')
+    --   map('<space>wr', lsp.buf.remove_workspace_folder, 'Remove the folder at path from the workspace folders')
+    --   map('<space>wl', function()
+    --     vim.notify(
+    --       vim.inspect(vim.lsp.buf.list_workspace_folders()),
+    --       vim.log.levels.INFO,
+    --       { render = 'default', title = 'Workspace folders' }
+    --     )
+    --   end, 'List workspace folders')
 
-  local lsp = vim.lsp
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
 
-  -- stylua: ignore start
-  map('K', lsp.buf.hover, 'Displays hover information about the symbol under the cursor')
-  map('<m-k>', lsp.buf.signature_help, 'Displays signature information about the symbol under the cursor')
-  map('<space>cd', lsp.buf.definition, 'Jumps to the definition of the symbol under the cursor')
-  map('<space>cD', lsp.buf.declaration, 'Jumps to the declaration of the symbol under the cursor')
-  map('<space>ca', lsp.buf.code_action, 'Selects a code action available at the current cursor position')
-  map('<space>ctd', lsp.buf.type_definition, 'Jumps to the definition of the type of the symbol under the cursor')
-  map('<space>crn', lsp.buf.rename, 'Renames all references of the symbol under the cursor')
-  map('<space>clr', lsp.buf.references, 'Lists all the references to the symbol under the cursor in the quickfix window')
-  map('<space>wa', lsp.buf.add_workspace_folder, 'Add the folder at path to the workspace folders')
-  map('<space>wr', lsp.buf.remove_workspace_folder, 'Remove the folder at path from the workspace folders')
-  map('<space>wl', function()
-    vim.notify(
-      vim.inspect(vim.lsp.buf.list_workspace_folders()),
-      vim.log.levels.INFO,
-      { render = 'default', title = 'Workspace folders' }
-    )
-  end, 'List workspace folders')
-  -- stylua: ignore end
-end
+-- vim.lsp.set_log_level 'debug'
+vim.lsp.handlers['textDocument/hover'] =
+  vim.lsp.with(vim.lsp.handlers.hover, { border = 'single', focusable = false })
+vim.lsp.handlers['textDocument/signatureHelp'] =
+  vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single', focusable = false })
 
-local lsp_servers = require 'lang.servers'
 local lspconfig = require 'lspconfig'
+local capabilities = (require 'cmp_nvim_lsp').default_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
 
-for server, config in pairs(lsp_servers) do
-  local opts = {
-    capabilities = (require 'cmp_nvim_lsp').default_capabilities(
-      vim.lsp.protocol.make_client_capabilities()
-    ),
-    flags = { debounce_text_changes = 150 },
-    on_attach = on_attach,
-  }
-  if type(config) == 'function' then
-    config()
-    return
-  end
-  for k, v in pairs(config) do
-    opts[k] = v
-  end
-  lspconfig[server].setup(opts)
-end
+lspconfig['bashls'].setup {
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 },
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh' },
+  single_file_support = true,
+}
+
+lspconfig['cmake'].setup {
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 },
+  cmd = { 'cmake-language-server' },
+  filetypes = { 'cmake' },
+  init_options = { buildDirectory = 'build' },
+}
+
+lspconfig['lua_ls'].setup {
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 },
+  filetypes = { 'lua' },
+  log_level = 2,
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = { 'vim' } },
+      workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+      telemetry = { enable = false },
+    },
+  },
+  single_file_support = true,
+}
+
+lspconfig['pyright'].setup {
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 },
+  cmd = { 'pyright-langserver', '--stdio' },
+  filetypes = { 'python' },
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = 'workspace',
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+}
+
+lspconfig['tsserver'].setup {
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 },
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+  },
+  init_options = { 'hostInfo', 'neovim' },
+  root_dir = (require 'lspconfig.util').root_pattern(
+    'package.json',
+    'tsconfig.json',
+    'jsconfig.json',
+    '.git'
+  ),
+}
+
+lspconfig['vimls'].setup {
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 },
+  cmd = { 'vim-language-server', '--stdio' },
+  filetypes = { 'vim' },
+  init_options = {
+    diagnostic = { enable = true },
+    indexes = {
+      count = 3,
+      gap = 100,
+      projectRootPatterns = { 'runtime', 'nvim', '.git', 'autoload', 'plugin' },
+      runtimepath = true,
+    },
+    isNeovim = true,
+    iskeyword = '@,48-57,_,192-255,-#',
+    runtimepath = '',
+    suggest = { fromRuntimepath = true, fromVimruntime = true },
+    vimruntime = '',
+  },
+  single_file_support = true,
+}
+
+require 'lang.clang'
+require 'lang.rust'
