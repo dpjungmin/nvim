@@ -93,7 +93,7 @@
 (hl! :Search {:fg "#000000" :bg "#f0c239"})
 (hl! :IncSearch {:fg "#000000" :bg "#f0c239" :style [:bold]})
 (hl! :CurSearch {:link :IncSearch})
-(hl! :EndOfBuffer {:fg none :bg none}) ; `~` at the end of buffer
+(hl! :EndOfBuffer {:fg "#161719" :bg none}) ; `~` at the end of buffer
 (hl! :Whitespace {:fg "#434846"}) ; 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
 (hl! :NonText {:fg "#424846" :bg none})
 (hl! :SpecialKey {:link :NonText})
