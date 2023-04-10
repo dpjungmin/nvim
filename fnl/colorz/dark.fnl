@@ -28,7 +28,7 @@
 
 ; Custom
 (hl! :YankColor {:fg none :bg "#2ecc71"})
-(hl! :InlayHints {:fg "#636e7b" :bg none})
+(hl! :InlayHints {:fg "#30dff3" :bg none})
 (hl! :MatchAccent {:fg "#30dff3" :bg none :style [:bold]})
 
 ; Syntax
