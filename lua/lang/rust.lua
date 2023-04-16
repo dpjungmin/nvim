@@ -118,6 +118,9 @@ require('rust-tools').setup {
     settings = {
       ['rust-analyzer'] = {
         inlayHints = { locationLinks = false },
+        procMacro = {
+          enable = true,
+        },
       },
     },
   },
