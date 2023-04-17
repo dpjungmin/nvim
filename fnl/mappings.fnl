@@ -23,7 +23,7 @@
 (map! [n] :<leader><leader>q :<cmd>qa!<cr> {:desc "Force close all buffers and exit"})
 (map! [n] :<leader>y "<cmd>%y<cr>" {:desc "Copy the entire buffer"})
 (map! [n] :<leader><leader>y "<cmd>w !wl-copy<cr>" {:desc "Copy the entire buffer (Wayland)"})
-(map! [n] :<leader>cd "<cmd>lcd %:p:h<cr><cmd>pwd<cr>" {:desc "Change current working directory locally and print cwd"})
+(map! [n] :<leader>cD "<cmd>lcd %:p:h<cr><cmd>pwd<cr>" {:desc "Change current working directory locally and print cwd"})
 (map! [n] :<leader><leader>x "<cmd>update<cr><cmd>source %<cr>" {:desc "Source current file"})
 (map! [n] :<space>d :<cmd>bd<cr> {:desc "Delete current buffer"})
 (map! [n] :<space>D :<cmd>close<cr> {:desc "Close current window"})

@@ -21,6 +21,11 @@ return {
       'hrsh7th/nvim-cmp',
     },
     keys = {
+      {
+        '<space>B',
+        '<cmd>DapToggleBreakpoint<cr>',
+        desc = 'Creates or removes a breakpoint at the current line',
+      },
       { '<leader><leader>S', '<cmd>LspStart<cr>', desc = 'Start LSP client' },
       { '<leader><leader>s', '<cmd>LspStop<cr>', desc = 'Stop LSP client' },
       {
@@ -73,6 +78,7 @@ return {
   'itchyny/vim-highlighturl',
   'tpope/vim-commentary',
   'RRethy/vim-illuminate',
+  'jose-elias-alvarez/null-ls.nvim',
   {
     'andymass/vim-matchup',
     keys = {
@@ -371,16 +377,34 @@ return {
   {
     'simrat39/symbols-outline.nvim',
     keys = {
-      { '<space>tS', ':<cmd>SymbolsOutline<cr>', desc = 'Toggle symbols outline' },
+      { '<space>tS', '<cmd>SymbolsOutline<cr>', desc = 'Toggle symbols outline' },
     },
     config = REQUIRE 'symbols-outline',
   },
   {
     'saecki/crates.nvim',
-    tag = 'v0.2.1',
+    tag = 'v0.3.0',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    event = { 'BufRead Cargo.toml' },
+    keys = {
+      {
+        '<leader>cd',
+        "<cmd>lua require('crates').open_documentation()<cr>",
+        desc = 'Open the documentation page of the crate on the current line',
+      },
+    },
     config = function()
-      require('crates').setup()
+      require('crates').setup {
+        text = {
+          loading = '    Loading',
+          version = '    %s',
+          prerelease = '    %s',
+          yanked = '    %s',
+          nomatch = '    No match',
+          upgrade = '    %s',
+          error = '    Error fetching crate',
+        },
+      }
     end,
   },
   {

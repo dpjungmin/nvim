@@ -114,14 +114,8 @@ require('rust-tools').setup {
   server = {
     on_attach = on_attach,
     standalone = true,
-    -- NOTE: remove this if the following issue gets fixed: https://github.com/simrat39/rust-tools.nvim/issues/309
     settings = {
-      ['rust-analyzer'] = {
-        inlayHints = { locationLinks = false },
-        procMacro = {
-          enable = true,
-        },
-      },
+      ['rust-analyzer'] = {},
     },
   },
   dap = {
