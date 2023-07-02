@@ -110,3 +110,16 @@ let $1($2) = $3 else {
 };
 endsnippet
 # }}}
+
+snippet yewfc "yew function component" b
+#[derive(PartialEq, Properties)]
+pub struct ${1:Name}${2:Props} {
+}
+
+#[function_component]
+pub fn $1(props: &$1$2) -> Html {
+    html! {
+        <div>$3</div>
+    }
+}
+endsnippet
